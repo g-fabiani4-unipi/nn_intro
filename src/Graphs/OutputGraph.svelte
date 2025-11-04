@@ -61,7 +61,6 @@
 				cx={xScale(d.x1)}
 				cy={yScale(d.x2)}
 				r={d.highlighted ? 12 : 8}
-				stroke="black"
 				fill={colorScale(d.y)}
 				on:mouseenter={() => highlightExample(d.example)}
 				on:mouseleave={() => removeHighlight()}
@@ -70,21 +69,26 @@
 		{/if}
 	{/each}
 	<Axis
-		type="horizontal"
+		type="bottom"
 		innerHeight={innerHeight}
 		innerWidth={innerWidth}
 		scale={xScale}
+		offset={yScale(0)}
+		tickValues={[-2, -1, 1, 2]}
 	/>
 	<Axis
-		type="vertical"
+		type="left"
 		innerHeight={innerHeight}
 		innerWidth={innerWidth}
 		scale={yScale}
+		offset={xScale(0)}
+		tickValues={[-2, -1, 1, 2]}
 	/>
 </GraphContainer>
 
 <style>
 	circle {
 		transition: all 300ms;
+		stroke: var(--black-olive);
 	}
 </style>
