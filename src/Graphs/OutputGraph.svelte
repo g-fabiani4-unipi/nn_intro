@@ -12,6 +12,7 @@
 	export let highlightExample;
 	export let removeHighlight;
 	export let showData;
+	export let showCanvas;
 
 	const width = 340;
 	const height = 340;
@@ -29,21 +30,23 @@
 		.range(['#C51B7D', '#7FBC41']);
 </script>
 
-<Canvas
-	width={width}
-	height={height}
-	--position="absolute"
->
-	<Heatmap
-		params={params}
+{#if showCanvas}
+	<Canvas
 		width={width}
 		height={height}
-		margin={margin}
-		xScale={xScale}
-		yScale={yScale}
-		colorScale={colorScale}
-	/>
-</Canvas>
+		--position="absolute"
+	>
+		<Heatmap
+			params={params}
+			width={width}
+			height={height}
+			margin={margin}
+			xScale={xScale}
+			yScale={yScale}
+			colorScale={colorScale}
+		/>
+	</Canvas>
+{/if}
 <GraphContainer
 	width={width}
 	height={height}
