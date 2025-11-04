@@ -11,7 +11,7 @@
 	export let targetFunc;
 	export let highlightExample;
 	export let removeHighlight;
-	export let currentStep;
+	export let showData;
 
 	const width = 340;
 	const height = 340;
@@ -29,23 +29,21 @@
 		.range(['#C51B7D', '#7FBC41']);
 </script>
 
-{#if currentStep > 0}
-	<Canvas
+<Canvas
+	width={width}
+	height={height}
+	--position="absolute"
+>
+	<Heatmap
+		params={params}
 		width={width}
 		height={height}
-		--position="absolute"
-	>
-		<Heatmap
-			params={params}
-			width={width}
-			height={height}
-			margin={margin}
-			xScale={xScale}
-			yScale={yScale}
-			colorScale={colorScale}
-		/>
-	</Canvas>
-{/if}
+		margin={margin}
+		xScale={xScale}
+		yScale={yScale}
+		colorScale={colorScale}
+	/>
+</Canvas>
 <GraphContainer
 	width={width}
 	height={height}
@@ -53,9 +51,9 @@
 	--position="absolute"
 >
 	{#each data[targetFunc] as d, i}
-		{#if currentStep > 1}
+		{#if showData}
 			<circle
-				transition:fly={{ duration: 1000, y: -300, delay: 200 + i * 200 }}
+				transition:fly={{ duration: 1000, y: -300, delay: 500 + i * 500 }}
 				cx={xScale(d.x1)}
 				cy={yScale(d.x2)}
 				r={d.highlighted ? 12 : 8}

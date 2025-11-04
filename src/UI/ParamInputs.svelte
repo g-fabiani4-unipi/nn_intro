@@ -1,6 +1,6 @@
 <script>
 	export let params;
-	export let currentStep;
+	export let disableInput;
 </script>
 
 <ul>
@@ -11,7 +11,7 @@
 				name=""
 				id=""
 				bind:value={param}
-				disabled={currentStep >= 3 && currentStep < 12}
+				disabled={disableInput}
 			/>
 		</li>
 	{/each}
