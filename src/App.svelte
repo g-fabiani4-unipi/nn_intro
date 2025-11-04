@@ -189,7 +189,7 @@
 
 	.step.active .step-content {
 		background: white;
-		color: black;
+		color: var(--black-olive);
 	}
 
 	.steps-container,

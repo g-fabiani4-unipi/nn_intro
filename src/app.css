@@ -49,3 +49,24 @@ h3 {
 .column-params>div {
     padding-top: 20px;
 }
+
+span.example {
+    background-color: var(--hunyadi-yellow);
+    padding: 3px 5px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+span.positive {
+    background-color: var(--kelly-green);
+    padding: 3px 5px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+span.negative {
+    background-color: var(--magenta-dye);
+    padding: 3px 5px;
+    font-weight: bold;
+    border-radius: 3px;
+}
