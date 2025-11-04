@@ -5,6 +5,7 @@
 	import Axis from '../GraphComponents/Axis.svelte';
 	import { scaleLinear, scaleOrdinal } from 'd3';
 	import { fly } from 'svelte/transition';
+	import { negativeColor, positiveColor } from '../constants';
 
 	export let params;
 	export let data;
@@ -27,7 +28,7 @@
 	const colorScale = scaleOrdinal()
 		.domain([-1, +1])
 		// @ts-ignore
-		.range(['#C51B7D', '#7FBC41']);
+		.range([negativeColor, positiveColor]);
 </script>
 
 {#if showCanvas}

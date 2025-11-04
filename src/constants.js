@@ -1,4 +1,7 @@
 
+export const positiveColor = '#7FBC41';
+export const negativeColor = '#C51B7D';
+
 export const steps = [
   {
     name: 'start',
@@ -18,7 +21,7 @@ export const steps = [
   },
   {
     name: 'perceptron_rule_2',
-    text: '<p>This example is in fact misclassified</p>'
+    text: '<p>This example is in fact misclassified. <span class="example">Example 2</span> falls on the <span class="positive">positive</span> side of the boundary even though it is <span class="negative">negative</span></p>'
   },
   {
     name: 'perceptron_rule_3',
