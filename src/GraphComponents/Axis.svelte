@@ -3,14 +3,16 @@
 	export let innerWidth;
 	export let innerHeight;
 	export let type;
+	export let offset = null;
+	export let tickValues = null;
 
-	const ticks = [-2, -1, 1, 2];
+	const ticks = tickValues ? tickValues : scale.ticks();
 </script>
 
-{#if type == 'horizontal'}
+{#if type == 'bottom'}
 	<g
 		class="axis"
-		transform="translate(0, {innerHeight / 2})"
+		transform="translate(0, {offset !== null ? offset : innerHeight})"
 	>
 		<line
 			x1={0}
@@ -37,7 +39,7 @@
 {:else}
 	<g
 		class="axis"
-		transform="translate({innerWidth / 2}, 0)"
+		transform="translate({offset !== null ? offset : 0}, 0)"
 	>
 		<line
 			x1={0}
@@ -66,11 +68,11 @@
 
 <style>
 	.axis line {
-		stroke: #000;
+		stroke: var(--black-olive);
 	}
 
 	.axis text {
 		font-size: 14px;
-		fill: #000;
+		fill: var(--black-olive);
 	}
 </style>
