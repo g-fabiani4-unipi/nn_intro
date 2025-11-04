@@ -15,26 +15,20 @@
 	let showCanvas = false;
 	let disableInput = false;
 
+	// Handle scrollytelling steps
 	$: if (steps && data) {
-		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
-			showCanvas = true;
-		} else {
-			showCanvas = false;
-		}
-		if (currentStep >= steps.findIndex((s) => s.name == 'enter_data')) {
-			showData = true;
-		} else {
-			showData = false;
-		}
-		if (
+		showCanvas =
+			currentStep >= steps.findIndex((s) => s.name == 'enter_network');
+		showData = currentStep >= steps.findIndex((s) => s.name == 'enter_data');
+		disableInput =
 			currentStep >=
 				steps.findIndex((s) => s.name == 'perceptron_rule_start') &&
-			currentStep <= steps.findIndex((s) => s.name == 'perceptron_rule_end')
-		) {
-			disableInput = true;
-		} else {
-			disableInput = false;
-		}
+			currentStep <= steps.findIndex((s) => s.name == 'perceptron_rule_end');
+		targetFunc =
+			currentStep < steps.findIndex((s) => s.name == 'xor_start')
+				? 'and'
+				: 'xor';
+		// Perceptron rule parameters update
 		if (steps[currentStep].name == 'perceptron_rule_start') {
 			highlightExample(1);
 			params = [1, 7, 7];
@@ -65,11 +59,6 @@
 		}
 		if (steps[currentStep].name == 'perceptron_rule_end') {
 			params = [3, 1, -3];
-		}
-		if (currentStep < steps.findIndex((s) => s.name == 'xor_start')) {
-			targetFunc = 'and';
-		} else {
-			targetFunc = 'xor';
 		}
 	}
 
