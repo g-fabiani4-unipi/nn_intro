@@ -2,81 +2,78 @@
 	import OutputGraph from './Graphs/OutputGraph.svelte';
 	import ParamInputs from './UI/ParamInputs.svelte';
 	import DataTable from './UI/DataTable.svelte';
+	import { steps } from './constants';
 
 	import { json } from 'd3';
 	import Scrolly from './Scrolly.svelte';
 
 	let params = [1, 7, 7];
 	let data;
-	let visible = false;
-	let currentStep;
-	let targetFunc;
+	let currentStep = 0;
+	let targetFunc = 'and';
+	let showData = false;
+	let showCanvas = false;
+	let disableInput = false;
 
-	const steps = [
-		"<p>This is a dynamic, responsive scatterplot that uses Russell Goldenberg's <a href='	https://twitter.com/codenberg/status/1432774653139984387' target='_blank'><code>Scrolly</code></a> to update its points' values on scroll.</p>",
-		'<p>This is working by chance and it is not reponsive.</p>',
-		"<p>Try resizing me to see the 'side-by-side' version, compared to the 'text-on-top' version that appears on small screens.</p><p>Want it to always appear 'text-on-top'? Just comment out the media query at the bottom of our styles (as in, leave the styles but comment out the surrounding <code>media</code> query).</p>",
-		'<p>Show the perceptron learning rule.</p><p>I am resetting the parameters, but notice that this is somewhat hacky and prevents changing the params in the current step. You should also disable the inputs</p>',
-		'<p>This example is in fact misclassified</p>',
-		'<p>Hardcoded the parameters update</p>',
-		'<p>This example is okay</p>',
-		'<p>This is not</p>',
-		'<p>Applying change</p>',
-		'<p>Applying change</p>',
-		'<p>Sh#t, now 2 is misclassified</p>',
-		'<p>Solved.</p>',
-		'<p>Introducing the XOR problem. No one bothered to animate this one</p>',
-	];
-
-	$: switch (true) {
-		case currentStep === 3:
-			params = [1, 7, 7];
+	$: if (steps && currentStep && data) {
+		if (steps[currentStep].name == 'perceptron_rule_start') {
 			highlightExample(1);
-			targetFunc = 'and';
-			break;
-		case currentStep === 4:
+			params = [1, 7, 7];
+		}
+		if (steps[currentStep].name == 'perceptron_rule_2') {
 			highlightExample(2);
-			targetFunc = 'and';
-			break;
-		case currentStep === 5:
+		}
+		if (steps[currentStep].name == 'perceptron_rule_3') {
 			params = [-1, 9, 5];
-			break;
-		case currentStep === 6:
+		}
+		if (steps[currentStep].name == 'perceptron_rule_4') {
 			highlightExample(3);
-			targetFunc = 'and';
-			break;
-		case currentStep === 7:
+		}
+		if (steps[currentStep].name == 'perceptron_rule_5') {
 			highlightExample(4);
-			targetFunc = 'and';
-			break;
-		case currentStep === 8:
+		}
+		if (steps[currentStep].name == 'perceptron_rule_6') {
+			highlightExample(4);
 			params = [1, 7, 3];
-			targetFunc = 'and';
-
-			break;
-		case currentStep === 9:
+		}
+		if (steps[currentStep].name == 'perceptron_rule_7') {
+			highlightExample(4);
 			params = [3, 5, 1];
-			targetFunc = 'and';
-
-			break;
-		case currentStep === 10:
+		}
+		if (steps[currentStep].name == 'perceptron_rule_8') {
 			highlightExample(2);
-			params = [5, 3, -1];
-			targetFunc = 'and';
-
-			break;
-		case currentStep === 11:
+			params = [5, 3, 1];
+		}
+		if (steps[currentStep].name == 'perceptron_rule_end') {
 			params = [3, 1, -3];
+		}
+		if (currentStep < steps.findIndex((s) => s.name == 'xor_start')) {
 			targetFunc = 'and';
-
-			break;
-		case currentStep > 11:
+		} else {
 			targetFunc = 'xor';
-			break;
-		default:
-			targetFunc = 'and';
-			break;
+		}
+		if (currentStep >= steps.findIndex((s) => s.name == 'enter_data')) {
+			showData = true;
+		} else {
+			showData = false;
+		}
+		if (
+			currentStep >=
+				steps.findIndex((s) => s.name == 'perceptron_rule_start') &&
+			currentStep <= steps.findIndex((s) => s.name == 'perceptron_rule_end')
+		) {
+			disableInput = true;
+		} else {
+			disableInput = false;
+		}
 	}
+
+	$: console.log(
+		'current step',
+		currentStep,
+		steps[currentStep].name,
+		showCanvas,
+	);
 
 	json('./data/data.json').then((result) => (data = result));
 
@@ -101,12 +98,10 @@
 	}
 </script>
 
-<svelte:window on:click={() => (visible = !visible)} />
-
 <section class="section-container">
 	<div class="steps-container">
 		<Scrolly bind:value={currentStep}>
-			{#each steps as text, i}
+			{#each steps as { text }, i}
 				<div
 					class="step"
 					class:active={currentStep === i}
@@ -128,7 +123,7 @@
 						targetFunc={targetFunc}
 						highlightExample={highlightExample}
 						removeHighlight={removeHighlight}
-						currentStep={currentStep}
+						showData={showData}
 					/>
 				</div>
 			</div>
@@ -137,7 +132,7 @@
 				<div>
 					<ParamInputs
 						bind:params={params}
-						currentStep={currentStep}
+						disableInput={disableInput}
 					/>
 				</div>
 			</div>
@@ -151,7 +146,7 @@
 						targetFunc={targetFunc}
 						highlightExample={highlightExample}
 						removeHighlight={removeHighlight}
-						currentStep={currentStep}
+						showData={showData}
 					/>
 				</div>
 			</div>

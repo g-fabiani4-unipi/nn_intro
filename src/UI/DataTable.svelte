@@ -1,10 +1,11 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import { steps } from '../constants';
 	export let data;
 	export let targetFunc;
 	export let highlightExample;
 	export let removeHighlight;
-	export let currentStep;
+	export let showData;
 </script>
 
 <table>
@@ -12,7 +13,7 @@
 		{targetFunc.toUpperCase()} Logic Gate
 	</caption>
 	<thead>
-		{#if currentStep > 1}
+		{#if showData}
 			<tr transition:fly={{ duration: 1000, y: 200 }}>
 				<th>Example</th>
 				<th>x<sub>1</sub></th>
@@ -23,9 +24,9 @@
 	</thead>
 	<tbody>
 		{#each data[targetFunc] as row, i}
-			{#if currentStep > 1}
+			{#if showData}
 				<tr
-					transition:fly={{ duration: 1000, y: 200, delay: 200 + i * 200 }}
+					transition:fly={{ duration: 1000, y: 200, delay: 500 + i * 500 }}
 					class={row.highlighted ? 'highlighted' : ''}
 					on:mouseenter={() => highlightExample(row.example)}
 					on:mouseleave={removeHighlight}

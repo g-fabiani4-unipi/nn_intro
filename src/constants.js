@@ -1,0 +1,55 @@
+
+export const steps = [
+  {
+    name: 'start',
+    text: "<p>This is a dynamic, responsive scatterplot that uses Russell Goldenberg's <a href='	https://twitter.com/codenberg/status/1432774653139984387' target='_blank'><code>Scrolly</code></a> to update its points' values on scroll.</p>"
+  },
+  {
+    name: 'enter_network',
+    text: '<p>This is working by chance and it is not reponsive.</p>'
+  },
+  {
+    name: 'enter_data',
+    text: "<p>Try resizing me to see the 'side-by-side' version, compared to the 'text-on-top' version that appears on small screens.</p><p>Want it to always appear 'text-on-top'? Just comment out the media query at the bottom of our styles (as in, leave the styles but comment out the surrounding <code>media</code> query).</p>"
+  },
+  {
+    name: 'perceptron_rule_start',
+    text: '<p>Show the perceptron learning rule.</p><p>I am resetting the parameters, but notice that this is somewhat hacky and prevents changing the params in the current step. You should also disable the inputs</p>'
+  },
+  {
+    name: 'perceptron_rule_2',
+    text: '<p>This example is in fact misclassified</p>'
+  },
+  {
+    name: 'perceptron_rule_3',
+    text: '<p>Hardcoded the parameters update</p>'
+  },
+  {
+    name: 'perceptron_rule_4',
+    text: '<p>This example is okay</p>'
+  },
+  {
+    name: 'perceptron_rule_5',
+    text: '<p>This is not</p>'
+  },
+  {
+    name: 'perceptron_rule_6',
+    text: '<p>Applying change</p>'
+  },
+  {
+    name: 'perceptron_rule_7',
+    text: '<p>Applying change</p>'
+  },
+  {
+    name: 'perceptron_rule_8',
+    text: '<p>Sh#t, now 2 is misclassified</p>'
+  },
+  {
+    name: 'perceptron_rule_end',
+    text: '<p>Solved.</p>'
+  },
+  {
+    name: 'xor_start',
+    text: '<p>Introducing the XOR problem. No one bothered to animate this one</p>'
+  },
+];
