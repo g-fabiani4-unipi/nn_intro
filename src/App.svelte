@@ -4,7 +4,7 @@
 	import DataTable from './UI/DataTable.svelte';
 	import { steps } from './constants';
 
-	import { json } from 'd3';
+	import { curveNatural, json } from 'd3';
 	import Scrolly from './Scrolly.svelte';
 
 	let params = [1, 7, 7];
@@ -15,7 +15,26 @@
 	let showCanvas = false;
 	let disableInput = false;
 
-	$: if (steps && currentStep && data) {
+	$: if (steps && data) {
+		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
+			showCanvas = true;
+		} else {
+			showCanvas = false;
+		}
+		if (currentStep >= steps.findIndex((s) => s.name == 'enter_data')) {
+			showData = true;
+		} else {
+			showData = false;
+		}
+		if (
+			currentStep >=
+				steps.findIndex((s) => s.name == 'perceptron_rule_start') &&
+			currentStep <= steps.findIndex((s) => s.name == 'perceptron_rule_end')
+		) {
+			disableInput = true;
+		} else {
+			disableInput = false;
+		}
 		if (steps[currentStep].name == 'perceptron_rule_start') {
 			highlightExample(1);
 			params = [1, 7, 7];
@@ -52,28 +71,9 @@
 		} else {
 			targetFunc = 'xor';
 		}
-		if (currentStep >= steps.findIndex((s) => s.name == 'enter_data')) {
-			showData = true;
-		} else {
-			showData = false;
-		}
-		if (
-			currentStep >=
-				steps.findIndex((s) => s.name == 'perceptron_rule_start') &&
-			currentStep <= steps.findIndex((s) => s.name == 'perceptron_rule_end')
-		) {
-			disableInput = true;
-		} else {
-			disableInput = false;
-		}
 	}
 
-	$: console.log(
-		'current step',
-		currentStep,
-		steps[currentStep].name,
-		showCanvas,
-	);
+	$: console.log(currentStep, steps[currentStep].name);
 
 	json('./data/data.json').then((result) => (data = result));
 
@@ -147,6 +147,7 @@
 						highlightExample={highlightExample}
 						removeHighlight={removeHighlight}
 						showData={showData}
+						showCanvas={showCanvas}
 					/>
 				</div>
 			</div>
@@ -169,7 +170,6 @@
 
 	.section-container {
 		margin-top: 1em;
-		text-align: center;
 		transition: background 100ms;
 		display: flex;
 	}
