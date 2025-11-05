@@ -1,33 +1,26 @@
 <script>
-	export let params;
 	export let disableInput;
+	export let network;
+	export let currentNetwork;
 </script>
 
-<ul>
-	{#each params as param}
-		<li>
-			<input
-				type="number"
-				name=""
-				id=""
-				bind:value={param}
-				disabled={disableInput}
-			/>
-		</li>
+<div>
+	{#each network[currentNetwork].links as link}
+		<input
+			type="number"
+			name=""
+			id=""
+			bind:value={link.weight}
+			disabled={disableInput}
+		/>
 	{/each}
-</ul>
+</div>
 
 <style>
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+	div {
+		display: flex;
+		flex-wrap: wrap;
 	}
-
-	ul > li {
-		padding-top: 10px;
-	}
-
 	input {
 		width: 70px;
 	}

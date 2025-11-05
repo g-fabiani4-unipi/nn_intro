@@ -1,0 +1,118 @@
+{
+  "perceptron": {
+    "nodes": [
+      {
+        "id": "x1",
+        "layer": 1
+      },
+      {
+        "id": "x2",
+        "layer": 1
+      },
+      {
+        "id": "b",
+        "layer": 1.5
+      },
+      {
+        "id": "y",
+        "layer": 2
+      }
+    ],
+    "links": [
+      {
+        "source": "x1",
+        "target": "y",
+        "weight": 1
+      },
+      {
+        "source": "x2",
+        "target": "y",
+        "weight": 7
+      },
+      {
+        "source": "b",
+        "target": "y",
+        "weight": 7
+      }
+    ]
+  },
+  "ml_perceptron": {
+    "nodes": [
+      {
+        "id": "x1",
+        "layer": 1
+      },
+      {
+        "id": "x2",
+        "layer": 1
+      },
+      {
+        "id": "b1",
+        "layer": 1
+      },
+      {
+        "id": "h1",
+        "layer": 2
+      },
+      {
+        "id": "h2",
+        "layer": 2
+      },
+      {
+        "id": "b2",
+        "layer": 1
+      },
+      {
+        "id": "y",
+        "layer": 3
+      }
+    ],
+    "links": [
+      {
+        "source": "x1",
+        "target": "h1",
+        "weight": 1
+      },
+      {
+        "source": "x2",
+        "target": "h1",
+        "weight": 1
+      },
+      {
+        "source": "b1",
+        "target": "h1",
+        "weight": -1
+      },
+      {
+        "source": "x1",
+        "target": "h2",
+        "weight": 7
+      },
+      {
+        "source": "x2",
+        "target": "h2",
+        "weight": -4
+      },
+      {
+        "source": "b1",
+        "target": "h2",
+        "weight": -2
+      },
+      {
+        "source": "h1",
+        "target": "y",
+        "weight": -2
+      },
+      {
+        "source": "h2",
+        "target": "y",
+        "weight": -4
+      },
+      {
+        "source": "b2",
+        "target": "y",
+        "weight": -5
+      }
+    ]
+  }
+}
