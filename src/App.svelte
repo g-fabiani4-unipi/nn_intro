@@ -1,24 +1,38 @@
 <script>
 	import OutputGraph from './Graphs/OutputGraph.svelte';
+	import Network from './Graphs/Network.svelte';
 	import ParamInputs from './UI/ParamInputs.svelte';
 	import DataTable from './UI/DataTable.svelte';
 	import { steps } from './constants';
-
-	import { curveNatural, json } from 'd3';
+	import { json } from 'd3';
 	import Scrolly from './Scrolly.svelte';
 
-	let params = [1, 7, 7];
 	let data;
+	let network;
 	let currentStep = 0;
 	let targetFunc = 'and';
 	let showData = false;
 	let showCanvas = false;
+	let showNetwork = false;
 	let disableInput = false;
+	let currentNetwork = 'ml_perceptron';
+
+	function setParams(paramList) {
+		paramList.forEach((param, i) => {
+			network[currentNetwork].links[i].weight = param;
+		});
+	}
 
 	// Handle scrollytelling steps
 	$: if (steps && data) {
-		showCanvas =
-			currentStep >= steps.findIndex((s) => s.name == 'enter_network');
+		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
+			showCanvas = true;
+			showNetwork = true;
+		} else {
+			showCanvas = false;
+			showNetwork = false;
+		}
+
 		showData = currentStep >= steps.findIndex((s) => s.name == 'enter_data');
 		disableInput =
 			currentStep >=
@@ -28,16 +42,26 @@
 			currentStep < steps.findIndex((s) => s.name == 'xor_start')
 				? 'and'
 				: 'xor';
+		currentNetwork =
+			currentStep >= steps.findIndex((s) => s.name == 'ml_perceptron_start')
+				? 'ml_perceptron'
+				: 'perceptron';
+		if (steps[currentStep].name == 'ml_perceptron_start') {
+			console.log('adding parameters');
+			// params = network[currentNetwork].links.map((link) => link.weight);
+			disableInput = true;
+		}
+
 		// Perceptron rule parameters update
 		if (steps[currentStep].name == 'perceptron_rule_start') {
 			highlightExample(1);
-			params = [1, 7, 7];
+			setParams([1, 7, 7]);
 		}
 		if (steps[currentStep].name == 'perceptron_rule_2') {
 			highlightExample(2);
 		}
 		if (steps[currentStep].name == 'perceptron_rule_3') {
-			params = [-1, 9, 5];
+			setParams([-1, 9, 5]);
 		}
 		if (steps[currentStep].name == 'perceptron_rule_4') {
 			highlightExample(3);
@@ -47,24 +71,23 @@
 		}
 		if (steps[currentStep].name == 'perceptron_rule_6') {
 			highlightExample(4);
-			params = [1, 7, 3];
+			setParams([1, 7, 3]);
 		}
 		if (steps[currentStep].name == 'perceptron_rule_7') {
 			highlightExample(4);
-			params = [3, 5, 1];
+			setParams([3, 5, 1]);
 		}
 		if (steps[currentStep].name == 'perceptron_rule_8') {
 			highlightExample(2);
-			params = [5, 3, 1];
+			setParams([5, 3, 1]);
 		}
 		if (steps[currentStep].name == 'perceptron_rule_end') {
-			params = [3, 1, -3];
+			setParams([3, 1, -3]);
 		}
 	}
 
-	$: console.log(currentStep, steps[currentStep].name);
-
 	json('./data/data.json').then((result) => (data = result));
+	json('./data/network.json').then((result) => (network = result));
 
 	function highlightExample(example) {
 		data = {
@@ -85,6 +108,8 @@
 			})),
 		};
 	}
+
+	$: network && console.log(network[currentNetwork]);
 </script>
 
 <section class="section-container">
@@ -100,7 +125,7 @@
 			{/each}
 		</Scrolly>
 	</div>
-	{#if !data}
+	{#if !(data && network)}
 		<div class="loading">loading...</div>
 	{:else}
 		<div class="main-part sticky">
@@ -116,27 +141,35 @@
 					/>
 				</div>
 			</div>
-			<div class="column-params">
-				<h3>Params</h3>
-				<div>
-					<ParamInputs
-						bind:params={params}
-						disableInput={disableInput}
-					/>
-				</div>
-			</div>
+
 			<div class="column-output">
 				<h3>Output</h3>
 
 				<div class="container">
 					<OutputGraph
-						params={params}
+						network={network}
+						currentNetwork={currentNetwork}
 						bind:data={data}
 						targetFunc={targetFunc}
 						highlightExample={highlightExample}
 						removeHighlight={removeHighlight}
 						showData={showData}
 						showCanvas={showCanvas}
+					/>
+				</div>
+			</div>
+			<div class="column-params">
+				<h3>Params</h3>
+				<div>
+					<ParamInputs
+						bind:network={network}
+						currentNetwork={currentNetwork}
+						disableInput={disableInput}
+					/>
+					<Network
+						network={network}
+						showNetwork={showNetwork}
+						currentNetwork={currentNetwork}
 					/>
 				</div>
 			</div>
@@ -152,9 +185,9 @@
 
 	.sticky {
 		position: sticky;
-		top: 10%;
-		flex: 1 1 60%;
-		width: 60%;
+		top: 0;
+		flex: 1 1 70%;
+		width: 70%;
 	}
 
 	.section-container {
@@ -198,8 +231,16 @@
 	}
 
 	.steps-container {
-		flex: 1 1 40%;
+		flex: 1 1 30%;
 		z-index: 10;
+	}
+
+	.main-part {
+		flex-wrap: wrap;
+	}
+
+	.column-params {
+		width: 75%;
 	}
 
 	/* Comment out the following line to always make it 'text-on-top' */

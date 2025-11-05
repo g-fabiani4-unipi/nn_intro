@@ -55,4 +55,12 @@ export const steps = [
     name: 'xor_start',
     text: '<p>Introducing the XOR problem. No one bothered to animate this one</p>'
   },
+  {
+    name: 'ml_perceptron_start',
+    text: '<p>Enter the multilayer perceptron</p>'
+  },
+  {
+    name: 'ml_perceptron_2',
+    text: "<p>Write something here</p>"
+  }
 ];
