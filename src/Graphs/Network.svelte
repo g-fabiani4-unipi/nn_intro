@@ -12,6 +12,8 @@
 		scaleSqrt,
 	} from 'd3';
 	import GraphContainer from '../GraphComponents/GraphContainer.svelte';
+	import NetworkNode from '../GraphComponents/NetworkNode.svelte';
+	import NetworkLink from '../GraphComponents/NetworkLink.svelte';
 
 	export let network;
 	export let showNetwork;
@@ -19,6 +21,7 @@
 
 	const width = 600;
 	const height = 300;
+	const nodeRadius = 20;
 
 	const xScale = scaleLinear().domain([1, 5]).range([0, innerWidth]);
 	const colorScale = scaleSequentialSymlog([-7, 7], interpolatePiYG);
@@ -53,14 +56,15 @@
 					.id(function (d) {
 						return d.id;
 					}) // This provide  the id of a node
-					.links(network[currentNetwork].links), // and this the list of links
+					.links(network[currentNetwork].links) // and this the list of links
+					.distance(70),
 			)
 			.force('x', forceX((d) => xScale(d.layer)).strength(0.15))
 			.force(
 				'y',
 				forceY((d) => (d.id[0] == 'b' ? 300 : 0)),
 			)
-			.force('charge', forceManyBody().strength(-1000)) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+			.force('charge', forceManyBody().strength(-1500)) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
 			.force('center', forceCenter(width / 2, height / 2).strength(1.5));
 	}
 </script>
@@ -70,33 +74,18 @@
 	height={height}
 >
 	{#if showNetwork}
-		{#each links as link, i}
-			<line
-				{...link}
-				stroke={colorScale(link.weight)}
-				stroke-width={linkScale(Math.abs(+link.weight))}
+		{#each links as link}
+			<NetworkLink
+				link={link}
+				colorScale={colorScale}
+				linkScale={linkScale}
 			/>
 		{/each}
-		{#each nodes as node}
-			<circle
-				cx={node.x}
-				cy={node.y}
-				fill="white"
-				r={20}
+		{#each nodes as node (node.id)}
+			<NetworkNode
+				node={node}
+				nodeRadius={nodeRadius}
 			/>
-			<text
-				x={node.x}
-				y={node.y}
-				text-anchor="middle"
-				dominant-baseline="middle">{node.id[0] == 'b' ? 1 : node.id}</text
-			>
 		{/each}
 	{/if}
 </GraphContainer>
-
-<style>
-	circle {
-		stroke: var(--black-olive);
-		stroke-width: 2px;
-	}
-</style>

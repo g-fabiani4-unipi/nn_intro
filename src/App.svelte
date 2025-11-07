@@ -108,8 +108,6 @@
 			})),
 		};
 	}
-
-	$: network && console.log(network[currentNetwork]);
 </script>
 
 <section class="section-container">
