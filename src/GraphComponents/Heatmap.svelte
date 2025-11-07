@@ -30,16 +30,16 @@
 	const w2y = tweened(0, tweenParams);
 	const w0y = tweened(0, tweenParams);
 
-	$: w11.set(network[currentNetwork].links[0].weight);
-	$: w21.set(network[currentNetwork].links[1].weight);
-	$: w01.set(network[currentNetwork].links[2].weight);
+	$: w11.set(+network[currentNetwork].links[0].weight);
+	$: w21.set(+network[currentNetwork].links[1].weight);
+	$: w01.set(+network[currentNetwork].links[2].weight);
 	$: if (currentNetwork == 'ml_perceptron') {
-		w12.set(network[currentNetwork].links[3].weight);
-		w22.set(network[currentNetwork].links[4].weight);
-		w02.set(network[currentNetwork].links[5].weight);
-		w1y.set(network[currentNetwork].links[6].weight);
-		w2y.set(network[currentNetwork].links[7].weight);
-		w0y.set(network[currentNetwork].links[8].weight);
+		w12.set(+network[currentNetwork].links[3].weight);
+		w22.set(+network[currentNetwork].links[4].weight);
+		w02.set(+network[currentNetwork].links[5].weight);
+		w1y.set(+network[currentNetwork].links[6].weight);
+		w2y.set(+network[currentNetwork].links[7].weight);
+		w0y.set(+network[currentNetwork].links[8].weight);
 	}
 
 	function sign(num) {

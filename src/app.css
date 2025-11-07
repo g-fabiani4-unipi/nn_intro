@@ -22,32 +22,77 @@ body {
     height: 100%;
 }
 
-.main-part {
+.sticky {
+    position: sticky;
+    top: 5%;
+    flex: 1 1 65%;
+    width: 65%;
+}
+
+.section-container {
+    margin-top: 1em;
+    transition: background 100ms;
     display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    padding-top: 2px;
-    min-height: 500px;
 }
 
-.container {
-    position: relative;
-    float: left;
-    margin-top: 10px;
+.step {
+    height: 80vh;
+    display: flex;
+    place-items: center;
+    justify-content: center;
 }
 
-.column-output {
-    width: 340px;
+.step-content {
+    font-size: 1.2rem;
+    background: whitesmoke;
+    color: #ccc;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background 500ms ease;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    width: 75%;
+    margin: auto;
+    max-width: 500px;
+}
+
+.step.active .step-content {
+    background: white;
+    color: var(--black-olive);
+}
+
+.steps-container,
+.sticky {
+    height: 100%;
+}
+
+.steps-container {
+    flex: 1 1 35%;
+    z-index: 10;
+}
+
+
+.hero {
+    height: 100vh;
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3 {
+    text-transform: uppercase;
 }
 
 h3 {
-    text-transform: uppercase;
-    font-weight: 400;
-}
-
-.column-data>div,
-.column-params>div {
-    padding-top: 20px;
+    font-weight: 500;
 }
 
 span.example {

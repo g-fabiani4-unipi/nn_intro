@@ -1,18 +1,23 @@
 <script>
+	import { paramNames } from '../constants';
 	export let disableInput;
 	export let network;
 	export let currentNetwork;
 </script>
 
 <div>
-	{#each network[currentNetwork].links as link}
-		<input
-			type="number"
-			name=""
-			id=""
-			bind:value={link.weight}
-			disabled={disableInput}
-		/>
+	{#each network[currentNetwork].links as link, i}
+		<label>
+			{@html paramNames[currentNetwork][i]}
+
+			<input
+				type="number"
+				name=""
+				id=""
+				bind:value={link.weight}
+				disabled={disableInput}
+			/>
+		</label>
 	{/each}
 </div>
 
@@ -20,6 +25,7 @@
 	div {
 		display: flex;
 		flex-wrap: wrap;
+		gap: 10px;
 	}
 	input {
 		width: 70px;

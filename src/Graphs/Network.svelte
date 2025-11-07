@@ -20,7 +20,7 @@
 	export let currentNetwork;
 
 	const width = 600;
-	const height = 300;
+	const height = 400;
 	const nodeRadius = 20;
 
 	const xScale = scaleLinear().domain([1, 5]).range([0, innerWidth]);
@@ -52,11 +52,11 @@
 		simulation
 			.force(
 				'link',
-				forceLink() // This force provides links between nodes
+				forceLink()
 					.id(function (d) {
 						return d.id;
-					}) // This provide  the id of a node
-					.links(network[currentNetwork].links) // and this the list of links
+					})
+					.links(network[currentNetwork].links)
 					.distance(70),
 			)
 			.force('x', forceX((d) => xScale(d.layer)).strength(0.15))
@@ -64,8 +64,8 @@
 				'y',
 				forceY((d) => (d.id[0] == 'b' ? 300 : 0)),
 			)
-			.force('charge', forceManyBody().strength(-1500)) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
-			.force('center', forceCenter(width / 2, height / 2).strength(1.5));
+			.force('charge', forceManyBody().strength(-1500))
+			.force('center', forceCenter(width / 2, height / 2).strength(0.5));
 	}
 </script>
 
