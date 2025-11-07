@@ -9,7 +9,7 @@
 
 	let data;
 	let network;
-	let currentStep = 0;
+	let currentStep;
 	let targetFunc = 'and';
 	let showData = false;
 	let showCanvas = false;
@@ -24,7 +24,7 @@
 	}
 
 	// Handle scrollytelling steps
-	$: if (steps && data) {
+	$: if (steps && data && currentStep >= 0) {
 		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
 			showCanvas = true;
 			showNetwork = true;
@@ -81,8 +81,12 @@
 			highlightExample(2);
 			setParams([5, 3, 1]);
 		}
+		if (steps[currentStep].name == 'perceptron_rule_9') {
+			highlightExample(4);
+			setParams([3, 5, -1]);
+		}
 		if (steps[currentStep].name == 'perceptron_rule_end') {
-			setParams([3, 1, -3]);
+			setParams([5, 3, -3]);
 		}
 	}
 
@@ -110,6 +114,9 @@
 	}
 </script>
 
+<section class="hero">
+	<h1>The perceptron</h1>
+</section>
 <section class="section-container">
 	<div class="steps-container">
 		<Scrolly bind:value={currentStep}>
@@ -126,7 +133,7 @@
 	{#if !(data && network)}
 		<div class="loading">loading...</div>
 	{:else}
-		<div class="main-part sticky">
+		<div class="sticky main-part">
 			<div class="column-data">
 				<h3>Data</h3>
 				<div>
@@ -143,7 +150,7 @@
 			<div class="column-output">
 				<h3>Output</h3>
 
-				<div class="container">
+				<div class="graph-container">
 					<OutputGraph
 						network={network}
 						currentNetwork={currentNetwork}
@@ -164,81 +171,52 @@
 						currentNetwork={currentNetwork}
 						disableInput={disableInput}
 					/>
-					<Network
-						network={network}
-						showNetwork={showNetwork}
-						currentNetwork={currentNetwork}
-					/>
 				</div>
+			</div>
+			<div class="column-network">
+				<Network
+					network={network}
+					showNetwork={showNetwork}
+					currentNetwork={currentNetwork}
+				/>
 			</div>
 		</div>
 	{/if}
 </section>
+<section class="hero">Some more content here</section>
 
 <style>
-	.container {
+	.graph-container {
 		position: relative;
 		height: 340px;
+		float: left;
+		margin-top: 10px;
 	}
 
-	.sticky {
-		position: sticky;
-		top: 0;
-		flex: 1 1 70%;
-		width: 70%;
-	}
-
-	.section-container {
-		margin-top: 1em;
-		transition: background 100ms;
-		display: flex;
-	}
-
-	.step {
-		height: 80vh;
-		display: flex;
-		place-items: center;
-		justify-content: center;
-	}
-
-	.step-content {
-		font-size: 1.2rem;
-		background: whitesmoke;
-		color: #ccc;
-		border-radius: 5px;
-		padding: 0.5rem 1rem;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		transition: background 500ms ease;
-		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-		text-align: left;
-		width: 75%;
-		margin: auto;
-		max-width: 500px;
-	}
-
-	.step.active .step-content {
-		background: white;
-		color: var(--black-olive);
-	}
-
-	.steps-container,
-	.sticky {
-		height: 100%;
-	}
-
-	.steps-container {
-		flex: 1 1 30%;
-		z-index: 10;
-	}
-
-	.main-part {
-		flex-wrap: wrap;
+	.column-network {
+		width: 100%;
 	}
 
 	.column-params {
-		width: 75%;
+		width: 300px;
+	}
+
+	.main-part {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		margin-top: 30px;
+		padding-top: 2px;
+		min-height: 500px;
+	}
+
+	.column-output {
+		width: 340px;
+	}
+
+	.column-data > div,
+	.column-params > div {
+		padding-top: 20px;
 	}
 
 	/* Comment out the following line to always make it 'text-on-top' */

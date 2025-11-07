@@ -2,6 +2,25 @@
 export const positiveColor = '#7FBC41';
 export const negativeColor = '#C51B7D';
 
+export const paramNames = {
+  'perceptron': [
+    'w<sub>1</sub>',
+    'w<sub>2</sub>',
+    'w<sub>0</sub>',
+  ],
+  'ml_perceptron': [
+    'w<sub>11</sub>',
+    'w<sub>21</sub>',
+    'w<sub>01</sub>',
+    'w<sub>12</sub>',
+    'w<sub>22</sub>',
+    'w<sub>02</sub>',
+    'w<sub>1y</sub>',
+    'w<sub>2y</sub>',
+    'w<sub>0y</sub>',
+  ]
+}
+
 export const steps = [
   {
     name: 'start',
@@ -21,7 +40,7 @@ export const steps = [
   },
   {
     name: 'perceptron_rule_2',
-    text: '<p>This example is in fact misclassified. <span class="example">Example 2</span> falls on the <span class="positive">positive</span> side of the boundary even though it is <span class="negative">negative</span></p>'
+    text: '<p>This example is in fact misclassified. <span class="example">Example&nbsp;2</span> falls on the <span class="positive">positive</span> side of the boundary even though it is <span class="negative">negative</span></p>'
   },
   {
     name: 'perceptron_rule_3',
@@ -46,6 +65,10 @@ export const steps = [
   {
     name: 'perceptron_rule_8',
     text: '<p>Sh#t, now 2 is misclassified</p>'
+  },
+  {
+    name: 'perceptron_rule_9',
+    text: '<p>This is the correct step here (and now 4 is misclassified)</p>'
   },
   {
     name: 'perceptron_rule_end',
