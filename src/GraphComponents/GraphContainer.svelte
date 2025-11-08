@@ -16,5 +16,6 @@
 <style>
 	svg {
 		position: var(--position);
+		background-color: var(--background-color);
 	}
 </style>

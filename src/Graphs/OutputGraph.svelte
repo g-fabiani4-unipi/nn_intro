@@ -16,12 +16,12 @@
 	export let showData;
 	export let showCanvas;
 
-	const width = 340;
-	const height = 340;
-	const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+	const margin = { top: 10, right: 10, bottom: 10, left: 10 };
 
-	const innerWidth = width - margin.left - margin.right;
-	const innerHeight = height - margin.top - margin.bottom;
+	const innerWidth = 300;
+	const innerHeight = 300;
+	const width = innerWidth + margin.left + margin.right;
+	const height = innerHeight + margin.top + margin.bottom;
 
 	const xScale = scaleLinear().domain([-2, +2]).range([0, innerWidth]);
 	const yScale = scaleLinear().domain([-2, +2]).range([innerHeight, 0]);

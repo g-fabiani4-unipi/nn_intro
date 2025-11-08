@@ -74,6 +74,18 @@ body {
     z-index: 10;
 }
 
+/* Comment out the following line to always make it 'text-on-top' */
+@media screen and (max-width: 768px) {
+    .section-container {
+        flex-direction: column-reverse;
+    }
+
+    .sticky {
+        width: 95%;
+        margin: auto;
+    }
+}
+
 
 .hero {
     height: 100vh;
@@ -89,11 +101,9 @@ h1,
 h2,
 h3 {
     text-transform: uppercase;
+    font-weight: 400;
 }
 
-h3 {
-    font-weight: 500;
-}
 
 span.example {
     background-color: var(--hunyadi-yellow);
