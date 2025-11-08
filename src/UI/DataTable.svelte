@@ -1,6 +1,5 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { steps } from '../constants';
 	export let data;
 	export let targetFunc;
 	export let highlightExample;

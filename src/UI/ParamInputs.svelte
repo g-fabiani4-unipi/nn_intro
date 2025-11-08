@@ -23,9 +23,8 @@
 
 <style>
 	div {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 	input {
 		width: 70px;

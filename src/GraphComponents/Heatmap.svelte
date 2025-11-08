@@ -15,6 +15,7 @@
 
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
+	const opacity = 0.6;
 
 	const tweenParams = {
 		duration: 200,
@@ -67,10 +68,10 @@
 				imageData.data[++p] = color.r;
 				imageData.data[++p] = color.g;
 				imageData.data[++p] = color.b;
-				imageData.data[++p] = 160;
+				imageData.data[++p] = opacity * 255;
 			}
 		}
-		ctx.putImageData(imageData, 20, 20);
+		ctx.putImageData(imageData, margin.top, margin.left);
 	}
 
 	onMount(() => {
