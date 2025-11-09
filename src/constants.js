@@ -96,6 +96,10 @@ export const allSteps = {
     {
       name: 'decompose_input',
       text: "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.Aliquid doloremque, enim dolores nam aliquam tenetur dignissimos ullam itaque odit ipsum consequuntur officiis, dolorum minima vel ipsa facilis vero architecto.Deleniti.</p>"
+    },
+    {
+      name: 'enter_input_nodes',
+      text: '<p>So we can build our perceptron: we have 64 Input nodes</p>'
     }
   ]
 
