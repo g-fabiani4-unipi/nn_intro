@@ -6,6 +6,8 @@
 		scaleSequential,
 		extent,
 		max,
+		scaleSequentialSqrt,
+		interpolatePiYG,
 	} from 'd3';
 	import Scrolly from '../UI/Scrolly.svelte';
 	import { allSteps } from '../constants';
@@ -16,13 +18,18 @@
 
 	const steps = allSteps['mnist'];
 	const pixelWidth = 12;
-	const colorScale = scaleSequential([0, 15], interpolateGreys);
+	const grayScale = scaleSequential([0, 15], interpolateGreys);
+	const colorScale = scaleSequentialSqrt([-1, 1], interpolatePiYG);
 
 	let currentStep;
 	let digits;
 	let decomposeInput = false;
 	let enterInputNodes = false;
+	let enterOutpuNodes = false;
+	let enterHiddenNodes = false;
+	let enterLinks = false;
 	let imgPixels = [];
+	let currentPixels = [];
 	let nodes;
 	let links;
 
@@ -46,35 +53,47 @@
 				currentStep >= steps.findIndex((s) => s.name == 'enter_input_nodes')
 			) {
 				enterInputNodes = true;
+				currentPixels = imgPixels.filter((p) => p.node);
 			} else {
 				enterInputNodes = false;
+				currentPixels = imgPixels;
+			}
+			if (
+				currentStep >= steps.findIndex((s) => s.name == 'enter_output_nodes')
+			) {
+				enterOutpuNodes = true;
+			} else {
+				enterOutpuNodes = false;
+			}
+
+			if (
+				currentStep >= steps.findIndex((s) => s.name === 'enter_hidden_nodes')
+			) {
+				enterHiddenNodes = true;
+			} else {
+				enterHiddenNodes = false;
+			}
+			if (currentStep >= steps.findIndex((s) => s.name === 'enter_links')) {
+				enterLinks = true;
+			} else {
+				enterLinks = false;
 			}
 		}
 	}
 
 	json('./data/digits.json').then((result) => (digits = result));
 
-	$: if (digits) {
-		imgPixels = digits[0].img.map((v, i) => ({
-			id: 'x' + (i + 1),
-			value: v,
-		}));
-	}
-
-	$: if (network) {
+	$: if (digits && network) {
 		const data = network['mnist_perceptron'];
 		nodes = data.nodes;
 
 		const xScale = scaleLinear()
 			.domain(extent(Object.keys(data.dims)))
-			.range([networkXPadding, innerWidth - networkXPadding]);
+			.range([networkXPadding, innerWidth - networkXPadding * 4]);
 
 		const yScale = scaleLinear()
 			.domain([1, max(Object.values(data.dims))])
 			.range([nodeRadius, innerHeight - nodeRadius]);
-
-		console.log(yScale.domain());
-		console.log(yScale.range());
 
 		nodes.forEach((node) => {
 			node.cx = xScale(node.layer);
@@ -82,6 +101,16 @@
 				node.order +
 					(max(Object.values(data.dims)) - data.dims[node.layer]) / 2,
 			);
+
+			imgPixels = digits[0].img.map((v, i) => {
+				const id = 'x' + (i + 1);
+				return {
+					id: id,
+					value: v,
+					index: i,
+					node: nodes.find((n) => n.id === id),
+				};
+			});
 
 			links = data.links.map((link) => ({
 				...link,
@@ -114,24 +143,59 @@
 				width={width}
 				margin={margin}
 			>
-				{#if enterInputNodes}
-					{#each nodes.filter( (node) => node.id.startsWith('x'), ) as node (node.id)}
-						<circle
-							class="newtork-node"
-							{...node}
-							r={nodeRadius}
+				{#if enterLinks}
+					{#each links as link}
+						<line
+							x1={link.source.cx}
+							y1={link.source.cy}
+							x2={link.target.cx}
+							y2={link.target.cy}
+							stroke={colorScale(link.weight)}
 						/>
 					{/each}
-				{:else}
-					{#each imgPixels as pixel, i (pixel.id)}
-						<Pixel
-							x={decomposeInput ? 4 : (i % 8) * pixelWidth + 20}
-							y={decomposeInput
-								? i * pixelWidth
-								: Math.floor(i / 8) * pixelWidth}
-							width={pixelWidth}
-							fill={colorScale(pixel.value)}
-							index={i}
+				{/if}
+				{#each currentPixels as pixel, i (pixel.id)}
+					<Pixel
+						x={enterInputNodes
+							? pixel.node.cx - nodeRadius
+							: decomposeInput
+								? 4
+								: (pixel.index % 8) * pixelWidth + 20}
+						y={enterInputNodes
+							? pixel.node.cy - nodeRadius
+							: decomposeInput
+								? pixel.index * pixelWidth
+								: Math.floor(pixel.index / 8) * pixelWidth}
+						width={enterInputNodes ? nodeRadius * 2 : pixelWidth}
+						fill={enterOutpuNodes ? 'white' : grayScale(pixel.value)}
+						index={pixel.index}
+						round={enterInputNodes}
+						strokeWidth={enterInputNodes ? 2 : 0.5}
+						delay={!enterInputNodes}
+					/>
+				{/each}
+				{#if enterOutpuNodes}
+					{#each nodes.filter((n) => n.id.startsWith('o')) as node, i (node.id)}
+						<circle
+							{...node}
+							r={nodeRadius}
+							fill="white"
+						/>
+						<text
+							x={node.cx + 15}
+							y={node.cy + nodeRadius / 2}
+							dominant-baseline="pending"
+							text-anchor="right"
+							>{i}
+						</text>
+					{/each}
+				{/if}
+				{#if enterHiddenNodes}
+					{#each nodes.filter((n) => n.id.startsWith('h') || n.id.startsWith('k')) as node (node.id)}
+						<circle
+							{...node}
+							r={nodeRadius}
+							fill="white"
 						/>
 					{/each}
 				{/if}
@@ -139,3 +203,10 @@
 		</div>
 	{/if}
 </section>
+
+<style>
+	circle {
+		stroke: var(--black-olive);
+		stroke-width: 2px;
+	}
+</style>

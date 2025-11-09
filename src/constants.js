@@ -100,7 +100,19 @@ export const allSteps = {
     {
       name: 'enter_input_nodes',
       text: '<p>So we can build our perceptron: we have 64 Input nodes</p>'
-    }
+    },
+    {
+      name: 'enter_output_nodes',
+      text: '<p>And one output node for each digit: so 10 output nodes</p>'
+    },
+    {
+      name: 'enter_hidden_nodes',
+      text: '<p>And two hidden layers with 16 nodes each</p>'
+    },
+    {
+      name: 'enter_links',
+      text: '<p>Una botta di calcoli</p>'
+    },
   ]
 
 };
