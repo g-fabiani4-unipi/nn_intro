@@ -51,8 +51,8 @@
 		if (currentNetwork == 'perceptron') {
 			return sign(x1 * $w11 + x2 * $w21 + $w01);
 		}
-		const h1 = sign(x1 * $w11 - x2 * $w21 + $w01);
-		const h2 = sign(x1 * $w12 - x2 * $w22 + $w02);
+		const h1 = sign(x1 * $w11 + x2 * $w21 + $w01);
+		const h2 = sign(x1 * $w12 + x2 * $w22 + $w02);
 		return sign($w1y * h1 + $w2y * h2 + $w0y);
 	}
 
