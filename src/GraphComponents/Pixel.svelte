@@ -6,30 +6,35 @@
 	export let width;
 	export let fill;
 	export let index;
+	export let round;
+	export let strokeWidth;
+	export let delay = true;
 
-	const tweenParams = {
-		duration: 500,
-		delay: index * 50,
-	};
+	const tX = tweened(x);
+	const tY = tweened(y);
+	const corner = tweened(0, { duration: 500 });
+	const tWidth = tweened(width, { duration: 500 });
 
-	const tX = tweened(x, tweenParams);
-	const tY = tweened(y, tweenParams);
-
-	$: tX.set(x);
-	$: tY.set(y);
+	$: tX.set(x, { duration: delay ? 500 : 1000, delay: delay ? index * 50 : 0 });
+	$: tY.set(y, { duration: delay ? 500 : 1000, delay: delay ? index * 50 : 0 });
+	$: round ? corner.set(50) : corner.set(0);
+	$: tWidth.set(width);
 </script>
 
 <rect
 	x={$tX}
 	y={$tY}
-	width={width}
-	height={width}
+	width={$tWidth}
+	height={$tWidth}
 	fill={fill}
+	stroke-width={strokeWidth}
+	rx={$corner}
+	ry={$corner}
 />
 
 <style>
 	rect {
 		stroke: var(--black-olive);
-		stroke-width: 0.5px;
+		transition: fill 800ms;
 	}
 </style>
