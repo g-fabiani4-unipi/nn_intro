@@ -14,26 +14,14 @@
 	import GraphContainer from '../GraphComponents/GraphContainer.svelte';
 	import Pixel from '../GraphComponents/Pixel.svelte';
 	import { fade, fly } from 'svelte/transition';
+	import BarplotBar from '../GraphComponents/BarplotBar.svelte';
 
 	export let network;
 
 	const steps = allSteps['mnist'];
+
 	const pixelWidth = 12;
-	const grayScale = scaleSequential([0, 15], interpolateGreys);
-	const colorScale = scaleSequentialSqrt([-1, 1], interpolatePiYG);
-
-	let currentStep;
-	let digits;
-	let decomposeInput = false;
-	let enterInputNodes = false;
-	let enterOutpuNodes = false;
-	let enterHiddenNodes = false;
-	let enterLinks = false;
-	let imgPixels = [];
-	let currentPixels = [];
-	let nodes;
-	let links;
-
+	const smallerPixelWidth = 10;
 	const width = 900;
 	const innerHeight = pixelWidth * 64;
 	const margin = { top: 10, left: 10, bottom: 10, right: 10 };
@@ -41,6 +29,23 @@
 	const height = innerHeight + margin.top + margin.bottom;
 	const networkXPadding = 30;
 	const nodeRadius = 10;
+	const grayScale = scaleSequential([0, 15], interpolateGreys);
+	const colorScale = scaleSequentialSqrt([-1, 1], interpolatePiYG);
+	const barScale = scaleLinear().domain([0, 1]).range([0, 180]);
+
+	let currentStep;
+	let digits;
+	let clickedDigit = null;
+	let decomposeInput = false;
+	let enterInputNodes = false;
+	let enterOutpuNodes = false;
+	let enterHiddenNodes = false;
+	let enterLinks = false;
+	let enterTestExamples = false;
+	let imgPixels = [];
+	let currentPixels = [];
+	let nodes;
+	let links;
 
 	// Handle scrollytelling steps
 	$: {
@@ -79,6 +84,12 @@
 			} else {
 				enterLinks = false;
 			}
+			if (currentStep >= steps.findIndex((s) => s.name === 'end')) {
+				enterTestExamples = true;
+			} else {
+				enterTestExamples = false;
+				clickedDigit = null;
+			}
 		}
 	}
 
@@ -90,7 +101,7 @@
 
 		const xScale = scaleLinear()
 			.domain(extent(Object.keys(data.dims)))
-			.range([networkXPadding, innerWidth - networkXPadding * 4]);
+			.range([networkXPadding, innerWidth - 230]);
 
 		const yScale = scaleLinear()
 			.domain([1, max(Object.values(data.dims))])
@@ -120,6 +131,10 @@
 			}));
 		});
 	}
+
+	function handleClickDigit(digit) {
+		clickedDigit = digit;
+	}
 </script>
 
 <section class="section-container">
@@ -144,7 +159,7 @@
 				width={width}
 				margin={margin}
 			>
-				{#each links as link, i}
+				{#each links as link}
 					{#if enterLinks}
 						<line
 							transition:fade={{ duration: 1000 }}
@@ -156,7 +171,7 @@
 						/>
 					{/if}
 				{/each}
-				{#each currentPixels as pixel, i (pixel.id)}
+				{#each currentPixels as pixel (pixel.id)}
 					<Pixel
 						x={enterInputNodes
 							? pixel.node.cx - nodeRadius
@@ -186,12 +201,19 @@
 						/>
 						<text
 							x={node.cx + 15}
-							y={node.cy + nodeRadius / 2}
-							dominant-baseline="pending"
+							y={node.cy}
+							dominant-baseline="middle"
 							text-anchor="right"
 							transition:fly={{ duration: 1000, x: 300 }}
 							>{i}
 						</text>
+						<BarplotBar
+							x={innerWidth - 200}
+							y={node.cy - nodeRadius}
+							height={nodeRadius * 2}
+							width={clickedDigit ? barScale(clickedDigit.proba[i]) : 0}
+							value={clickedDigit ? clickedDigit.proba[i] : 0}
+						/>
 					{/if}
 				{/each}
 				{#each nodes.filter((n) => n.id.startsWith('h') || n.id.startsWith('k')) as node}
@@ -202,6 +224,28 @@
 							fill="white"
 							transition:fly={{ duration: 1000, y: 300 }}
 						/>
+					{/if}
+				{/each}
+				{#each digits as digit, i}
+					{#if enterTestExamples}
+						<g
+							transform="translate({innerWidth -
+								((i + 1) * smallerPixelWidth * 8 + i * smallerPixelWidth)}, 0)"
+							role="button"
+							tabindex={i + 1}
+							on:keypress={() => handleClickDigit(digit)}
+							on:click={() => handleClickDigit(digit)}
+							transition:fly={{ duration: 500, x: 300 }}
+						>
+							{#each digit.img as pixel, i}
+								<Pixel
+									x={(i % 8) * smallerPixelWidth}
+									y={Math.floor(i / 8) * smallerPixelWidth}
+									width={smallerPixelWidth}
+									fill={grayScale(pixel)}
+								/>
+							{/each}
+						</g>
 					{/if}
 				{/each}
 			</GraphContainer>
