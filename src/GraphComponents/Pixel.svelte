@@ -6,9 +6,9 @@
 	export let y;
 	export let width;
 	export let fill;
-	export let index;
-	export let round;
-	export let strokeWidth;
+	export let index = 0;
+	export let round = false;
+	export let strokeWidth = 0.5;
 	export let delay = true;
 
 	const tX = tweened(x);

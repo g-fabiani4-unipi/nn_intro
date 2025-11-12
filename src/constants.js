@@ -113,6 +113,11 @@ export const allSteps = {
       name: 'enter_links',
       text: '<p>Una botta di calcoli</p>'
     },
+
+    {
+      name: 'end',
+      text: '<p>Click on the test examples to see the model output</p>'
+    }
   ]
 
 };
