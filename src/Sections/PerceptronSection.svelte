@@ -33,7 +33,6 @@
 		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
 			showCanvas = true;
 			showNetwork = true;
-			setParams(network[currentNetwork].links.map((link) => link.weight));
 		} else {
 			showCanvas = false;
 			showNetwork = false;
@@ -57,6 +56,9 @@
 		}
 
 		// Perceptron rule parameters update
+		if (steps[currentStep].name == 'enter_network') {
+			params.set(network[currentNetwork].links.map((link) => link.weight));
+		}
 		if (steps[currentStep].name == 'perceptron_rule_start') {
 			highlightExample(1);
 			setParams([1, 7, 7]);

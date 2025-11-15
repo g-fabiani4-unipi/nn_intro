@@ -43,7 +43,6 @@
 					x2: target.x,
 					y1: source.y,
 					y2: target.y,
-					weight: link.weight,
 				};
 			});
 		}
