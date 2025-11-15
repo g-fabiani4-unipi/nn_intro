@@ -1,25 +1,6 @@
 export const positiveColor = '#7FBC41';
 export const negativeColor = '#C51B7D';
 
-export const paramNames = {
-  'perceptron': [
-    'w<sub>1</sub>',
-    'w<sub>2</sub>',
-    'w<sub>0</sub>',
-  ],
-  'ml_perceptron': [
-    'w<sub>11</sub>',
-    'w<sub>21</sub>',
-    'w<sub>01</sub>',
-    'w<sub>12</sub>',
-    'w<sub>22</sub>',
-    'w<sub>02</sub>',
-    'w<sub>1y</sub>',
-    'w<sub>2y</sub>',
-    'w<sub>0y</sub>',
-  ]
-}
-
 export const allSteps = {
   perceptron: [
     {

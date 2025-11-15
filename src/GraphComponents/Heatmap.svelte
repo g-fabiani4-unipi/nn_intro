@@ -2,8 +2,8 @@
 	import { afterUpdate, getContext, onDestroy, onMount } from 'svelte';
 	import { rgb } from 'd3-color';
 	import { tweened } from 'svelte/motion';
+	import { params } from '../stores';
 
-	export let network;
 	export let currentNetwork;
 	export let width;
 	export let height;
@@ -31,16 +31,16 @@
 	const w2y = tweened(0, tweenParams);
 	const w0y = tweened(0, tweenParams);
 
-	$: w11.set(+network[currentNetwork].links[0].weight);
-	$: w21.set(+network[currentNetwork].links[1].weight);
-	$: w01.set(+network[currentNetwork].links[2].weight);
+	$: w11.set(+$params[0]);
+	$: w21.set(+$params[1]);
+	$: w01.set(+$params[2]);
 	$: if (currentNetwork == 'ml_perceptron') {
-		w12.set(+network[currentNetwork].links[3].weight);
-		w22.set(+network[currentNetwork].links[4].weight);
-		w02.set(+network[currentNetwork].links[5].weight);
-		w1y.set(+network[currentNetwork].links[6].weight);
-		w2y.set(+network[currentNetwork].links[7].weight);
-		w0y.set(+network[currentNetwork].links[8].weight);
+		w12.set(+$params[3]);
+		w22.set(+$params[4]);
+		w02.set(+$params[5]);
+		w1y.set(+$params[6]);
+		w2y.set(+$params[7]);
+		w0y.set(+$params[8]);
 	}
 
 	function sign(num) {
