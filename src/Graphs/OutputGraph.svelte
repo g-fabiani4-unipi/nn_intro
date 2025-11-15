@@ -7,7 +7,6 @@
 	import { fly } from 'svelte/transition';
 	import { negativeColor, positiveColor } from '../constants';
 
-	export let network;
 	export let currentNetwork;
 	export let data;
 	export let targetFunc;
@@ -39,7 +38,6 @@
 		--position="absolute"
 	>
 		<Heatmap
-			network={network}
 			currentNetwork={currentNetwork}
 			width={width}
 			height={height}

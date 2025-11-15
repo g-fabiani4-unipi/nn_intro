@@ -1,11 +1,11 @@
 <script>
 	import OutputGraph from '../Graphs/OutputGraph.svelte';
 	import Network from '../Graphs/Network.svelte';
-	import ParamInputs from '../UI/ParamInputs.svelte';
 	import DataTable from '../UI/DataTable.svelte';
 	import { allSteps } from '../constants';
 	import { json } from 'd3';
 	import Scrolly from '../UI/Scrolly.svelte';
+	import { params } from '../stores';
 
 	export let network;
 
@@ -21,9 +21,11 @@
 	let currentNetwork = 'ml_perceptron';
 
 	function setParams(paramList) {
+		const newParams = $params;
 		paramList.forEach((param, i) => {
-			network[currentNetwork].links[i].weight = param;
+			newParams[i] = param;
 		});
+		params.set(newParams);
 	}
 
 	// Handle scrollytelling steps
@@ -31,6 +33,7 @@
 		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
 			showCanvas = true;
 			showNetwork = true;
+			setParams(network[currentNetwork].links.map((link) => link.weight));
 		} else {
 			showCanvas = false;
 			showNetwork = false;
@@ -50,9 +53,7 @@
 				? 'ml_perceptron'
 				: 'perceptron';
 		if (steps[currentStep].name == 'ml_perceptron_start') {
-			console.log('adding parameters');
-			// params = network[currentNetwork].links.map((link) => link.weight);
-			disableInput = true;
+			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
 
 		// Perceptron rule parameters update
@@ -133,6 +134,14 @@
 		<div class="loading">loading...</div>
 	{:else}
 		<div class="sticky main-part">
+			<div class="column-network">
+				<Network
+					bind:network={network}
+					showNetwork={showNetwork}
+					currentNetwork={currentNetwork}
+					disableInput={disableInput}
+				/>
+			</div>
 			<div class="column-data">
 				<h3>Data</h3>
 				<div>
@@ -149,7 +158,6 @@
 				<h3>Output</h3>
 				<div class="graph-container">
 					<OutputGraph
-						network={network}
 						currentNetwork={currentNetwork}
 						bind:data={data}
 						targetFunc={targetFunc}
@@ -159,23 +167,6 @@
 						showCanvas={showCanvas}
 					/>
 				</div>
-			</div>
-			<div class="column-params">
-				<h3>Params</h3>
-				<div>
-					<ParamInputs
-						bind:network={network}
-						currentNetwork={currentNetwork}
-						disableInput={disableInput}
-					/>
-				</div>
-			</div>
-			<div class="column-network">
-				<Network
-					network={network}
-					showNetwork={showNetwork}
-					currentNetwork={currentNetwork}
-				/>
 			</div>
 		</div>
 	{/if}
@@ -193,10 +184,6 @@
 		width: 100%;
 	}
 
-	.column-params {
-		width: 300px;
-	}
-
 	.main-part {
 		display: flex;
 		flex-wrap: wrap;
@@ -209,8 +196,7 @@
 		width: 320px;
 	}
 
-	.column-data > div,
-	.column-params > div {
+	.column-data > div {
 		padding-top: 20px;
 	}
 </style>

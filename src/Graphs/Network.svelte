@@ -14,18 +14,20 @@
 	import GraphContainer from '../GraphComponents/GraphContainer.svelte';
 	import NetworkNode from '../GraphComponents/NetworkNode.svelte';
 	import NetworkLink from '../GraphComponents/NetworkLink.svelte';
+	import { params } from '../stores';
 
 	export let network;
 	export let showNetwork;
 	export let currentNetwork;
+	export let disableInput;
 
-	const width = 600;
+	const width = 800;
 	const height = 400;
-	const nodeRadius = 20;
+	const nodeRadius = 25;
 
 	const xScale = scaleLinear().domain([1, 5]).range([0, innerWidth]);
 	const colorScale = scaleSequentialSymlog([-7, 7], interpolatePiYG);
-	const linkScale = scaleSqrt().domain([0, 7]).range([3, 10]);
+	const linkScale = scaleSqrt().domain([0, 10]).range([3, 15]);
 
 	$: simulation = forceSimulation(network[currentNetwork].nodes);
 	let nodes = [];
@@ -62,9 +64,9 @@
 			.force('x', forceX((d) => xScale(d.layer)).strength(0.15))
 			.force(
 				'y',
-				forceY((d) => (d.id[0] == 'b' ? 300 : 0)),
+				forceY((d) => (d.id[0] == 'b' ? 400 : 0)),
 			)
-			.force('charge', forceManyBody().strength(-1500))
+			.force('charge', forceManyBody().strength(-3800))
 			.force('center', forceCenter(width / 2, height / 2).strength(0.5));
 	}
 </script>
@@ -74,11 +76,13 @@
 	height={height}
 >
 	{#if showNetwork}
-		{#each links as link}
+		{#each links as link, i}
 			<NetworkLink
 				link={link}
 				colorScale={colorScale}
 				linkScale={linkScale}
+				disableInput={disableInput}
+				bind:weight={$params[i]}
 			/>
 		{/each}
 		{#each nodes as node (node.id)}
