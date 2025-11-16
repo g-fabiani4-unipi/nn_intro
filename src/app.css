@@ -17,6 +17,12 @@ body {
     overflow-x: hidden;
 }
 
+text {
+    font-family: 'Roboto', sans-serif;
+    stroke: var(--black-olive);
+    font-weight: 200;
+}
+
 #app {
     width: 100%;
     height: 100%;
@@ -24,9 +30,10 @@ body {
 
 .sticky {
     position: sticky;
-    top: 5%;
+    top: 0;
     flex: 1 1 65%;
     width: 65%;
+    height: 95%;
 }
 
 .section-container {
@@ -64,14 +71,14 @@ body {
     color: var(--black-olive);
 }
 
-.steps-container,
-.sticky {
+.steps-container {
     height: 100%;
 }
 
 .steps-container {
     flex: 1 1 35%;
     z-index: 10;
+    pointer-events: none;
 }
 
 /* Comment out the following line to always make it 'text-on-top' */
