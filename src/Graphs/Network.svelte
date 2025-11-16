@@ -70,25 +70,37 @@
 	}
 </script>
 
-<GraphContainer
-	width={width}
-	height={height}
->
-	{#if showNetwork}
-		{#each links as link, i}
-			<NetworkLink
-				link={link}
-				colorScale={colorScale}
-				linkScale={linkScale}
-				disableInput={disableInput}
-				bind:weight={$params[i]}
-			/>
-		{/each}
-		{#each nodes as node (node.id)}
-			<NetworkNode
-				node={node}
-				nodeRadius={nodeRadius}
-			/>
-		{/each}
-	{/if}
-</GraphContainer>
+<div id="output-graph-container">
+	<GraphContainer
+		width={width}
+		height={height}
+		responsive={true}
+	>
+		{#if showNetwork}
+			{#each links as link, i}
+				<NetworkLink
+					link={link}
+					colorScale={colorScale}
+					linkScale={linkScale}
+					disableInput={disableInput}
+					bind:weight={$params[i]}
+				/>
+			{/each}
+			{#each nodes as node (node.id)}
+				<NetworkNode
+					node={node}
+					nodeRadius={nodeRadius}
+				/>
+			{/each}
+		{/if}
+	</GraphContainer>
+</div>
+
+<style>
+	#output-graph-container {
+		max-width: 800px;
+		max-height: 400px;
+		width: 100%;
+		margin: 0;
+	}
+</style>

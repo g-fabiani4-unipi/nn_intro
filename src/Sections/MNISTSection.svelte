@@ -154,101 +154,105 @@
 		<div class="loading">loading...</div>
 	{:else}
 		<div class="sticky main-part">
-			<GraphContainer
-				height={height}
-				width={width}
-				margin={margin}
-			>
-				{#each links as link}
-					{#if enterLinks}
-						<line
-							transition:fade={{ duration: 1000 }}
-							x1={link.source.cx}
-							y1={link.source.cy}
-							x2={link.target.cx}
-							y2={link.target.cy}
-							stroke={colorScale(link.weight)}
+			<div style="height: 100vh;">
+				<GraphContainer
+					height={height}
+					width={width}
+					margin={margin}
+					responsive={true}
+				>
+					{#each links as link}
+						{#if enterLinks}
+							<line
+								transition:fade={{ duration: 1000 }}
+								x1={link.source.cx}
+								y1={link.source.cy}
+								x2={link.target.cx}
+								y2={link.target.cy}
+								stroke={colorScale(link.weight)}
+							/>
+						{/if}
+					{/each}
+					{#each currentPixels as pixel (pixel.id)}
+						<Pixel
+							x={enterInputNodes
+								? pixel.node.cx - nodeRadius
+								: decomposeInput
+									? 4
+									: (pixel.index % 8) * pixelWidth + 20}
+							y={enterInputNodes
+								? pixel.node.cy - nodeRadius
+								: decomposeInput
+									? pixel.index * pixelWidth
+									: Math.floor(pixel.index / 8) * pixelWidth}
+							width={enterInputNodes ? nodeRadius * 2 : pixelWidth}
+							fill={enterOutpuNodes ? 'white' : grayScale(pixel.value)}
+							index={pixel.index}
+							round={enterInputNodes}
+							strokeWidth={enterInputNodes ? 2 : 0.5}
+							delay={!enterInputNodes}
 						/>
-					{/if}
-				{/each}
-				{#each currentPixels as pixel (pixel.id)}
-					<Pixel
-						x={enterInputNodes
-							? pixel.node.cx - nodeRadius
-							: decomposeInput
-								? 4
-								: (pixel.index % 8) * pixelWidth + 20}
-						y={enterInputNodes
-							? pixel.node.cy - nodeRadius
-							: decomposeInput
-								? pixel.index * pixelWidth
-								: Math.floor(pixel.index / 8) * pixelWidth}
-						width={enterInputNodes ? nodeRadius * 2 : pixelWidth}
-						fill={enterOutpuNodes ? 'white' : grayScale(pixel.value)}
-						index={pixel.index}
-						round={enterInputNodes}
-						strokeWidth={enterInputNodes ? 2 : 0.5}
-						delay={!enterInputNodes}
-					/>
-				{/each}
-				{#each nodes.filter((n) => n.id.startsWith('o')) as node, i (node.id)}
-					{#if enterOutpuNodes}
-						<circle
-							{...node}
-							r={nodeRadius}
-							fill="white"
-							transition:fly={{ duration: 1000, x: 300 }}
-						/>
-						<text
-							x={node.cx + 15}
-							y={node.cy}
-							dominant-baseline="middle"
-							text-anchor="right"
-							transition:fly={{ duration: 1000, x: 300 }}
-							>{i}
-						</text>
-						<BarplotBar
-							x={innerWidth - 200}
-							y={node.cy - nodeRadius}
-							height={nodeRadius * 2}
-							width={clickedDigit ? barScale(clickedDigit.proba[i]) : 0}
-							value={clickedDigit ? clickedDigit.proba[i] : 0}
-						/>
-					{/if}
-				{/each}
-				{#each nodes.filter((n) => n.id.startsWith('h') || n.id.startsWith('k')) as node}
-					{#if enterHiddenNodes}
-						<circle
-							{...node}
-							r={nodeRadius}
-							fill="white"
-							transition:fly={{ duration: 1000, y: 300 }}
-						/>
-					{/if}
-				{/each}
-				{#each digits as digit, i}
-					{#if enterTestExamples}
-						<g
-							transform="translate({innerWidth -
-								((i + 1) * smallerPixelWidth * 8 + i * smallerPixelWidth)}, 0)"
-							role="button"
-							tabindex={i + 1}
-							on:keypress={() => handleClickDigit(digit)}
-							on:click={() => handleClickDigit(digit)}
-							transition:fly={{ duration: 500, x: 300 }}
-						>
-							{#each digit.img as pixel, i}
-								<Pixel
-									x={(i % 8) * smallerPixelWidth}
-									y={Math.floor(i / 8) * smallerPixelWidth}
-									width={smallerPixelWidth}
-									fill={grayScale(pixel)}
-								/>
-							{/each}
-						</g>
-					{/if}
-				{/each}
-			</GraphContainer>
+					{/each}
+					{#each nodes.filter((n) => n.id.startsWith('o')) as node, i (node.id)}
+						{#if enterOutpuNodes}
+							<circle
+								{...node}
+								r={nodeRadius}
+								fill="white"
+								transition:fly={{ duration: 1000, x: 300 }}
+							/>
+							<text
+								x={node.cx + 15}
+								y={node.cy}
+								dominant-baseline="middle"
+								text-anchor="right"
+								transition:fly={{ duration: 1000, x: 300 }}
+								>{i}
+							</text>
+							<BarplotBar
+								x={innerWidth - 200}
+								y={node.cy - nodeRadius}
+								height={nodeRadius * 2}
+								width={clickedDigit ? barScale(clickedDigit.proba[i]) : 0}
+								value={clickedDigit ? clickedDigit.proba[i] : 0}
+							/>
+						{/if}
+					{/each}
+					{#each nodes.filter((n) => n.id.startsWith('h') || n.id.startsWith('k')) as node}
+						{#if enterHiddenNodes}
+							<circle
+								{...node}
+								r={nodeRadius}
+								fill="white"
+								transition:fly={{ duration: 1000, y: 300 }}
+							/>
+						{/if}
+					{/each}
+					{#each digits as digit, i}
+						{#if enterTestExamples}
+							<g
+								transform="translate({innerWidth -
+									((i + 1) * smallerPixelWidth * 8 +
+										i * smallerPixelWidth)}, 0)"
+								role="button"
+								tabindex={i + 1}
+								on:keypress={() => handleClickDigit(digit)}
+								on:click={() => handleClickDigit(digit)}
+								transition:fly={{ duration: 500, x: 300 }}
+							>
+								{#each digit.img as pixel, i}
+									<Pixel
+										x={(i % 8) * smallerPixelWidth}
+										y={Math.floor(i / 8) * smallerPixelWidth}
+										width={smallerPixelWidth}
+										fill={grayScale(pixel)}
+									/>
+								{/each}
+							</g>
+						{/if}
+					{/each}
+				</GraphContainer>
+			</div>
 		</div>
 	{/if}
 </section>
