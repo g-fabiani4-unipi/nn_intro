@@ -21,7 +21,7 @@
 	const steps = allSteps['mnist'];
 
 	const pixelWidth = 12;
-	const smallerPixelWidth = 10;
+	const smallerPixelWidth = 8;
 	const width = 900;
 	const innerHeight = pixelWidth * 64;
 	const margin = { top: 10, left: 10, bottom: 10, right: 10 };
