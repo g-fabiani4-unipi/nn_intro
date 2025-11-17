@@ -6,6 +6,7 @@
 	import { json } from 'd3';
 	import Scrolly from '../UI/Scrolly.svelte';
 	import { params } from '../stores';
+	import { selectedNode } from '../stores';
 
 	export let network;
 
@@ -157,7 +158,13 @@
 				</div>
 			</div>
 			<div class="column-output">
-				<h3>Output</h3>
+				<h3>
+					Output
+					{#if $selectedNode}
+						for node
+						{$selectedNode[0]}<sub>{$selectedNode[1]}</sub>
+					{/if}
+				</h3>
 				<div class="graph-container">
 					<OutputGraph
 						currentNetwork={currentNetwork}
