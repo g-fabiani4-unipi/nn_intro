@@ -3,6 +3,7 @@
 	import { rgb } from 'd3-color';
 	import { tweened } from 'svelte/motion';
 	import { params } from '../stores';
+	import { selectedNode } from '../stores';
 
 	export let currentNetwork;
 	export let width;
@@ -48,11 +49,14 @@
 	}
 
 	function classify(x1, x2) {
-		if (currentNetwork == 'perceptron') {
-			return sign(x1 * $w11 + x2 * $w21 + $w01);
-		}
 		const h1 = sign(x1 * $w11 + x2 * $w21 + $w01);
 		const h2 = sign(x1 * $w12 + x2 * $w22 + $w02);
+		if (currentNetwork == 'perceptron' || $selectedNode == 'h1') {
+			return h1;
+		}
+		if ($selectedNode == 'h2') {
+			return h2;
+		}
 		return sign($w1y * h1 + $w2y * h2 + $w0y);
 	}
 

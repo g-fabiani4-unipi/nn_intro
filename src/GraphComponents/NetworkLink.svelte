@@ -39,6 +39,7 @@
 		<input
 			type="number"
 			bind:value={weight}
+			on:click|stopPropagation={() => null}
 		/>
 	{:else}
 		<div>{weight}</div>
