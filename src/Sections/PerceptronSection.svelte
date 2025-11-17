@@ -13,7 +13,7 @@
 	const steps = allSteps['perceptron'];
 
 	let data;
-	let currentStep;
+	let currentStep = 0;
 	let targetFunc = 'and';
 	let showData = false;
 	let showCanvas = false;
