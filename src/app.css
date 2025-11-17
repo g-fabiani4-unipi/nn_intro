@@ -82,7 +82,7 @@ text {
 }
 
 /* Comment out the following line to always make it 'text-on-top' */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .section-container {
         flex-direction: column-reverse;
     }
