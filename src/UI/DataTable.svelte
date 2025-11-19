@@ -44,7 +44,7 @@
 <style>
 	table {
 		table-layout: fixed;
-		width: 250px;
+		width: 75%;
 		margin: 10px auto;
 		border-collapse: collapse;
 		border-top: 1px solid #999;
