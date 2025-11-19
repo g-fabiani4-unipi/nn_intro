@@ -14,6 +14,11 @@
 	<thead>
 		<tr>
 			<th>Example</th>
+			<th colspan="2">Input</th>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<th></th>
 			<th>x<sub>1</sub></th>
 			<th>x<sub>2</sub></th>
 			<th>y</th>
@@ -49,6 +54,11 @@
 		border-collapse: collapse;
 		border-top: 1px solid #999;
 		border-bottom: 1px solid #999;
+		font-size: 1.2rem;
+	}
+
+	thead {
+		border-bottom: 1px solid #999;
 	}
 
 	th,
@@ -58,18 +68,23 @@
 	}
 
 	tr {
-		text-align: end;
+		text-align: center;
 	}
 
 	tr :nth-child(1) {
 		text-align: start;
 	}
 
-	tbody tr:nth-child(odd) {
+	tbody tr td:last-child {
 		background-color: #eee;
 	}
 
 	tbody tr.highlighted {
+		background-color: var(--hunyadi-yellow);
+		transition: all 300ms;
+	}
+
+	tbody tr.highlighted td:last-child {
 		background-color: var(--hunyadi-yellow);
 		transition: all 300ms;
 	}
