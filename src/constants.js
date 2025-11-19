@@ -66,6 +66,10 @@ export const allSteps = {
     {
       name: 'ml_perceptron_2',
       text: "<p>Write something here</p>"
+    },
+    {
+      name: 'ml_perceptron_end',
+      text: "<p>A configuration of parameters that solves the XOR problem. You can inspect the decision boundary of each hidden node by clicking on them.</p>"
     }
   ],
 
