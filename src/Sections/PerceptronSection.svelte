@@ -56,6 +56,10 @@
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
 
+		if (steps[currentStep].name == 'ml_perceptron_end') {
+			params.set([1, 1, 1, -1, -2, 2, 1, 1, -1]);
+		}
+
 		// Perceptron rule parameters update
 		if (steps[currentStep].name == 'enter_network') {
 			params.set(network[currentNetwork].links.map((link) => link.weight));
