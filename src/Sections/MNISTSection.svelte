@@ -248,6 +248,14 @@
 										fill={grayScale(pixel)}
 									/>
 								{/each}
+								<rect
+									class:clicked={clickedDigit === digit}
+									class="example-button"
+									height={smallerPixelWidth * 8}
+									width={smallerPixelWidth * 8}
+									stroke-width={3}
+									fill="none"
+								/>
 							</g>
 						{/if}
 					{/each}
@@ -261,5 +269,8 @@
 	circle {
 		stroke: var(--black-olive);
 		stroke-width: 2px;
+	}
+	.example-button.clicked {
+		stroke: var(--magenta-dye);
 	}
 </style>
