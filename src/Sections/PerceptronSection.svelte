@@ -137,35 +137,35 @@
 		<div class="loading">loading...</div>
 	{:else}
 		<div class="sticky main-part">
-			<div class="column-network">
-				<Network
-					bind:network={network}
-					showNetwork={showNetwork}
-					currentNetwork={currentNetwork}
-					disableInput={disableInput}
-				/>
-			</div>
-			<div class="column-data">
-				<h3>Data</h3>
-				<div>
-					<DataTable
-						data={data}
-						targetFunc={targetFunc}
-						highlightExample={highlightExample}
-						removeHighlight={removeHighlight}
-						showData={showData}
+			<div class="wrapper">
+				<div class="column-network">
+					<Network
+						bind:network={network}
+						showNetwork={showNetwork}
+						currentNetwork={currentNetwork}
+						disableInput={disableInput}
 					/>
 				</div>
-			</div>
-			<div class="column-output">
-				<h3>
-					Output
-					{#if $selectedNode}
-						for node
-						{$selectedNode[0]}<sub>{$selectedNode[1]}</sub>
-					{/if}
-				</h3>
-				<div class="graph-container">
+				<div class="column-data">
+					<h3>Data</h3>
+					<div>
+						<DataTable
+							data={data}
+							targetFunc={targetFunc}
+							highlightExample={highlightExample}
+							removeHighlight={removeHighlight}
+							showData={showData}
+						/>
+					</div>
+				</div>
+				<div class="column-output">
+					<h3>
+						Output
+						{#if $selectedNode}
+							for node
+							{$selectedNode[0]}<sub>{$selectedNode[1]}</sub>
+						{/if}
+					</h3>
 					<OutputGraph
 						currentNetwork={currentNetwork}
 						bind:data={data}
@@ -182,30 +182,31 @@
 </section>
 
 <style>
-	.graph-container {
-		position: relative;
-		height: 340px;
-		float: left;
-		margin-top: 10px;
-	}
-
 	.column-network {
-		width: 100%;
+		grid-column: 1/3;
+		height: 100%;
+		min-height: 0;
+		display: flex;
 	}
 
 	.main-part {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		margin-top: 30px;
-		padding-top: 2px;
-	}
-
-	.column-output {
-		width: 320px;
+		flex-direction: column;
+		height: 100vh;
 	}
 
 	.column-data > div {
 		padding-top: 20px;
+	}
+
+	.wrapper {
+		display: grid;
+		flex: 1 1 auto;
+		margin-right: 10px;
+		gap: 5px;
+		grid-template-columns: 1fr minmax(320px, 1fr);
+		grid-template-rows: minmax(0, 1fr) 390px;
+		min-height: 0;
+		max-height: 98%;
 	}
 </style>
