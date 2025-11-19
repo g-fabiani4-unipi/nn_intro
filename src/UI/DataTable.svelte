@@ -1,5 +1,5 @@
 <script>
-	import { fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	export let data;
 	export let targetFunc;
 	export let highlightExample;
@@ -12,30 +12,31 @@
 		{targetFunc.toUpperCase()} Logic Gate
 	</caption>
 	<thead>
-		{#if showData}
-			<tr transition:fly={{ duration: 1000, y: 200 }}>
-				<th>Example</th>
-				<th>x<sub>1</sub></th>
-				<th>x<sub>2</sub></th>
-				<th>y</th>
-			</tr>
-		{/if}
+		<tr>
+			<th>Example</th>
+			<th>x<sub>1</sub></th>
+			<th>x<sub>2</sub></th>
+			<th>y</th>
+		</tr>
 	</thead>
 	<tbody>
 		{#each data[targetFunc] as row, i}
-			{#if showData}
-				<tr
-					transition:fly={{ duration: 1000, y: 200, delay: 500 + i * 500 }}
-					class={row.highlighted ? 'highlighted' : ''}
-					on:mouseenter={() => highlightExample(row.example)}
-					on:mouseleave={removeHighlight}
-				>
-					<th>{row.example}</th>
+			<tr
+				class={row.highlighted ? 'highlighted' : ''}
+				on:mouseenter={() => highlightExample(row.example)}
+				on:mouseleave={removeHighlight}
+			>
+				<th>{row.example}</th>
+				{#if showData}
 					<td>{row.x1}</td>
 					<td>{row.x2}</td>
 					<td>{row.y}</td>
-				</tr>
-			{/if}
+				{:else}
+					<td>{row.x1 === 1 ? 'T' : 'F'}</td>
+					<td>{row.x2 === 1 ? 'T' : 'F'}</td>
+					<td>{row.y === 1 ? 'T' : 'F'}</td>
+				{/if}
+			</tr>
 		{/each}
 	</tbody>
 </table>

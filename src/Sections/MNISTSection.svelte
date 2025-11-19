@@ -24,7 +24,7 @@
 	const smallerPixelWidth = 8;
 	const width = 900;
 	const innerHeight = pixelWidth * 64;
-	const margin = { top: 10, left: 10, bottom: 10, right: 10 };
+	const margin = { top: 30, left: 30, bottom: 30, right: 30 };
 	const innerWidth = width - margin.left - margin.right;
 	const height = innerHeight + margin.top + margin.bottom;
 	const networkXPadding = 30;

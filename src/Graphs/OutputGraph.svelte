@@ -57,7 +57,7 @@
 	{#each data[targetFunc] as d, i}
 		{#if showData}
 			<circle
-				transition:fly={{ duration: 1000, y: -300, delay: 500 + i * 500 }}
+				transition:fly={{ duration: 1000, y: -300, delay: i * 500 }}
 				cx={xScale(d.x1)}
 				cy={yScale(d.x2)}
 				r={d.highlighted ? 12 : 8}
