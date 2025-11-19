@@ -271,6 +271,6 @@
 		stroke-width: 2px;
 	}
 	.example-button.clicked {
-		stroke: var(--magenta-dye);
+		stroke: var(--hunyadi-yellow);
 	}
 </style>
