@@ -101,7 +101,7 @@ export const allSteps = {
 
     {
       name: 'end',
-      text: '<p>Click on the test examples to see the model output</p>'
+      text: '<p>Click on the test <span class="example">examples</span> to see the model output</p>'
     }
   ]
 

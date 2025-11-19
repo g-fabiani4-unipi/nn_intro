@@ -30,7 +30,7 @@
 
 <style>
 	.barplot-bar {
-		fill: var(--magenta-dye);
+		fill: var(--kelly-green);
 		stroke: var(--black-olive);
 	}
 </style>
