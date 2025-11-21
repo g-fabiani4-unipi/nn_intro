@@ -13,12 +13,12 @@
 	const steps = allSteps['perceptron'];
 
 	let data;
-	let currentStep = 0;
+	let currentStep;
 	let targetFunc = 'and';
-	let showData = false;
-	let showCanvas = false;
-	let showNetwork = false;
-	let disableInput = false;
+	let showData;
+	let showCanvas;
+	let showNetwork;
+	let disableInput;
 	let currentNetwork = 'ml_perceptron';
 
 	function setParams(paramList) {
@@ -99,6 +99,12 @@
 		if (steps[currentStep].name == 'perceptron_rule_end') {
 			setParams([5, 3, -3]);
 		}
+	} else {
+		//  Set initial values
+		showData = false;
+		showCanvas = false;
+		showNetwork = false;
+		disableInput = false;
 	}
 
 	json('./data/data.json').then((result) => (data = result));
@@ -211,6 +217,6 @@
 		grid-template-columns: 1fr minmax(320px, 1fr);
 		grid-template-rows: minmax(0, 1fr) 390px;
 		min-height: 0;
-		max-height: 98%;
+		max-height: 100vh;
 	}
 </style>

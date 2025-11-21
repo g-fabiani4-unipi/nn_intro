@@ -1,5 +1,4 @@
 <script>
-	import { fade } from 'svelte/transition';
 	export let data;
 	export let targetFunc;
 	export let highlightExample;
@@ -15,7 +14,7 @@
 		<tr>
 			<th>Example</th>
 			<th colspan="2">Input</th>
-			<th>Output</th>
+			<th>Target</th>
 		</tr>
 		<tr>
 			<th></th>

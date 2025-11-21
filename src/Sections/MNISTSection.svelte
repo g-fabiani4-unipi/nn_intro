@@ -33,15 +33,15 @@
 	const colorScale = scaleSequentialSqrt([-1, 1], interpolatePiYG);
 	const barScale = scaleLinear().domain([0, 1]).range([0, 180]);
 
-	let currentStep;
+	let currentStep = 0;
 	let digits;
-	let clickedDigit = null;
-	let decomposeInput = false;
-	let enterInputNodes = false;
-	let enterOutpuNodes = false;
-	let enterHiddenNodes = false;
-	let enterLinks = false;
-	let enterTestExamples = false;
+	let clickedDigit;
+	let decomposeInput;
+	let enterInputNodes;
+	let enterOutpuNodes;
+	let enterHiddenNodes;
+	let enterLinks;
+	let enterTestExamples;
 	let imgPixels = [];
 	let currentPixels = [];
 	let nodes;
@@ -90,6 +90,14 @@
 				enterTestExamples = false;
 				clickedDigit = null;
 			}
+		} else {
+			// Set initial values
+			decomposeInput = false;
+			enterInputNodes = false;
+			enterOutpuNodes = false;
+			enterHiddenNodes = false;
+			enterLinks = false;
+			enterTestExamples = false;
 		}
 	}
 
