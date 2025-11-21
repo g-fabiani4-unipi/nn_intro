@@ -3,6 +3,7 @@
 	import PerceptronSection from './Sections/PerceptronSection.svelte';
 	import Intro from './Sections/Intro.svelte';
 	import { json } from 'd3';
+	import Backmatter from './Sections/Backmatter.svelte';
 
 	let network;
 
@@ -12,5 +13,4 @@
 <Intro />
 <PerceptronSection network={network} />
 <MNISTSection network={network} />
-
-<section class="hero">Some more content here</section>
+<Backmatter />
