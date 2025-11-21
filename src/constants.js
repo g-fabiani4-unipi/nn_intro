@@ -5,15 +5,15 @@ export const allSteps = {
   perceptron: [
     {
       name: 'start',
-      text: "<p>This is a dynamic, responsive scatterplot that uses Russell Goldenberg's <a href='	https://twitter.com/codenberg/status/1432774653139984387' target='_blank'><code>Scrolly</code></a> to update its points' values on scroll.</p>"
+      text: "<p>Suppose we want the Perceptron to model the function <strong>x<sub>1</sub> AND x<sub>2</sub></strong> </p>"
     },
     {
       name: 'enter_network',
-      text: '<p>This is working by chance and it is not reponsive.</p>'
+      text: '<p>This is working by chance and it is marginally reponsive.</p>'
     },
     {
       name: 'enter_data',
-      text: "<p>Try resizing me to see the 'side-by-side' version, compared to the 'text-on-top' version that appears on small screens.</p><p>Want it to always appear 'text-on-top'? Just comment out the media query at the bottom of our styles (as in, leave the styles but comment out the surrounding <code>media</code> query).</p>"
+      text: "<p>As we have seen, the perceptron can only handle numbers, so we need to convert our examples into numbers, somehow.</p><p>Here we chose to use 1 for True and -1 for False.</p>"
     },
     {
       name: 'perceptron_rule_start',

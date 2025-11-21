@@ -102,6 +102,39 @@ text {
     justify-content: center;
     text-align: center;
     font-size: 1.2rem;
+    background: 0px/ 100px url('./assets/cornell.svg');
+}
+
+.backmatter {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    background: 0px/ 50px url('./assets/cornell.svg');
+}
+
+.methodology {
+    display: flex;
+    flex: 1;
+    place-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.footer {
+    padding: 30px 10px;
+    background-color: white;
+    width: 100vw;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 -2px 20px var(--black-olive);
+}
+
+.prose {
+    max-width: 70ch;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
 }
 
 h1,
@@ -109,6 +142,26 @@ h2,
 h3 {
     text-transform: uppercase;
     font-weight: 400;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+    color: inherit;
+    border-bottom: .15em solid var(--moonstone);
+    text-decoration: none;
+    transition: all .30s ease
+}
+
+a.img-link {
+    border-bottom: none
+}
+
+a:not(.img-link):hover,
+a:not(.img-link):focus {
+    background: var(--moonstone);
+    color: white;
 }
 
 
