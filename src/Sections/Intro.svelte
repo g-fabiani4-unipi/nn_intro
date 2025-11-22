@@ -1,5 +1,6 @@
 <script>
 	import neuronFigure from '../assets/512px-Neuron-figure.svg.png';
+	import perceptronFigure from '../assets/perceptron.svg';
 </script>
 
 <div class="hero">
@@ -41,6 +42,13 @@
 </section>
 <section class="prose">
 	<h2>This is your brain at Cornell</h2>
+	<figure>
+		<img
+			src={perceptronFigure}
+			alt="Schematic representation of a biological neuron"
+			width="500px"
+		/>
+	</figure>
 </section>
 
 <style>
@@ -55,8 +63,13 @@
 		margin: auto;
 	}
 
+	figure img {
+		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+	}
+
 	figure > figcaption {
 		font-size: 1rem;
+		margin-top: 5px;
 	}
 
 	h1 {
