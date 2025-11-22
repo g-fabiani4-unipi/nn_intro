@@ -68,8 +68,12 @@ export const allSteps = {
       text: "<p>Write something here</p>"
     },
     {
-      name: 'ml_perceptron_end',
+      name: 'ml_perceptron_3',
       text: "<p>A configuration of parameters that solves the XOR problem. You can inspect the decision boundary of each hidden node by clicking on them.</p>"
+    },
+    {
+      name: 'ml_perceptron_end',
+      text: "<p>Here you can see that the hidden nodes create a representation of the input data where the problem is linearly separable.</p>"
     }
   ],
 

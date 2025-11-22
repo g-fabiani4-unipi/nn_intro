@@ -2,6 +2,7 @@
 	export let scale;
 	export let innerWidth;
 	export let innerHeight;
+	export let label;
 	export let type;
 	export let offset = null;
 	export let tickValues = null;
@@ -14,6 +15,11 @@
 		class="axis"
 		transform="translate(0, {offset !== null ? offset : innerHeight})"
 	>
+		<text
+			x={-5}
+			dominant-baseline="middle"
+			text-anchor="end">{label}</text
+		>
 		<line
 			x1={0}
 			y1={0}
@@ -41,6 +47,11 @@
 		class="axis"
 		transform="translate({offset !== null ? offset : 0}, 0)"
 	>
+		<text
+			y={-10}
+			text-anchor="middle">{label}</text
+		>
+
 		<line
 			x1={0}
 			y1={0}

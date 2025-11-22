@@ -12,6 +12,7 @@
 	export let xScale;
 	export let yScale;
 	export let colorScale;
+	export let showProjection;
 	export let contextName = 'canvas';
 
 	const innerWidth = width - margin.left - margin.right;
@@ -32,10 +33,10 @@
 	const w2y = tweened(0, tweenParams);
 	const w0y = tweened(0, tweenParams);
 
-	$: w11.set(+$params[0]);
-	$: w21.set(+$params[1]);
-	$: w01.set(+$params[2]);
-	$: if (currentNetwork == 'ml_perceptron') {
+	$: {
+		w11.set(+$params[0]);
+		w21.set(+$params[1]);
+		w01.set(+$params[2]);
 		w12.set(+$params[3]);
 		w22.set(+$params[4]);
 		w02.set(+$params[5]);
@@ -43,7 +44,6 @@
 		w2y.set(+$params[7]);
 		w0y.set(+$params[8]);
 	}
-
 	function sign(num) {
 		return num >= 0 ? 1 : -1;
 	}
@@ -67,7 +67,9 @@
 
 		for (let x2 = 0, p = -1; x2 < innerHeight; ++x2) {
 			for (let x1 = 0; x1 < innerWidth; ++x1) {
-				const y = classify(xScale.invert(x1), yScale.invert(x2));
+				const y = showProjection
+					? sign(xScale.invert(x1) * $w1y + yScale.invert(x2) * $w2y + $w0y)
+					: classify(xScale.invert(x1), yScale.invert(x2));
 				const color = rgb(colorScale(y));
 				imageData.data[++p] = color.r;
 				imageData.data[++p] = color.g;

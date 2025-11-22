@@ -19,6 +19,7 @@
 	let showCanvas;
 	let showNetwork;
 	let disableInput;
+	let showHiddenLayer;
 	let currentNetwork = 'ml_perceptron';
 
 	function setParams(paramList) {
@@ -56,8 +57,15 @@
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
 
-		if (steps[currentStep].name == 'ml_perceptron_end') {
+		if (steps[currentStep].name == 'ml_perceptron_3') {
 			params.set([1, 1, 1, -1, -2, 2, 1, 1, -1]);
+		}
+
+		if (steps[currentStep].name == 'ml_perceptron_end') {
+			showHiddenLayer = true;
+			selectedNode.set(null);
+		} else {
+			showHiddenLayer = false;
 		}
 
 		// Perceptron rule parameters update
@@ -105,6 +113,7 @@
 		showCanvas = false;
 		showNetwork = false;
 		disableInput = false;
+		showHiddenLayer = false;
 	}
 
 	json('./data/data.json').then((result) => (data = result));
@@ -184,6 +193,7 @@
 						removeHighlight={removeHighlight}
 						showData={showData}
 						showCanvas={showCanvas}
+						showHiddenLayer={showHiddenLayer}
 					/>
 				</div>
 			</div>
