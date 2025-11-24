@@ -45,7 +45,7 @@
 	<figure>
 		<img
 			src={perceptronFigure}
-			alt="Schematic representation of a biological neuron"
+			alt="Schematic representation of a perceptron with 3 inputs"
 			width="500px"
 		/>
 	</figure>
