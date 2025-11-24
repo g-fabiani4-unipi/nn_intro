@@ -107,7 +107,9 @@
 
 <style>
 	circle {
-		transition: all 400ms;
+		transition:
+			all 1.5s ease,
+			r 0.4s ease;
 		stroke: var(--black-olive);
 	}
 </style>
