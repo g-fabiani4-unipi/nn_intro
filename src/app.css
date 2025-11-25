@@ -186,3 +186,10 @@ span.negative {
     font-weight: bold;
     border-radius: 3px;
 }
+
+.loading {
+    top: 50%;
+    text-align: center;
+    color: gray;
+    font-size: 2rem;
+}

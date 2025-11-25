@@ -4,6 +4,7 @@
 	import Intro from './Sections/Intro.svelte';
 	import { json } from 'd3';
 	import Backmatter from './Sections/Backmatter.svelte';
+	import SkipgramSection from './Sections/SkipgramSection.svelte';
 
 	let network;
 
@@ -13,4 +14,5 @@
 <Intro />
 <PerceptronSection network={network} />
 <MNISTSection network={network} />
+<SkipgramSection network={network} />
 <Backmatter />
