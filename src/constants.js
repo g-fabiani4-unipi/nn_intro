@@ -1,3 +1,5 @@
+import { text } from "d3";
+
 export const positiveColor = '#7FBC41';
 export const negativeColor = '#C51B7D';
 
@@ -5,7 +7,7 @@ export const allSteps = {
   perceptron: [
     {
       name: 'start',
-      text: "<p>Suppose we want the Perceptron to model the function <strong>x<sub>1</sub> AND x<sub>2</sub></strong>.</p>\
+      text: "<p>Suppose we want the perceptron to model the function <strong>x<sub>1</sub> AND x<sub>2</sub></strong>.</p>\
       <p>Since this is a fairly simple problem, we can show all relevant examples in a <strong>truth table.</strong></p>"
     },
     {
@@ -124,6 +126,35 @@ export const allSteps = {
       name: 'end',
       text: '<p>Click on the test <span class="example">examples</span> to see the model output</p>'
     }
+  ],
+  skipgram: [
+    {
+      name: 'start',
+      text: '<p>Here starts the skipgram section</p>'
+    },
+    {
+      name: 'activate_input',
+      text: '<p>Activate node</p>'
+    },
+    {
+      name: 'activate_output_1',
+      text: '<p>Activate output 1</p>'
+    },
+    {
+      name: 'activate_output_2',
+      text: '<p>Activate output 2</p>'
+    },
+    {
+      name: 'activate_output_3',
+      text: '<p>Activate output 3</p>'
+    },
+    {
+      name: 'activate_output_4',
+      text: '<p>Activate output 4</p>'
+    },
+    {
+      name: 'softmax',
+      text: '<p>Pass network outputs in softmax</p>'
+    }
   ]
-
 };

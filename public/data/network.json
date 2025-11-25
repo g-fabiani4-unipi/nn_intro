@@ -4116,5 +4116,216 @@
         "weight": 0.234
       }
     ]
+  },
+  "skip_gram": {
+    "dims": {
+      "1": 4,
+      "2": 3,
+      "3": 4
+    },
+    "hidden_activations": [
+      0.067,
+      0.096,
+      0.719
+    ],
+    "output_activations": [
+      0.118,
+      0.105,
+      0.066,
+      0.544
+    ],
+    "softmax_activations": [
+      0.22,
+      0.22,
+      0.21,
+      0.35
+    ],
+    "nodes": [
+      {
+        "id": "x1",
+        "layer": 1,
+        "order": 1,
+        "word": "dog"
+      },
+      {
+        "id": "x2",
+        "layer": 1,
+        "order": 2,
+        "word": "cat"
+      },
+      {
+        "id": "x3",
+        "layer": 1,
+        "order": 3,
+        "word": "eat"
+      },
+      {
+        "id": "x4",
+        "layer": 1,
+        "order": 4,
+        "word": "bark"
+      },
+      {
+        "id": "h1",
+        "layer": 2,
+        "order": 1
+      },
+      {
+        "id": "h2",
+        "layer": 2,
+        "order": 2
+      },
+      {
+        "id": "h3",
+        "layer": 2,
+        "order": 3
+      },
+      {
+        "id": "y1",
+        "layer": 3,
+        "order": 1,
+        "word": "dog"
+      },
+      {
+        "id": "y2",
+        "layer": 3,
+        "order": 2,
+        "word": "cat"
+      },
+      {
+        "id": "y3",
+        "layer": 3,
+        "order": 3,
+        "word": "eat"
+      },
+      {
+        "id": "y4",
+        "layer": 3,
+        "order": 4,
+        "word": "bark"
+      }
+    ],
+    "links": [
+      {
+        "source": "x1",
+        "target": "h1",
+        "weight": 0.067
+      },
+      {
+        "source": "x1",
+        "target": "h2",
+        "weight": 0.096
+      },
+      {
+        "source": "x1",
+        "target": "h3",
+        "weight": 0.719
+      },
+      {
+        "source": "x2",
+        "target": "h1",
+        "weight": 0.157
+      },
+      {
+        "source": "x2",
+        "target": "h2",
+        "weight": 0.380
+      },
+      {
+        "source": "x2",
+        "target": "h3",
+        "weight": 0.424
+      },
+      {
+        "source": "x3",
+        "target": "h1",
+        "weight": 0.154
+      },
+      {
+        "source": "x3",
+        "target": "h2",
+        "weight": 0.460
+      },
+      {
+        "source": "x3",
+        "target": "h3",
+        "weight": 0.401
+      },
+      {
+        "source": "x4",
+        "target": "h1",
+        "weight": 0.131
+      },
+      {
+        "source": "x4",
+        "target": "h2",
+        "weight": 0.432
+      },
+      {
+        "source": "x4",
+        "target": "h3",
+        "weight": 0.404
+      },
+      {
+        "source": "h1",
+        "target": "y1",
+        "weight": 0.236
+      },
+      {
+        "source": "h1",
+        "target": "y2",
+        "weight": 0.22
+      },
+      {
+        "source": "h1",
+        "target": "y3",
+        "weight": 0.424
+      },
+      {
+        "source": "h1",
+        "target": "y4",
+        "weight": 0.064
+      },
+      {
+        "source": "h2",
+        "target": "y1",
+        "weight": 0.265
+      },
+      {
+        "source": "h2",
+        "target": "y2",
+        "weight": 0.029
+      },
+      {
+        "source": "h2",
+        "target": "y3",
+        "weight": 0.045
+      },
+      {
+        "source": "h2",
+        "target": "y4",
+        "weight": 0.089
+      },
+      {
+        "source": "h3",
+        "target": "y1",
+        "weight": 0.107
+      },
+      {
+        "source": "h3",
+        "target": "y2",
+        "weight": 0.121
+      },
+      {
+        "source": "h3",
+        "target": "y3",
+        "weight": 0.046
+      },
+      {
+        "source": "h3",
+        "target": "y4",
+        "weight": 0.752
+      }
+    ]
   }
 }
