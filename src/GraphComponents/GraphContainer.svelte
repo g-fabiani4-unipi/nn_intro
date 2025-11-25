@@ -1,6 +1,4 @@
 <script>
-	import { svg } from 'd3';
-
 	export let width;
 	export let height;
 	export let responsive = false;

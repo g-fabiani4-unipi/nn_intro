@@ -159,7 +159,7 @@
 		</Scrolly>
 	</div>
 	{#if !(network && digits)}
-		<div class="loading">loading...</div>
+		<div class="sticky loading">loading...</div>
 	{:else}
 		<div class="sticky main-part">
 			<div style="height: 100vh;">
