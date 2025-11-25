@@ -153,7 +153,7 @@
 		</Scrolly>
 	</div>
 	{#if !(data && network)}
-		<div class="loading">loading...</div>
+		<div class="sticky loading">loading...</div>
 	{:else}
 		<div class="sticky main-part">
 			<div class="wrapper">

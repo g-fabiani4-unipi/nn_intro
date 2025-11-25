@@ -5,15 +5,21 @@ export const allSteps = {
   perceptron: [
     {
       name: 'start',
-      text: "<p>Suppose we want the Perceptron to model the function <strong>x<sub>1</sub> AND x<sub>2</sub></strong> </p>"
+      text: "<p>Suppose we want the Perceptron to model the function <strong>x<sub>1</sub> AND x<sub>2</sub></strong>.</p>\
+      <p>Since this is a fairly simple problem, we can show all relevant examples in a <strong>truth table.</strong></p>"
     },
     {
       name: 'enter_network',
-      text: '<p>This is working by chance and it is marginally reponsive.</p>'
+      text: `<p>And now we have our perceptron. It has <strong>two input units</strong> in order to model the fact that the AND function takes two arguments.</p>`
     },
     {
       name: 'enter_data',
-      text: "<p>As we have seen, the perceptron can only handle numbers, so we need to convert our examples into numbers, somehow.</p><p>Here we chose to use 1 for True and -1 for False.</p>"
+      text: "<p>As we have seen, the perceptron can only handle numbers, so we need to convert our <span class='example'>examples</span> into numbers, somehow.\
+      Here we chose to use <strong>1</strong> for <strong>True</strong> and <strong>-1</strong> for <strong>False</strong>.</p>\
+      <p>Now it is possible to draw all examples from the truth table on a cartesian coordinate system:\
+      we filled <span class='positive'>positive examples</span> in green and <span class='negative'>negative examples</span> in pink.</p>\
+      <p>Can you find a parameter configuration that makes all and only <span class='positive'>positive</span> examples fall on the\
+       <span class='positive'>positive side</span> of the decision boundary?</p>"
     },
     {
       name: 'perceptron_rule_start',
@@ -57,7 +63,18 @@ export const allSteps = {
     },
     {
       name: 'xor_start',
-      text: '<p>Introducing the XOR problem. No one bothered to animate this one</p>'
+      text: "<p>We now model the function <strong>x<sub>1</sub> XOR x<sub>2</sub></strong> (exclusive or).\
+      You can read this as <em>Either x<sub>1</sub> is true or x<sub>2</sub> is true, but not both </em>&mdash;\
+      or in slightly more formal terms (<strong>x<sub>1</sub> OR x<sub>2</sub>) AND NOT(x<sub>1</sub> AND x<sub>2</sub>)</strong>.</p>\
+      <p>Are you able to find a configuration of parameters that solves this problem?</p>"
+    },
+    {
+      name: 'xor_2',
+      text: "<p>It turns out that it is <strong>not possible</strong> to build a perceptron to compute logical XOR!</p>\
+      <p>As we have seen, the perceptron equation is the equation of a line that acts as a decision boundary:\
+      that assigns output <span class='negative'>-1</span> to all point lying on one side of the line and <span class='positive'>+1</span> to all points lying on the other side.</p>\
+      <p>There is simply <strong>no way</strong> to daw a line that separates the <span class='positive'>positive</span> cases of XOR from the <span class='negative'>negative</span> ones.\
+      So we say that XOR is not a <strong>linearly separable</strong> function</p>"
     },
     {
       name: 'ml_perceptron_start',

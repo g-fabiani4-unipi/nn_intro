@@ -167,21 +167,21 @@ a:not(.img-link):focus {
 
 
 span.example {
-    background-color: var(--hunyadi-yellow);
+    background-color: color-mix(in srgb, var(--hunyadi-yellow), transparent 30%);
     padding: 3px 5px;
     font-weight: bold;
     border-radius: 3px;
 }
 
 span.positive {
-    background-color: var(--kelly-green);
+    background-color: color-mix(in srgb, var(--kelly-green), transparent 30%);
     padding: 3px 5px;
     font-weight: bold;
     border-radius: 3px;
 }
 
 span.negative {
-    background-color: var(--magenta-dye);
+    background-color: color-mix(in srgb, var(--magenta-dye), transparent 30%);
     padding: 3px 5px;
     font-weight: bold;
     border-radius: 3px;

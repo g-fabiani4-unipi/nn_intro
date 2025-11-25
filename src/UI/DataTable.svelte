@@ -79,12 +79,20 @@
 	}
 
 	tbody tr.highlighted {
-		background-color: var(--hunyadi-yellow);
+		background-color: color-mix(
+			in srgb,
+			var(--hunyadi-yellow),
+			transparent 30%
+		);
 		transition: all 300ms;
 	}
 
 	tbody tr.highlighted td:last-child {
-		background-color: var(--hunyadi-yellow);
+		background-color: color-mix(
+			in srgb,
+			var(--hunyadi-yellow),
+			transparent 80%
+		);
 		transition: all 300ms;
 	}
 
