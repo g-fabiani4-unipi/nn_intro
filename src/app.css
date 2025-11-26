@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Math&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     --kelly-green: #7fbc41ff;
@@ -195,7 +195,7 @@ span.negative {
 }
 
 math {
-    font-size: 1.6rem;
+    font-family: 'Noto Sans Math', sans-serif;
 }
 
 .math-block {
