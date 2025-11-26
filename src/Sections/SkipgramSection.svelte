@@ -94,8 +94,6 @@
 			showProbability = false;
 		}
 	}
-
-	$: console.log(selectedOutput);
 </script>
 
 <section class="section-container">

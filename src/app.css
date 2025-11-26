@@ -193,3 +193,13 @@ span.negative {
     color: gray;
     font-size: 2rem;
 }
+
+math {
+    font-size: 1.6rem;
+}
+
+.math-block {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: whitesmoke;
+}

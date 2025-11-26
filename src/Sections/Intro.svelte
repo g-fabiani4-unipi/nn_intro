@@ -1,6 +1,7 @@
 <script>
 	import neuronFigure from '../assets/512px-Neuron-figure.svg.png';
 	import perceptronFigure from '../assets/perceptron.svg';
+	import MNISTSection from './MNISTSection.svelte';
 </script>
 
 <div class="hero">
@@ -8,17 +9,6 @@
 </div>
 <section class="prose">
 	<h2>This is your brain</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, quia,
-		similique ipsum explicabo architecto dignissimos facere et porro quaerat
-		itaque molestias accusantium maiores beatae quam doloremque illum saepe
-		corrupti nobis.
-	</p>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, est! Alias
-		mollitia rem sed quo. Minus velit ex earum quisquam nisi eos culpa adipisci,
-		ab, ad laudantium quas dolorum dolore.
-	</p>
 
 	<figure>
 		<a
@@ -42,6 +32,11 @@
 </section>
 <section class="prose">
 	<h2>This is your brain at Cornell</h2>
+	<p>
+		The <strong>perceptron</strong> is a computational model of the biological
+		neuron proposed by Cornell Aeronautical Laboratory researcher
+		<strong>Frank Rosenblatt</strong> in 1957.
+	</p>
 	<figure>
 		<img
 			src={perceptronFigure}
@@ -49,6 +44,128 @@
 			width="500px"
 		/>
 	</figure>
+	<p>The perceptron only performs two operations:</p>
+	<p>First it computes a weighted sum of the inputs (plus the bias term)</p>
+	<math
+		xmlns="http://www.w3.org/1998/Math/MathML"
+		display="block"
+		class="math-block"
+	>
+		<mi>z</mi><mo>=</mo>
+		<msub><mi>w</mi><mn>1</mn></msub>
+		<msub><mi>x</mi><mn>1</mn></msub>
+		<mo>+</mo>
+		<msub><mi>w</mi><mn>2</mn></msub>
+		<msub><mi>x</mi><mn>2</mn></msub>
+		<mo>+</mo>
+		<msub><mi>w</mi><mn>3</mn></msub>
+		<msub><mi>x</mi><mn>3</mn></msub>
+		<mo>+</mo>
+		<msub><mi>w</mi><mn>0</mn></msub>
+		<mo>.</mo>
+	</math>
+	<p>
+		And then it passes the ouput of the previous operation into an activation
+		function
+	</p>
+	<math
+		xmlns="http://www.w3.org/1998/Math/MathML"
+		display="block"
+		class="math-block"
+	>
+		<mi>y</mi><mo>=</mo>
+		<mi>sign</mi><mo>(</mo><mi>z</mi><mo>)</mo>
+		<mo>.</mo>
+	</math>
+
+	<p>Where the <em>sign</em> function is defined as:</p>
+
+	<math
+		xmlns="http://www.w3.org/1998/Math/MathML"
+		display="block"
+		class="math-block"
+	>
+		<mrow>
+			<mrow>
+				<mn>sign</mn>
+				<mo>(</mo>
+				<mi>z</mi>
+				<mo>)</mo>
+			</mrow>
+			<mo>=</mo>
+			<mrow>
+				<mo>{'{'}</mo>
+				<mtable>
+					<mtr>
+						<mtd>
+							<mo>+</mo>
+							<mn>1</mn>
+						</mtd>
+						<mtd>
+							<mtext>if&nbsp;</mtext>
+							<mi>z</mi>
+							<mo>&GreaterEqual;</mo>
+							<mn>0</mn>
+							<mo>;</mo>
+						</mtd>
+					</mtr>
+					<mtr>
+						<mtd>
+							<mo>-</mo>
+							<mn>1</mn>
+						</mtd>
+						<mtd>
+							<mtext>if&nbsp;</mtext>
+							<mi>z</mi>
+							<mo>&lt;</mo>
+							<mn>0</mn>
+							<mo>.</mo>
+						</mtd>
+					</mtr>
+				</mtable>
+			</mrow>
+		</mrow>
+	</math>
+	<p>If we put all together, the perceptron output is positive when</p>
+	<math
+		xmlns="http://www.w3.org/1998/Math/MathML"
+		display="block"
+		class="math-block"
+	>
+		<msub><mi>w</mi><mn>1</mn></msub>
+		<msub><mi>x</mi><mn>1</mn></msub>
+		<mo>+</mo>
+		<msub><mi>w</mi><mn>2</mn></msub>
+		<msub><mi>x</mi><mn>2</mn></msub>
+		<mo>+</mo>
+		<msub><mi>w</mi><mn>3</mn></msub>
+		<msub><mi>x</mi><mn>3</mn></msub>
+		<mo>+</mo>
+		<msub><mi>w</mi><mn>0</mn></msub>
+		<mo>&GreaterEqual;</mo>
+		<mn>0</mn>
+		<mo>.</mo>
+	</math>
+	<p>
+		Where the equation <math
+			xmlns="http://www.w3.org/1998/Math/MathML"
+			display="inline"
+		>
+			<msub><mi>w</mi><mn>1</mn></msub>
+			<msub><mi>x</mi><mn>1</mn></msub>
+			<mo>+</mo>
+			<msub><mi>w</mi><mn>2</mn></msub>
+			<msub><mi>x</mi><mn>2</mn></msub>
+			<mo>+</mo>
+			<msub><mi>w</mi><mn>3</mn></msub>
+			<msub><mi>x</mi><mn>3</mn></msub>
+			<mo>+</mo>
+			<msub><mi>w</mi><mn>0</mn></msub>
+			<mo>=</mo>
+			<mn>0</mn>
+		</math>
+		defines a hyperplane that acts as a decision boundary.
+	</p>
 </section>
 
 <style>
