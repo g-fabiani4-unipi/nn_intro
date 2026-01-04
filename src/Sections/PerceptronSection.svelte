@@ -15,6 +15,7 @@
 	let data;
 	let currentStep;
 	let targetFunc = 'and';
+	let transformData;
 	let showData;
 	let showCanvas;
 	let showNetwork;
@@ -40,28 +41,30 @@
 			showNetwork = false;
 		}
 
-		showData = currentStep >= steps.findIndex((s) => s.name == 'enter_data');
+		transformData =
+			currentStep >= steps.findIndex((s) => s.name === 'enter_data');
+		showData = currentStep >= steps.findIndex((s) => s.name === 'enter_data_2');
 		disableInput =
 			currentStep >=
-				steps.findIndex((s) => s.name == 'perceptron_rule_start') &&
-			currentStep <= steps.findIndex((s) => s.name == 'perceptron_rule_end');
+				steps.findIndex((s) => s.name === 'perceptron_rule_start') &&
+			currentStep <= steps.findIndex((s) => s.name === 'perceptron_rule_end');
 		targetFunc =
-			currentStep < steps.findIndex((s) => s.name == 'xor_start')
+			currentStep < steps.findIndex((s) => s.name === 'xor_start')
 				? 'and'
 				: 'xor';
 		currentNetwork =
-			currentStep >= steps.findIndex((s) => s.name == 'ml_perceptron_start')
+			currentStep >= steps.findIndex((s) => s.name === 'ml_perceptron_start')
 				? 'ml_perceptron'
 				: 'perceptron';
-		if (steps[currentStep].name == 'ml_perceptron_start') {
+		if (steps[currentStep].name === 'ml_perceptron_start') {
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
 
-		if (steps[currentStep].name == 'ml_perceptron_3') {
+		if (steps[currentStep].name === 'ml_perceptron_3') {
 			params.set([1, 1, 1, -1, -2, 2, 1, 1, -1]);
 		}
 
-		if (steps[currentStep].name == 'ml_perceptron_end') {
+		if (steps[currentStep].name === 'ml_perceptron_end') {
 			showHiddenLayer = true;
 			selectedNode.set(null);
 		} else {
@@ -69,46 +72,47 @@
 		}
 
 		// Perceptron rule parameters update
-		if (steps[currentStep].name == 'enter_network') {
+		if (steps[currentStep].name === 'enter_network') {
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
-		if (steps[currentStep].name == 'perceptron_rule_start') {
+		if (steps[currentStep].name === 'perceptron_rule_start') {
 			highlightExample(1);
 			setParams([1, 7, 7]);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_2') {
+		if (steps[currentStep].name === 'perceptron_rule_2') {
 			highlightExample(2);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_3') {
+		if (steps[currentStep].name === 'perceptron_rule_3') {
 			setParams([-1, 9, 5]);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_4') {
+		if (steps[currentStep].name === 'perceptron_rule_4') {
 			highlightExample(3);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_5') {
+		if (steps[currentStep].name === 'perceptron_rule_5') {
 			highlightExample(4);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_6') {
+		if (steps[currentStep].name === 'perceptron_rule_6') {
 			highlightExample(4);
 			setParams([1, 7, 3]);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_7') {
+		if (steps[currentStep].name === 'perceptron_rule_7') {
 			highlightExample(4);
 			setParams([3, 5, 1]);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_8') {
+		if (steps[currentStep].name === 'perceptron_rule_8') {
 			highlightExample(2);
 			setParams([5, 3, 1]);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_9') {
+		if (steps[currentStep].name === 'perceptron_rule_9') {
 			highlightExample(4);
 			setParams([3, 5, -1]);
 		}
-		if (steps[currentStep].name == 'perceptron_rule_end') {
+		if (steps[currentStep].name === 'perceptron_rule_end') {
 			setParams([5, 3, -3]);
 		}
 	} else {
 		//  Set initial values
+		transformData = false;
 		showData = false;
 		showCanvas = false;
 		showNetwork = false;
@@ -147,7 +151,9 @@
 					class="step"
 					class:active={currentStep === i}
 				>
-					<div class="step-content">{@html text}</div>
+					<div class="step-content">
+						{@html text}
+					</div>
 				</div>
 			{/each}
 		</Scrolly>
@@ -173,7 +179,7 @@
 							targetFunc={targetFunc}
 							highlightExample={highlightExample}
 							removeHighlight={removeHighlight}
-							showData={showData}
+							transformData={transformData}
 						/>
 					</div>
 				</div>
