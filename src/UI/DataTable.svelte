@@ -3,7 +3,7 @@
 	export let targetFunc;
 	export let highlightExample;
 	export let removeHighlight;
-	export let showData;
+	export let transformData;
 </script>
 
 <table>
@@ -31,7 +31,7 @@
 				on:mouseleave={removeHighlight}
 			>
 				<th>{row.example}</th>
-				{#if showData}
+				{#if transformData}
 					<td>{row.x1}</td>
 					<td>{row.x2}</td>
 					<td>{row.y}</td>
