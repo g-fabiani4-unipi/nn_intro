@@ -76,10 +76,16 @@ export const allSteps = {
     {
       name: 'enter_data',
       text: "<p>As we have seen, the perceptron can only handle numbers, so we need to convert our <span class='example'>examples</span> into numbers, somehow.\
-      Here we chose to use <strong>1</strong> for <strong>True</strong> and <strong>-1</strong> for <strong>False</strong>.</p>\
-      <p>Now it is possible to draw all examples from the truth table on a cartesian coordinate system:\
-      we filled <span class='positive'>positive examples</span> in green and <span class='negative'>negative examples</span> in pink.</p>\
-      <p>Can you find a parameter configuration that makes all and only <span class='positive'>positive</span> examples fall on the\
+      Here we chose to use <strong>1</strong> for <strong>True</strong> and <strong>-1</strong> for <strong>False</strong>.</p>"
+    },
+    {
+      name: "enter_data_2",
+      text: "<p>Now it is possible to draw all examples from the truth table on a cartesian coordinate system:\
+      we filled <span class='positive'>positive examples</span> in green and <span class='negative'>negative examples</span> in pink.</p>"
+    },
+    {
+      name: "enter_data_3",
+      text: "<p>Can you find a parameter configuration that makes all and only <span class='positive'>positive</span> examples fall on the\
        <span class='positive'>positive side</span> of the decision boundary?</p>"
     },
     {
