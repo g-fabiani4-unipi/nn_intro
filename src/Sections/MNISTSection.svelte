@@ -194,7 +194,8 @@
 									? pixel.index * pixelWidth
 									: Math.floor(pixel.index / 8) * pixelWidth}
 							width={enterInputNodes ? nodeRadius * 2 : pixelWidth}
-							fill={enterOutpuNodes ? 'white' : grayScale(pixel.value)}
+							fill={grayScale(pixel.value)}
+							isNode={enterOutpuNodes}
 							index={pixel.index}
 							round={enterInputNodes}
 							strokeWidth={enterInputNodes ? 2 : 0.5}
@@ -206,7 +207,7 @@
 							<circle
 								{...node}
 								r={nodeRadius}
-								fill="white"
+								class="network-node"
 								transition:fly={{ duration: 1000, x: 300 }}
 							/>
 							<text
@@ -231,7 +232,7 @@
 							<circle
 								{...node}
 								r={nodeRadius}
-								fill="white"
+								class="network-node"
 								transition:fly={{ duration: 1000, y: 300 }}
 							/>
 						{/if}
@@ -274,9 +275,10 @@
 </section>
 
 <style>
-	circle {
+	:global(.network-node) {
 		stroke: var(--black-olive);
 		stroke-width: 2px;
+		fill: var(--gray);
 	}
 	.example-button.clicked {
 		stroke: var(--hunyadi-yellow);

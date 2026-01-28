@@ -10,6 +10,7 @@
 	export let round = false;
 	export let strokeWidth = 0.5;
 	export let delay = true;
+	export let isNode = false;
 
 	const tX = tweened(x);
 	const tY = tweened(y);
@@ -34,10 +35,10 @@
 	width={$tWidth}
 	height={$tWidth}
 	fill={fill}
+	class:network-node={isNode}
 	stroke-width={strokeWidth}
 	rx={$corner}
 	ry={$corner}
-	in:fly={{ duration: 1000, x: 200, delay: 50 * index }}
 	out:fly={{ duration: 1000, x: 200 }}
 />
 

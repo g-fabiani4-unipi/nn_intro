@@ -12,8 +12,12 @@ export const allSteps = {
     },
     {
       name: 'enter_network',
-      text: `<p>And now we have our perceptron. It has <strong>two input units</strong> in order to model the fact that the AND function takes two arguments.</p>
-      <p>The perceptron equation for a perceptron with two inputs is the equation of a line</p>
+      text: `<p>And now we have our perceptron. It has <strong>two input units</strong> (x<sub>1</sub> and x<sub>2</sub>) in order to model the fact that the AND function takes two arguments.</p>`
+
+    },
+    {
+      name: 'math',
+      text: `<p>The perceptron equation for a perceptron with two inputs is the equation of a line</p>
       <math
 			xmlns="http://www.w3.org/1998/Math/MathML"
 			display="block"
@@ -69,9 +73,7 @@ export const allSteps = {
 		</mfrac>
 	</math>
   is the intercept.
-  </p>
-    `
-
+  </p>`
     },
     {
       name: 'enter_data',

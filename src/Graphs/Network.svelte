@@ -49,7 +49,6 @@
 	});
 
 	$: {
-		console.log('running simulation');
 		simulation
 			.force(
 				'link',

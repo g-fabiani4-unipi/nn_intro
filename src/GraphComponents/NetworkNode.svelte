@@ -44,6 +44,7 @@
 		stroke: var(--black-olive);
 		stroke-width: 2px;
 		transition: fill 200ms;
+		fill: var(--gray);
 	}
 	.network-node.bias {
 		stroke-opacity: 0.6;

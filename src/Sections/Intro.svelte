@@ -1,7 +1,6 @@
 <script>
 	import neuronFigure from '../assets/512px-Neuron-figure.svg.png';
 	import perceptronFigure from '../assets/perceptron.svg';
-	import MNISTSection from './MNISTSection.svelte';
 </script>
 
 <div class="hero">
@@ -10,17 +9,11 @@
 <section class="prose">
 	<h2>This is your brain</h2>
 
-	<figure>
-		<a
-			href="https://commons.wikimedia.org/wiki/File:Neuron-figure.svg"
-			class="img-link"
-		>
-			<img
-				src={neuronFigure}
-				alt="Schematic representation of a biological neuron"
-				height="600px"
-			/></a
-		>
+	<figure id="fig-neuron">
+		<img
+			src={neuronFigure}
+			alt="Schematic representation of a biological neuron."
+		/>
 		<figcaption>
 			<a href="https://commons.wikimedia.org/wiki/File:Neuron-figure.svg"
 				>Nicolas.Rougier</a
@@ -37,11 +30,10 @@
 		neuron proposed by Cornell Aeronautical Laboratory researcher
 		<strong>Frank Rosenblatt</strong> in 1957.
 	</p>
-	<figure>
+	<figure id="fig-perceptron">
 		<img
 			src={perceptronFigure}
 			alt="Schematic representation of a perceptron with 3 inputs"
-			width="500px"
 		/>
 	</figure>
 	<p>The perceptron only performs two operations:</p>
@@ -176,8 +168,14 @@
 	figure {
 		display: flex;
 		flex-direction: column;
-		width: fit-content;
 		margin: auto;
+	}
+
+	#fig-neuron {
+		max-width: 450px;
+	}
+	#fig-perceptron {
+		max-width: 500px;
 	}
 
 	figure img {

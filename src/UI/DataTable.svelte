@@ -51,13 +51,13 @@
 		width: 75%;
 		margin: 10px auto;
 		border-collapse: collapse;
-		border-top: 1px solid #999;
-		border-bottom: 1px solid #999;
+		border-top: 1px solid var(--black-olive);
+		border-bottom: 1px solid var(--black-olive);
 		font-size: 1.2rem;
 	}
 
 	thead {
-		border-bottom: 1px solid #999;
+		border-bottom: 1px solid var(--black-olive);
 	}
 
 	th,
@@ -75,7 +75,7 @@
 	}
 
 	tbody tr td:last-child {
-		background-color: #eee;
+		background-color: var(--gray);
 	}
 
 	tbody tr.highlighted {

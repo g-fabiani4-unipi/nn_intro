@@ -6,6 +6,7 @@
     --hunyadi-yellow: #edae49ff;
     --moonstone: #429ea6ff;
     --black-olive: #36382eff;
+    --gray: #eeefebff;
 }
 
 html,
@@ -52,7 +53,7 @@ text {
 
 .step-content {
     font-size: 1.2rem;
-    background: whitesmoke;
+    background: var(--gray);
     color: #ccc;
     border-radius: 5px;
     padding: 0.5rem 1rem;
@@ -201,5 +202,5 @@ math {
 .math-block {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    background-color: whitesmoke;
+    background-color: var(--gray);
 }
