@@ -32,7 +32,7 @@
       {
         "source": "b",
         "target": "y",
-        "weight": 7
+        "weight": 0
       }
     ]
   },

@@ -21,6 +21,7 @@
 	let showNetwork;
 	let disableInput;
 	let showHiddenLayer;
+	let showBias;
 	let currentNetwork = 'ml_perceptron';
 
 	function setParams(paramList) {
@@ -33,14 +34,10 @@
 
 	// Handle scrollytelling steps
 	$: if (steps && data && currentStep >= 0) {
-		if (currentStep >= steps.findIndex((s) => s.name == 'enter_network')) {
-			showCanvas = true;
-			showNetwork = true;
-		} else {
-			showCanvas = false;
-			showNetwork = false;
-		}
-
+		showNetwork =
+			currentStep >= steps.findIndex((s) => s.name === 'enter_network');
+		showCanvas =
+			currentStep >= steps.findIndex((s) => s.name === 'enter_output');
 		transformData =
 			currentStep >= steps.findIndex((s) => s.name === 'enter_data');
 		showData = currentStep >= steps.findIndex((s) => s.name === 'enter_data_2');
@@ -49,9 +46,12 @@
 				steps.findIndex((s) => s.name === 'perceptron_rule_start') &&
 			currentStep <= steps.findIndex((s) => s.name === 'perceptron_rule_end');
 		targetFunc =
-			currentStep < steps.findIndex((s) => s.name === 'xor_start')
-				? 'and'
-				: 'xor';
+			currentStep >= steps.findIndex((s) => s.name === 'xor_start')
+				? 'xor'
+				: currentStep >= steps.findIndex((s) => s.name === 'and_start')
+					? 'and'
+					: 'or';
+		showBias = currentStep >= steps.findIndex((s) => s.name === 'enter_bias');
 		currentNetwork =
 			currentStep >= steps.findIndex((s) => s.name === 'ml_perceptron_start')
 				? 'ml_perceptron'
@@ -116,6 +116,7 @@
 		showData = false;
 		showCanvas = false;
 		showNetwork = false;
+		showBias = false;
 		disableInput = false;
 		showHiddenLayer = false;
 	}
@@ -167,6 +168,7 @@
 					<Network
 						bind:network={network}
 						showNetwork={showNetwork}
+						showBias={showBias}
 						currentNetwork={currentNetwork}
 						disableInput={disableInput}
 					/>

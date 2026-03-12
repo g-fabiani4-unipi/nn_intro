@@ -188,6 +188,10 @@ span.negative {
     border-radius: 3px;
 }
 
+p.note {
+    font-size: medium;
+}
+
 .loading {
     top: 50%;
     text-align: center;

@@ -7,73 +7,17 @@ export const allSteps = {
   perceptron: [
     {
       name: 'start',
-      text: "<p>Suppose we want the perceptron to model the function <strong>x<sub>1</sub> AND x<sub>2</sub></strong>.</p>\
+      text: "<p>Suppose we want the perceptron to model the function <strong>x<sub>1</sub> OR x<sub>2</sub></strong>.</p>\
       <p>Since this is a fairly simple problem, we can show all relevant examples in a <strong>truth table.</strong></p>"
     },
     {
       name: 'enter_network',
-      text: `<p>And now we have our perceptron. It has <strong>two input units</strong> (x<sub>1</sub> and x<sub>2</sub>) in order to model the fact that the AND function takes two arguments.</p>`
+      text: `<p>And now we have our perceptron. It has <strong>two input units</strong> (x<sub>1</sub> and x<sub>2</sub>) in order to model the fact that the OR function takes two arguments.</p>`
 
     },
     {
-      name: 'math',
-      text: `<p>The perceptron equation for a perceptron with two inputs is the equation of a line</p>
-      <math
-			xmlns="http://www.w3.org/1998/Math/MathML"
-			display="block"
-      class="math-block"
-		>
-			<msub><mi>w</mi><mn>1</mn></msub>
-			<msub><mi>x</mi><mn>1</mn></msub>
-			<mo>+</mo>
-			<msub><mi>w</mi><mn>2</mn></msub>
-			<msub><mi>x</mi><mn>2</mn></msub>
-			<mo>+</mo>
-			<msub><mi>w</mi><mn>0</mn></msub>
-			<mo>=</mo>
-			<mn>0</mn>
-		</math>
-    <p>which in explicit form would be</p>
-	<math
-		xmlns="http://www.w3.org/1998/Math/MathML"
-		display="block"
-		class="math-block"
-	>
-		<msub><mi>x</mi><mn>2</mn></msub><mo>=</mo>
-		<mo>-</mo>
-		<mfrac>
-			<mrow> <msub><mi>w</mi><mn>1</mn></msub> </mrow>
-			<mrow> <msub><mi>w</mi><mn>2</mn></msub> </mrow>
-		</mfrac>
-		<msub><mi>x</mi><mn>1</mn></msub>
-		<mo>-</mo>
-		<mfrac>
-			<mrow> <msub><mi>w</mi><mn>0</mn></msub> </mrow>
-			<mrow> <msub><mi>w</mi><mn>2</mn></msub> </mrow>
-		</mfrac>
-	</math>
-  <p>where 	<math
-		xmlns="http://www.w3.org/1998/Math/MathML"
-		display="inline"
-	>
-		<mo>-</mo>
-		<mfrac>
-			<mrow> <msub><mi>w</mi><mn>1</mn></msub> </mrow>
-			<mrow> <msub><mi>w</mi><mn>2</mn></msub> </mrow>
-		</mfrac>
-	</math> is the slope and
-  <math
-		xmlns="http://www.w3.org/1998/Math/MathML"
-		display="inline"
-	>
-		<mo>-</mo>
-		<mfrac>
-			<mrow> <msub><mi>w</mi><mn>0</mn></msub> </mrow>
-			<mrow> <msub><mi>w</mi><mn>2</mn></msub> </mrow>
-		</mfrac>
-	</math>
-  is the intercept.
-  </p>`
+      name: 'enter_output',
+      text: "<p>Enter ouput</p>"
     },
     {
       name: 'enter_data',
@@ -88,7 +32,31 @@ export const allSteps = {
     {
       name: "enter_data_3",
       text: "<p>Can you find a parameter configuration that makes all and only <span class='positive'>positive</span> examples fall on the\
-       <span class='positive'>positive side</span> of the decision boundary?</p>"
+       <span class='positive'>positive side</span> of the decision boundary?</p>\
+       <p class='note'>Notice that if the decision boundary is intersecting an example, that example is classified as <span class='positive'>positive</span>.\
+       You may want to confirm this by computing the output of the perceptron yourself.\
+       Putting together the weighted sum and the activation function, the output of the perceptron is positive when\
+       	<math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+		display='inline'\
+        >\
+		<msub><mi>w</mi><mn>1</mn></msub>\
+		<msub><mi>x</mi><mn>1</mn></msub>\
+		<mo>+</mo>\
+		<msub><mi>w</mi><mn>2</mn></msub>\
+		<msub><mi>x</mi><mn>2</mn></msub>\
+		<mo>&GreaterEqual;</mo>\
+		<mn>0</mn>\
+		<mo>.</mo>\
+	</math ></p>"
+    },
+    {
+      name: "and_start",
+      text: "<p>Something something</p>"
+    },
+    {
+      name: "enter_bias",
+      text: "<p>Enter bias</p>"
     },
     {
       name: 'perceptron_rule_start',

@@ -18,6 +18,7 @@
 
 	export let network;
 	export let showNetwork;
+	export let showBias;
 	export let currentNetwork;
 	export let disableInput;
 
@@ -39,6 +40,7 @@
 				const source = nodes.find((node) => node.id == link.source.id);
 				const target = nodes.find((node) => node.id == link.target.id);
 				return {
+					source: source.id,
 					x1: source.x,
 					x2: target.x,
 					y1: source.y,
@@ -76,19 +78,23 @@
 >
 	{#if showNetwork}
 		{#each links as link, i}
-			<NetworkLink
-				link={link}
-				colorScale={colorScale}
-				linkScale={linkScale}
-				disableInput={disableInput}
-				bind:weight={$params[i]}
-			/>
+			{#if !link.source.startsWith('b') || showBias}
+				<NetworkLink
+					link={link}
+					colorScale={colorScale}
+					linkScale={linkScale}
+					disableInput={disableInput}
+					bind:weight={$params[i]}
+				/>
+			{/if}
 		{/each}
 		{#each nodes as node (node.id)}
-			<NetworkNode
-				node={node}
-				nodeRadius={nodeRadius}
-			/>
+			{#if !node.id.startsWith('b') || showBias}
+				<NetworkNode
+					node={node}
+					nodeRadius={nodeRadius}
+				/>
+			{/if}
 		{/each}
 	{/if}
 </GraphContainer>
