@@ -14,7 +14,7 @@
 
 	let data;
 	let currentStep;
-	let targetFunc = 'and';
+	let targetFunc = 'or';
 	let transformData;
 	let showData;
 	let showCanvas;
@@ -22,7 +22,7 @@
 	let disableInput;
 	let showHiddenLayer;
 	let showBias;
-	let currentNetwork = 'ml_perceptron';
+	let currentNetwork = 'perceptron';
 
 	function setParams(paramList) {
 		const newParams = $params;
@@ -74,6 +74,9 @@
 		// Perceptron rule parameters update
 		if (steps[currentStep].name === 'enter_network') {
 			params.set(network[currentNetwork].links.map((link) => link.weight));
+		}
+		if (steps[currentStep].name === 'or_end') {
+			setParams([7, 7, 0]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_start') {
 			highlightExample(1);

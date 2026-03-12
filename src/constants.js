@@ -12,13 +12,16 @@ export const allSteps = {
     },
     {
       name: 'enter_network',
-      text: `<p>And now we have our perceptron. It has <strong>two input units</strong> (x<sub>1</sub> and x<sub>2</sub>) in order to model the fact that the OR function takes two arguments.</p>`
-
+      text: "<p>And now we have our perceptron. It has <strong>two input units</strong> (x<sub>1</sub> and x<sub>2</sub>) in order to model the fact that the OR function takes two arguments.</p>\
+      <p>Notice that the <strong>input units</strong> are linked to the <strong>output unit</strong> by weighted edges.\
+      These weights are usually called the perceptron <strong>parameters</strong>.</p>"
     },
     {
-      name: 'enter_output',
-      text: "<p>Enter ouput</p>"
+      name: 'enter_network_2',
+      text: "<p>The <strong>output unit</strong> performs a weighted sum of the inputs and then passes the result of the sum through an <strong>activation function</strong>,\
+      which returns <strong>-1</strong> if the sum is negative and <strong>1</strong> if the sum is 0 or positive.</p>"
     },
+
     {
       name: 'enter_data',
       text: "<p>As we have seen, the perceptron can only handle numbers, so we need to convert our <span class='example'>examples</span> into numbers, somehow.\
@@ -27,10 +30,18 @@ export const allSteps = {
     {
       name: "enter_data_2",
       text: "<p>Now it is possible to draw all examples from the truth table on a cartesian coordinate system:\
-      we filled <span class='positive'>positive examples</span> in green and <span class='negative'>negative examples</span> in pink.</p>"
+      we filled <span class='positive'>positive examples</span> in green and <span class='negative'>negative examples</span> in pink.</p>\
+      <p class='note'>Notice that you can hover over an <span class='example'>example</span> in the table in order to highlight it on the graph and the other way around.</p>"
     },
     {
-      name: "enter_data_3",
+      name: 'enter_output',
+      text: "<p>On the cartesian coordinate system we also show for which values of <strong>x<sub>1</sub></strong> and <strong>x<sub>2</sub></strong> the ouput of the perceptron\
+      is <span class='positive'>1</span> or <span class='negative'>-1</span> with the current configuration of parameters.</p>\
+      <p>We call the line between these two regions the <strong>decision boundary</strong> of the perceptron.\
+      Notice that manipulating the <strong>perceptron parameters</strong> controls the <strong>slope</strong> of the decision boundary.</p>"
+    },
+    {
+      name: "or_exercise",
       text: "<p>Can you find a parameter configuration that makes all and only <span class='positive'>positive</span> examples fall on the\
        <span class='positive'>positive side</span> of the decision boundary?</p>\
        <p class='note'>Notice that if the decision boundary is intersecting an example, that example is classified as <span class='positive'>positive</span>.\
@@ -51,12 +62,28 @@ export const allSteps = {
 	</math ></p>"
     },
     {
+      name: 'or_end',
+      text: "<p>That wasn't so bad!</p>"
+    },
+    {
       name: "and_start",
-      text: "<p>Something something</p>"
+      text: "<p>What about modeling <strong>x<sub>1</sub> AND x<sub>2</sub></strong>?\
+      Do you think that you can find a configuration of parameters that solves this problem?</p>\
+      <p class='note'>Remember that examples that are intersected by the decision boundary are classified as <span class='positive'>positive</span>.</p>"
+    },
+    {
+      name: "and_2",
+      text: "<p>Here we encounter an issue! At the moment our perceptron can only draw <strong>decision boundaries</strong> that pass through the <strong>origin</strong> of the coordinate system.</p>"
     },
     {
       name: "enter_bias",
-      text: "<p>Enter bias</p>"
+      text: "<p>In order to solve this issue, we introduce a new type of unit: the <strong>bias unit</strong>.</p>\
+      <p>The value held by the bias unit is always 1 (because it is not associated with any part of the input).\
+      Notice how changing the bias parameter controls the <strong>intercept</strong> of the decision boundary.</p>"
+    },
+    {
+      name: "and_exercise",
+      text: "<p>You should now be able to find a configuration of parameters that allows you to model <strong>x<sub>1</sub> AND x<sub>2</sub></strong>.</p>",
     },
     {
       name: 'perceptron_rule_start',
