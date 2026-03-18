@@ -2,6 +2,8 @@ import { text } from "d3";
 
 export const positiveColor = '#7FBC41';
 export const negativeColor = '#C51B7D';
+export const blackOlive = '#36382eff';
+export const gray = '#eeefebff';
 
 export const allSteps = {
   perceptron: [

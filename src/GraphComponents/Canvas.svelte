@@ -4,6 +4,8 @@
 
 	export let width;
 	export let height;
+	export let scale = false;
+	export let margin = { top: 0, right: 0, bottom: 0, left: 0 };
 	export let contextName = 'canvas';
 
 	const drawFunctions = [];
@@ -12,6 +14,16 @@
 	let ctx;
 	let pendingInvalidation = false;
 	let frameId;
+
+	function scaleCanvas(canvas, ctx, width, height) {
+		const devicePixelRatio = window.devicePixelRatio || 1;
+
+		canvas.width = width * devicePixelRatio;
+		canvas.height = height * devicePixelRatio;
+		canvas.style.width = width + 'px';
+		canvas.style.height = height + 'px';
+		ctx.scale(devicePixelRatio, devicePixelRatio);
+	}
 
 	function update() {
 		if (!ctx) return;
@@ -49,6 +61,10 @@
 			frameId = requestAnimationFrame(update);
 		},
 	});
+
+	$: setContext('margin', margin);
+
+	$: if (canvas && ctx && scale) scaleCanvas(canvas, ctx, width, height);
 </script>
 
 <canvas
