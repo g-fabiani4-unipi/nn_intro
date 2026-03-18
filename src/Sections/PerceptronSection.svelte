@@ -237,7 +237,7 @@
 		gap: 5px;
 		grid-template-columns: 1fr minmax(320px, 1fr);
 		grid-template-rows: minmax(0, 1fr) 390px;
-		min-height: 0;
-		max-height: 100vh;
+		min-height: 0px;
+		max-height: 800px;
 	}
 </style>
