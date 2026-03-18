@@ -171,6 +171,7 @@
 					scale={true}
 					margin={margin}
 					--position="absolute"
+					responsive={true}
 				>
 					{#each links as link}
 						<Line
@@ -265,6 +266,7 @@
 					height={height}
 					margin={margin}
 					--position="absolute"
+					responsive={true}
 				>
 					{#each digits as digit, i}
 						{#if enterTestExamples}

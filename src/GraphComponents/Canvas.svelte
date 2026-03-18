@@ -5,6 +5,7 @@
 	export let width;
 	export let height;
 	export let scale = false;
+	export let responsive = false;
 	export let margin = { top: 0, right: 0, bottom: 0, left: 0 };
 	export let contextName = 'canvas';
 
@@ -20,8 +21,10 @@
 
 		canvas.width = width * devicePixelRatio;
 		canvas.height = height * devicePixelRatio;
-		canvas.style.width = width + 'px';
-		canvas.style.height = height + 'px';
+		if (!responsive) {
+			canvas.style.width = width + 'px';
+			canvas.style.height = height + 'px';
+		}
 		ctx.scale(devicePixelRatio, devicePixelRatio);
 	}
 
@@ -72,11 +75,16 @@
 	width={width}
 	height={height}
 	transition:fade={{ duration: 1000 }}
+	class:responsive={responsive}
 />
 <slot />
 
 <style>
 	canvas {
 		position: var(--position);
+	}
+	canvas.responsive {
+		max-width: 100%;
+		max-height: 100%;
 	}
 </style>
