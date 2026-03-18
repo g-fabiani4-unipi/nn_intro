@@ -23,7 +23,7 @@
 	const tFill = tweened(fill, { duration: 800, interpolate: interpolateLab });
 	const corner = tweened(0, { duration: 500 });
 	const tWidth = tweened(width, { duration: 500 });
-	const tOpacity = tweened(opacity, { duration: 1000 });
+	const tOpacity = tweened(opacity, { delay: 800, duration: 800 });
 
 	function draw(ctx) {
 		ctx.translate(margin.left, margin.top);

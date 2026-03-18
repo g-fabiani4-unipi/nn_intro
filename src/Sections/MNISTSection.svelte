@@ -8,6 +8,7 @@
 		max,
 		scaleSequentialSqrt,
 		interpolatePiYG,
+		stackOffsetExpand,
 	} from 'd3';
 	import Scrolly from '../UI/Scrolly.svelte';
 	import { allSteps, blackOlive, gray, positiveColor } from '../constants';
@@ -15,19 +16,21 @@
 	import Circle from '../GraphComponents/Circle.svelte';
 	import Line from '../GraphComponents/Line.svelte';
 	import Text from '../GraphComponents/Text.svelte';
+	import Example from '../GraphComponents/Example.svelte';
 	import Canvas from '../GraphComponents/Canvas.svelte';
 	import { fade, fly } from 'svelte/transition';
 	import BarplotBar from '../GraphComponents/BarplotBar.svelte';
 	import GraphContainer from '../GraphComponents/GraphContainer.svelte';
+	import Rect from '../GraphComponents/Rect.svelte';
 
 	export let network;
 
 	const steps = allSteps['mnist'];
 
-	const pixelWidth = 12;
+	const maxPixelWidth = 12;
 	const smallerPixelWidth = 8;
 	const width = 900;
-	const innerHeight = pixelWidth * 64;
+	const innerHeight = maxPixelWidth * 64;
 	const margin = { top: 30, left: 30, bottom: 30, right: 30 };
 	const innerWidth = width - margin.left - margin.right;
 	const height = innerHeight + margin.top + margin.bottom;
@@ -55,10 +58,25 @@
 	let links;
 	let xScale;
 	let yScale;
+	let pixelWidth = 4;
+	let enterExamples = false;
+	let split = false;
+	let magnify = false;
 
 	// Handle scrollytelling steps
 	$: {
 		if (steps && digits && currentStep >= 0) {
+			enterExamples =
+				currentStep >= steps.findIndex((s) => s.name === 'enter_examples');
+			split =
+				currentStep >= steps.findIndex((s) => s.name === 'train_test_split');
+			if (currentStep >= steps.findIndex((s) => s.name == 'magnify')) {
+				pixelWidth = maxPixelWidth;
+				magnify = true;
+			} else {
+				pixelWidth = 4;
+				magnify = false;
+			}
 			if (currentStep >= steps.findIndex((s) => s.name == 'decompose_input')) {
 				decomposeInput = true;
 			} else {
@@ -100,6 +118,10 @@
 			enterHiddenNodes = false;
 			enterLinks = false;
 			enterTestExamples = false;
+			pixelWidth = 4;
+			enterExamples = false;
+			split = false;
+			magnify = false;
 		}
 	}
 
@@ -124,7 +146,7 @@
 					(max(Object.values(data.dims)) - data.dims[node.layer]) / 2,
 			);
 
-			imgPixels = digits[1].img.map((v, i) => {
+			imgPixels = digits[0].img.map((v, i) => {
 				const id = 'x' + (i + 1);
 				return {
 					id: id,
@@ -170,9 +192,22 @@
 					width={width}
 					scale={true}
 					margin={margin}
-					--position="absolute"
 					responsive={true}
 				>
+					{#each digits as digit, i}
+						<Example
+							x={!enterExamples ? -200 : (i % 10) * 11 * pixelWidth + 20}
+							y={split && digit.group === 'test'
+								? Math.floor(i / 10) * 11 * pixelWidth + 60
+								: Math.floor(i / 10) * 11 * pixelWidth}
+							pixelWidth={pixelWidth}
+							stroke={nodeStrokeStyle}
+							scale={grayScale}
+							digit={digit}
+							opacity={magnify ? 0 : 1}
+						/>
+					{/each}
+
 					{#each links as link}
 						<Line
 							x1={link.source.cx}
@@ -189,17 +224,17 @@
 								? xScale(1) - nodeRadius
 								: decomposeInput
 									? 4
-									: (pixel.index % 8) * pixelWidth + 20}
+									: (pixel.index % 8) * maxPixelWidth + 20}
 							y={enterInputNodes && pixel.node
 								? pixel.node.cy - nodeRadius
 								: enterInputNodes && !pixel.node
 									? innerHeight / 2 - nodeRadius
 									: decomposeInput
-										? pixel.index * pixelWidth
-										: Math.floor(pixel.index / 8) * pixelWidth}
-							width={enterInputNodes ? nodeRadius * 2 : pixelWidth}
+										? pixel.index * maxPixelWidth
+										: Math.floor(pixel.index / 8) * maxPixelWidth}
+							width={enterInputNodes ? nodeRadius * 2 : maxPixelWidth}
 							fill={enterOutpuNodes ? nodeFill : grayScale(pixel.value)}
-							opacity={enterInputNodes && !pixel.node ? 0 : 1}
+							opacity={!magnify ? 0 : enterInputNodes && !pixel.node ? 0 : 1}
 							index={pixel.index}
 							round={enterInputNodes}
 							strokeWidth={enterInputNodes ? nodeStrokeWidth : 0.5}
@@ -261,7 +296,7 @@
 						/>
 					{/each}
 				</Canvas>
-				<GraphContainer
+				<!-- <GraphContainer
 					width={width}
 					height={height}
 					margin={margin}
@@ -302,7 +337,7 @@
 							</g>
 						{/if}
 					{/each}
-				</GraphContainer>
+				</GraphContainer> -->
 			</div>
 		</div>
 	{/if}

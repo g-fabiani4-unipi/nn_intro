@@ -166,8 +166,20 @@ export const allSteps = {
   mnist: [
     {
       name: 'start',
-      text: "<p>Multilayer perceptrons can be trained to solve also more interesting problems, as for example to <strong>classify handwritten digits</strong></p>\
-      <p>In this example we represent each digit as a <strong>8x8 grid of pixels</strong>.</p>"
+      text: '<p>Multilayer perceptrons can be trained to solve also more interesting problems, as for example to <strong>classify handwritten digits</strong></p>'
+    },
+    {
+      name: 'enter_examples',
+      text: "<p>For this task we would need a great number of examples of handwritten digits, each correctly labeled as a digit from 0 to 9 by a human annotator.</p>\
+      <p class='note'>Here we show only 100, but normally we would use at least thousands of examples.</p>"
+    },
+    {
+      name: 'train_test_split',
+      text: "<p>We reserve some examples for the evaluation of the model. This means that we won't submit these examples to the perceptron during training.</p>"
+    },
+    {
+      name: 'magnify',
+      text: "<p>Each example is an image with resolution <strong>8x8 pixels</strong>.</p>"
     },
     {
       name: 'decompose_input',
