@@ -218,36 +218,4 @@ export const allSteps = {
       text: '<p>Third test example</p>'
     }
   ],
-  skipgram: [
-    {
-      name: 'start',
-      text: '<p>Here we show only the forward pass for SkipGram</p>'
-    },
-    {
-      name: 'activate_input',
-      text: '<p>Suppose we encounter the word <em>dog</em>.</p>'
-    },
-    {
-      name: 'activate_output_1',
-      text: '<p>Compute the activation for output <em>dog</em></p>'
-    },
-    {
-      name: 'activate_output_2',
-      text: '<p>Compute the activation for output <em>cat</em></p>'
-
-    },
-    {
-      name: 'activate_output_3',
-      text: '<p>Compute the activation for output <em>eat</em></p>'
-
-    },
-    {
-      name: 'activate_output_4',
-      text: '<p>Compute the activation for output <em>bark</em></p>'
-    },
-    {
-      name: 'softmax',
-      text: '<p>The activations of the output units are passed into a <em>softmax</em> in order to output probabilities.</p>'
-    }
-  ]
 };
