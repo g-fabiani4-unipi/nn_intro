@@ -171,7 +171,7 @@ export const allSteps = {
     {
       name: 'enter_examples',
       text: "<p>For this task we would need a great number of examples of handwritten digits, each correctly labeled as a digit from 0 to 9 by a human annotator.</p>\
-      <p class='note'>Here we show only 100, but normally we would use at least thousands of examples.</p>"
+      <p class='note'>Here we show only 100, but normally we would use several thousands of examples.</p>"
     },
     {
       name: 'train_test_split',
@@ -201,10 +201,21 @@ export const allSteps = {
       name: 'enter_links',
       text: '<p>Can you compute how many <strong>parameters</strong> should the perceptron have?</p>'
     },
-
     {
-      name: 'end',
+      name: 'train',
+      text: "<p>Training this bullshit</p>"
+    },
+    {
+      name: 'test',
       text: '<p>The perceptron has already been trained. Click on the test <span class="example">examples</span> to see the model output</p>'
+    },
+    {
+      name: 'test_2',
+      text: '<p>Second test example</p>'
+    },
+    {
+      name: 'test_3',
+      text: '<p>Third test example</p>'
     }
   ],
   skipgram: [

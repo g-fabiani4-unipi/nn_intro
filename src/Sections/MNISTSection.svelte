@@ -8,7 +8,7 @@
 		max,
 		scaleSequentialSqrt,
 		interpolatePiYG,
-		stackOffsetExpand,
+		interpolateLab,
 	} from 'd3';
 	import Scrolly from '../UI/Scrolly.svelte';
 	import { allSteps, blackOlive, gray, positiveColor } from '../constants';
@@ -28,7 +28,6 @@
 	const steps = allSteps['mnist'];
 
 	const maxPixelWidth = 12;
-	const smallerPixelWidth = 8;
 	const width = 900;
 	const innerHeight = maxPixelWidth * 64;
 	const margin = { top: 30, left: 30, bottom: 30, right: 30 };
@@ -46,13 +45,12 @@
 
 	let currentStep = 0;
 	let digits;
-	let clickedDigit;
+	let testExample;
 	let decomposeInput;
 	let enterInputNodes;
 	let enterOutpuNodes;
 	let enterHiddenNodes;
 	let enterLinks;
-	let enterTestExamples;
 	let imgPixels = [];
 	let nodes;
 	let links;
@@ -62,6 +60,7 @@
 	let enterExamples = false;
 	let split = false;
 	let magnify = false;
+	let colorLinks = false;
 
 	// Handle scrollytelling steps
 	$: {
@@ -77,38 +76,28 @@
 				pixelWidth = 4;
 				magnify = false;
 			}
-			if (currentStep >= steps.findIndex((s) => s.name == 'decompose_input')) {
-				decomposeInput = true;
-			} else {
-				decomposeInput = false;
-			}
+			decomposeInput =
+				currentStep >= steps.findIndex((s) => s.name === 'decompose_input');
 			enterInputNodes =
 				currentStep >= steps.findIndex((s) => s.name == 'enter_input_nodes');
-			if (
-				currentStep >= steps.findIndex((s) => s.name == 'enter_output_nodes')
-			) {
-				enterOutpuNodes = true;
-			} else {
-				enterOutpuNodes = false;
-			}
+			enterOutpuNodes =
+				currentStep >= steps.findIndex((s) => s.name === 'enter_output_nodes');
+			enterHiddenNodes =
+				currentStep >= steps.findIndex((s) => s.name === 'enter_hidden_nodes');
+			enterLinks =
+				currentStep >= steps.findIndex((s) => s.name === 'enter_links');
+			colorLinks = currentStep >= steps.findIndex((s) => s.name === 'train');
 
-			if (
-				currentStep >= steps.findIndex((s) => s.name === 'enter_hidden_nodes')
-			) {
-				enterHiddenNodes = true;
+			if (currentStep >= steps.findIndex((s) => s.name === 'test')) {
+				testExample = digits[76];
 			} else {
-				enterHiddenNodes = false;
+				testExample = null;
 			}
-			if (currentStep >= steps.findIndex((s) => s.name === 'enter_links')) {
-				enterLinks = true;
-			} else {
-				enterLinks = false;
+			if (steps[currentStep].name === 'test_2') {
+				testExample = digits[80];
 			}
-			if (currentStep >= steps.findIndex((s) => s.name === 'end')) {
-				enterTestExamples = true;
-			} else {
-				enterTestExamples = false;
-				clickedDigit = null;
+			if (steps[currentStep].name === 'test_3') {
+				testExample = digits[86];
 			}
 		} else {
 			// Set initial values
@@ -117,7 +106,7 @@
 			enterOutpuNodes = false;
 			enterHiddenNodes = false;
 			enterLinks = false;
-			enterTestExamples = false;
+			colorLinks = false;
 			pixelWidth = 4;
 			enterExamples = false;
 			split = false;
@@ -165,7 +154,7 @@
 	}
 
 	function handleClickDigit(digit) {
-		clickedDigit = digit;
+		testExample = digit;
 	}
 </script>
 
@@ -198,7 +187,7 @@
 						<Example
 							x={!enterExamples ? -200 : (i % 10) * 11 * pixelWidth + 20}
 							y={split && digit.group === 'test'
-								? Math.floor(i / 10) * 11 * pixelWidth + 60
+								? Math.floor(i / 10) * 11 * pixelWidth + 200
 								: Math.floor(i / 10) * 11 * pixelWidth}
 							pixelWidth={pixelWidth}
 							stroke={nodeStrokeStyle}
@@ -214,7 +203,9 @@
 							y1={link.source.cy}
 							x2={link.target.cx}
 							y2={link.target.cy}
-							stroke={colorScale(link.weight)}
+							stroke={colorLinks
+								? colorScale(link.weight)
+								: interpolateLab(nodeStrokeStyle, 'white')(0.6)}
 							opacity={enterLinks ? 1 : 0}
 						/>
 					{/each}
@@ -277,8 +268,8 @@
 							x={innerWidth - 200}
 							y={node.cy - nodeRadius}
 							height={nodeRadius * 2}
-							width={clickedDigit ? barScale(clickedDigit.proba[i]) : 0}
-							value={clickedDigit ? clickedDigit.proba[i] : 0}
+							width={testExample ? barScale(testExample.proba[i]) : 0}
+							value={testExample ? testExample.proba[i] : 0}
 							stroke={nodeStrokeStyle}
 							fill={barFill}
 						/>
@@ -295,56 +286,16 @@
 							r={nodeRadius}
 						/>
 					{/each}
+					<Example
+						x={testExample ? innerWidth - maxPixelWidth * 8 : innerWidth + 100}
+						y={0}
+						pixelWidth={maxPixelWidth}
+						stroke={nodeStrokeStyle}
+						scale={grayScale}
+						digit={testExample}
+					/>
 				</Canvas>
-				<!-- <GraphContainer
-					width={width}
-					height={height}
-					margin={margin}
-					--position="absolute"
-					responsive={true}
-				>
-					{#each digits as digit, i}
-						{#if enterTestExamples}
-							<g
-								transform="translate({innerWidth -
-									((i + 1) * smallerPixelWidth * 8 +
-										i * smallerPixelWidth)}, 0)"
-								role="button"
-								tabindex={i + 1}
-								on:keypress={() => handleClickDigit(digit)}
-								on:click={() => handleClickDigit(digit)}
-								transition:fly={{ duration: 500, x: 300 }}
-							>
-								{#each digit.img as pixel, j}
-									<rect
-										x={(j % 8) * smallerPixelWidth}
-										y={Math.floor(j / 8) * smallerPixelWidth}
-										height={smallerPixelWidth}
-										width={smallerPixelWidth}
-										fill={grayScale(pixel)}
-										stroke={nodeStrokeStyle}
-										stroke-width={0.5}
-									/>
-								{/each}
-								<rect
-									class:clicked={clickedDigit === digit}
-									class="example-button"
-									height={smallerPixelWidth * 8}
-									width={smallerPixelWidth * 8}
-									stroke-width={3}
-									fill="none"
-								/>
-							</g>
-						{/if}
-					{/each}
-				</GraphContainer> -->
 			</div>
 		</div>
 	{/if}
 </section>
-
-<style>
-	.example-button.clicked {
-		stroke: var(--hunyadi-yellow);
-	}
-</style>

@@ -34,14 +34,16 @@
 	fill="transparent"
 	opacity={$tOpacity}
 />
-{#each digit.img as pixel, i}
-	<Rect
-		x={$tX + (i % 8) * $tPixelWidth}
-		y={$tY + Math.floor(i / 8) * $tPixelWidth}
-		width={$tPixelWidth}
-		height={$tPixelWidth}
-		fill={scale(pixel)}
-		stroke="transparent"
-		opacity={$tOpacity}
-	/>
-{/each}
+{#if digit}
+	{#each digit.img as pixel, i}
+		<Rect
+			x={$tX + (i % 8) * $tPixelWidth}
+			y={$tY + Math.floor(i / 8) * $tPixelWidth}
+			width={$tPixelWidth}
+			height={$tPixelWidth}
+			fill={scale(pixel)}
+			stroke="transparent"
+			opacity={$tOpacity}
+		/>
+	{/each}
+{/if}

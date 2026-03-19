@@ -1,4 +1,5 @@
 <script>
+	import { interpolateLab } from 'd3';
 	import { getContext, onMount, onDestroy, afterUpdate } from 'svelte';
 	import { tweened } from 'svelte/motion';
 
@@ -17,11 +18,15 @@
 		duration: 1000,
 	};
 	const tOpacity = tweened(0, tweenParams);
+	const tStroke = tweened(stroke, {
+		duration: 600,
+		interpolate: interpolateLab,
+	});
 
 	function draw(ctx) {
 		ctx.translate(margin.left, margin.top);
 		ctx.globalAlpha = $tOpacity;
-		ctx.strokeStyle = stroke;
+		ctx.strokeStyle = $tStroke;
 		ctx.beginPath();
 		ctx.moveTo(x1, y1);
 		ctx.lineTo(x2, y2);
@@ -42,4 +47,5 @@
 	});
 
 	$: tOpacity.set(opacity);
+	$: tStroke.set(stroke);
 </script>

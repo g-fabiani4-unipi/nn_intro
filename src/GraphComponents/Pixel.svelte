@@ -1,7 +1,6 @@
 <script>
 	import { tweened } from 'svelte/motion';
 	import { getContext, onMount, onDestroy, afterUpdate } from 'svelte';
-	import { fly } from 'svelte/transition';
 	import { interpolateLab } from 'd3';
 
 	export let x;
