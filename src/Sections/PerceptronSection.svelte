@@ -60,7 +60,7 @@
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
 
-		if (steps[currentStep].name === 'ml_perceptron_3') {
+		if (currentStep >= steps.findIndex((s) => s.name === 'ml_perceptron_3')) {
 			params.set([1, 1, 1, -1, -2, 2, 1, 1, -1]);
 		}
 
@@ -75,7 +75,10 @@
 		if (steps[currentStep].name === 'enter_network') {
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
-		if (steps[currentStep].name === 'or_end') {
+		if (
+			steps[currentStep].name === 'or_end' ||
+			steps[currentStep].name === 'and_2'
+		) {
 			setParams([7, 7, 0]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_start') {
