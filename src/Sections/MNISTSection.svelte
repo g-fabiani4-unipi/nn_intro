@@ -18,10 +18,7 @@
 	import Text from '../GraphComponents/Text.svelte';
 	import Example from '../GraphComponents/Example.svelte';
 	import Canvas from '../GraphComponents/Canvas.svelte';
-	import { fade, fly } from 'svelte/transition';
 	import BarplotBar from '../GraphComponents/BarplotBar.svelte';
-	import GraphContainer from '../GraphComponents/GraphContainer.svelte';
-	import Rect from '../GraphComponents/Rect.svelte';
 
 	export let network;
 

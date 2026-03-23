@@ -88,45 +88,262 @@ export const allSteps = {
       text: "<p>You should now be able to find a configuration of parameters that allows you to model <strong>x<sub>1</sub> AND x<sub>2</sub></strong>.</p>",
     },
     {
+      name: 'perceptron_rule_intro',
+      text: "<p>The perceptron is able to set its own parameters by correcting the <strong>classification error</strong> on a training set.</p>\
+      <p>After presenting the perceptron a training example, the classification error is computed as the <strong>difference between the\
+      expected ouput and the actual output</strong> of the perceptron for the current example\
+      <math\
+          xmlns = 'http://www.w3.org/1998/Math/MathML'\
+      display='block' class='math-block'\
+        >\
+		<mi>E</mi>\
+    <mo>=</mo>\
+    <mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>pred</mi></msub>\
+	</math >\
+      </p>"
+    },
+    {
+      name: 'perceptron_rule_intro_2',
+      text: "<p>The update to each parameter is computed using the <strong>perceptron learning rule</strong>:\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>i</mi></msub>\
+    <mo>=</mo>\
+    <mi>η</mi><mi>E</mi>\
+    <msub><mi>x</mi><mi>i</mi></msub>\
+	</math >\
+  where\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+		display='inline'><mi>η</mi><mo>&gt;</mo><mn>0</mn>\
+	</math >\
+  is the <strong>learning rate</strong> and controls how great of a step we take in the right direction.\
+  </p >\
+"
+    },
+    {
       name: 'perceptron_rule_start',
-      text: '<p>The perceptron is able to set its own parameters by correcting the classification error on a training set.</p>\
-      <p><span>Example 1</span> is classified correctly, so no change is necessary.</p>'
+      text: '<p>We start with random parameters.</p>\
+      <p><span class="example">Example 1</span> is classified correctly, so no change is necessary.</p>'
     },
     {
       name: 'perceptron_rule_2',
-      text: '<p>This example is in fact misclassified. <span class="example">Example&nbsp;2</span> falls on the <span class="positive">positive</span> side of the boundary even though it is <span class="negative">negative</span></p>'
+      text: "<p><span class='example'>Example&nbsp;2</span> is in fact misclassified. This example falls on the <span class='positive'>positive</span>\
+      side of the boundary even though it is <span class='negative'>negative</span>.</p>\
+      <p>We compute the classification error as\
+    <math\
+          xmlns = 'http://www.w3.org/1998/Math/MathML'\
+      display='block' class='math-block'\
+        >\
+		<mi>E</mi>\
+    <mo>=</mo>\
+    <mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>pred</mi></msub>\
+    <mo>=</mo><mo>−</mo><mn>2<mn>\
+	</math >\
+      </p>"
     },
     {
       name: 'perceptron_rule_3',
-      text: '<p>Update the parameters.</p>'
+      text: "<p>Plugging the error in the <strong>perceptron learning rule</strong>, we obtain the following updates:\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>1</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+        <mo>=</mo><mo>−</mo><mn>2</mn>\
+	</math >\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>2</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+        <mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo>\
+    <mo>=</mo><mn>2</mn>\
+	</math >\
+<math\
+  xmlns='http://www.w3.org/1998/Math/MathML'\
+  class='math-block'\
+  display='block'\
+>\
+    <mi>Δ</mi><msub><mi>w</mi><mi>0</mi></msub>\
+    <mo>=</mo>\
+    <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+    <mo>=</mo><mo>−</mo><mn>2</mn>\
+</math >\
+      </p >\
+    <p class='note'>Note that for convenience we are using <strong>learning rate</strong> of\
+    <math\
+          xmlns = 'http://www.w3.org/1998/Math/MathML'\
+      display='inline' class='math-block'>\
+		<mi>η</mi>\
+    <mo>=</mo>\
+    <mn>1</mn>\
+	</math >,\
+  while in a real application the learning rate would be much lower.</p> "
     },
     {
       name: 'perceptron_rule_4',
-      text: '<p>This example is okay.</p>'
+      text: '<p><span class="example">Example 3</span> is classified correctly, so no change is necessary.</p>'
     },
     {
       name: 'perceptron_rule_5',
-      text: '<p>This, however, is not</p>'
+      text: "<p><span class='example'>Example 4</span>, however, is misclassified.\
+      We compute the classification error as\
+        <math\
+          xmlns = 'http://www.w3.org/1998/Math/MathML'\
+      display='block' class='math-block'\
+        >\
+		<mi>E</mi>\
+    <mo>=</mo>\
+    <mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>pred</mi></msub>\
+    <mo>=</mo><mo>−</mo><mn>2<mn>\
+	</math >\
+      </p>"
     },
     {
       name: 'perceptron_rule_6',
-      text: '<p>Applying change.</p>'
+      text: "<p>And the following updates to the parameters\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>1</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+        <mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo>\
+    <mo>=</mo><mn>2</mn>\
+	</math >\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>2</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+        <mo>=</mo><mo>−</mo><mn>2</mn>\
+	</math >\
+<math\
+  xmlns='http://www.w3.org/1998/Math/MathML'\
+  class='math-block'\
+  display='block'\
+>\
+    <mi>Δ</mi><msub><mi>w</mi><mi>0</mi></msub>\
+    <mo>=</mo>\
+    <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+    <mo>=</mo><mo>−</mo><mn>2</mn>\
+</math >\
+      which concludes the first <strong>epoch</strong> of training, since we presented the perceptron all training examples.</p>"
     },
     {
       name: 'perceptron_rule_7',
-      text: '<p>Applying change.</p>'
+      text: "<p>We now start the second <strong>epoch</strong> of training.</p>\
+      <p><span class='example'>Examples 1, 2 and 3</span> are all classified correctly, so no change is necessary.</p>"
     },
     {
       name: 'perceptron_rule_8',
-      text: '<p>Now <span class="example">example 2</span> is misclassified.</p>'
+      text: "<p><span class='example'>Example  4</span> is still misclassified, so we apply the same updates as before:\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>1</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+        <mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo>\
+    <mo>=</mo><mn>2</mn>\
+	</math >\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>2</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+        <mo>=</mo><mo>−</mo><mn>2</mn>\
+	</math >\
+<math\
+  xmlns='http://www.w3.org/1998/Math/MathML'\
+  class='math-block'\
+  display='block'\
+>\
+    <mi>Δ</mi><msub><mi>w</mi><mi>0</mi></msub>\
+    <mo>=</mo>\
+    <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+    <mo>=</mo><mo>−</mo><mn>2</mn>\
+</math >\
+      </p>"
     },
     {
       name: 'perceptron_rule_9',
-      text: '<p>Applying change. Now <span class="example">example 4</span> is misclassified.</p>'
+      text: "<p>We are now at the third <strong>epoch</strong> of training and <span class='example'>example 4</span>\
+      is still misclassified, so we apply the same updates as before.</p>"
+    },
+    {
+      name: 'perceptron_rule_10',
+      text: "<p>Notice that applying the correction for <span class='example'>example 4</span>, we caused <span class='example'>example 2</span> to be misclassified:\
+      we will fix that in the next <strong>epoch</strong>.</p>"
+
+    },
+    {
+      name: 'perceptron_rule_11',
+      text: "<p>Finally, we apply the following updates for <span class='example'>example 2</span>:\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>1</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+        <mo>=</mo><mo>−</mo><mn>2</mn>\
+	</math >\
+  <math\
+		xmlns='http://www.w3.org/1998/Math/MathML'\
+    class='math-block'\
+		display='block'\
+        >\
+		<mi>Δ</mi><msub><mi>w</mi><mi>2</mi></msub>\
+    <mo>=</mo>\
+        <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+        <mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo>\
+    <mo>=</mo><mn>2</mn>\
+	</math >\
+<math\
+  xmlns='http://www.w3.org/1998/Math/MathML'\
+  class='math-block'\
+  display='block'\
+>\
+    <mi>Δ</mi><msub><mi>w</mi><mi>0</mi></msub>\
+    <mo>=</mo>\
+    <mi>η</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo>\
+    <mn>1</mn>\
+    <mo>=</mo><mo>−</mo><mn>2</mn>\
+</math >\
+      </p>"
     },
     {
       name: 'perceptron_rule_end',
-      text: '<p>Applying change. All examples are classified correctly, thus the algorithm terminates.</p>'
+      text: '<p>All examples are classified correctly, thus the algorithm terminates.</p>'
     },
     {
       name: 'xor_start',

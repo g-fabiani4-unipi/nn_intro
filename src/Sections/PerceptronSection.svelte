@@ -72,7 +72,10 @@
 		}
 
 		// Perceptron rule parameters update
-		if (steps[currentStep].name === 'enter_network') {
+		if (
+			steps[currentStep].name === 'enter_network' ||
+			steps[currentStep].name === 'enter_output'
+		) {
 			params.set(network[currentNetwork].links.map((link) => link.weight));
 		}
 		if (
@@ -87,34 +90,45 @@
 		}
 		if (steps[currentStep].name === 'perceptron_rule_2') {
 			highlightExample(2);
+			setParams([1, 7, 7]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_3') {
 			setParams([-1, 9, 5]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_4') {
 			highlightExample(3);
+			setParams([-1, 9, 5]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_5') {
 			highlightExample(4);
+			setParams([-1, 9, 5]);
 		}
-		if (steps[currentStep].name === 'perceptron_rule_6') {
+		if (
+			steps[currentStep].name === 'perceptron_rule_6' ||
+			steps[currentStep].name === 'perceptron_rule_7'
+		) {
 			highlightExample(4);
 			setParams([1, 7, 3]);
 		}
-		if (steps[currentStep].name === 'perceptron_rule_7') {
+		if (steps[currentStep].name === 'perceptron_rule_8') {
 			highlightExample(4);
 			setParams([3, 5, 1]);
 		}
-		if (steps[currentStep].name === 'perceptron_rule_8') {
-			highlightExample(2);
-			setParams([5, 3, 1]);
-		}
 		if (steps[currentStep].name === 'perceptron_rule_9') {
 			highlightExample(4);
-			setParams([3, 5, -1]);
+			setParams([5, 3, -1]);
+		}
+		if (steps[currentStep].name === 'perceptron_rule_10') {
+			highlightExample(2);
+			setParams([5, 3, -1]);
+		}
+		if (steps[currentStep].name === 'perceptron_rule_11') {
+			highlightExample(2);
+			setParams([3, 5, -3]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_end') {
-			setParams([5, 3, -3]);
+			highlightExample(null);
+			setParams([3, 5, -3]);
 		}
 	} else {
 		//  Set initial values
