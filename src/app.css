@@ -45,7 +45,7 @@ text {
 }
 
 .step {
-    height: 80vh;
+    height: 75vh;
     display: flex;
     place-items: center;
     justify-content: center;
@@ -92,6 +92,10 @@ text {
     .sticky {
         width: 95%;
         margin: auto;
+    }
+
+    .step {
+        height: 90vh;
     }
 }
 
