@@ -42,13 +42,13 @@
 			on:click|stopPropagation={() => null}
 		/>
 	{:else}
-		<div>{weight}</div>
+		<div class:disabled={disableInput}>{weight}</div>
 	{/if}
 </foreignObject>
 
 <style>
 	foreignObject {
-		height: 2rem;
+		height: 3rem;
 		width: 3.3rem;
 		color: black;
 	}
@@ -69,5 +69,11 @@
 		padding: 4px;
 		border: 1px solid var(--black-olive);
 		font-size: 1rem;
+	}
+
+	foreignObject > div.disabled {
+		color: color-mix(in srgb, var(--black-olive), white 30%);
+		border-color: color-mix(in (srgb), var(--black-olive), white 30%);
+		cursor: not-allowed;
 	}
 </style>
