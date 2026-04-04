@@ -19,6 +19,11 @@ body {
     margin: 0;
 }
 
+/* Override foreignObject focus styling in chrome */
+foreignObject:focus {
+    outline: none;
+}
+
 text {
     font-family: 'Roboto', sans-serif;
     stroke: var(--black-olive);
