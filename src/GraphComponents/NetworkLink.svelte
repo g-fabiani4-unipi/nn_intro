@@ -1,7 +1,10 @@
 <script>
 	import { tweened } from 'svelte/motion';
 
-	export let link;
+	export let x1;
+	export let x2;
+	export let y1;
+	export let y2;
 	export let colorScale;
 	export let linkScale;
 	export let disableInput;
@@ -17,12 +20,15 @@
 
 	$: link_weight.set(+weight);
 
-	$: midpoint_x = link.x1 + (link.x2 - link.x1) / 3;
-	$: midpoint_y = link.y1 + (link.y2 - link.y1) / 3;
+	$: midpoint_x = x1 + (x2 - x1) / 3;
+	$: midpoint_y = y1 + (y2 - y1) / 3;
 </script>
 
 <line
-	{...link}
+	x1={x1}
+	x2={x2}
+	y1={y1}
+	y2={y2}
 	stroke={colorScale($link_weight)}
 	stroke-width={linkScale(Math.abs($link_weight))}
 />
@@ -48,8 +54,8 @@
 
 <style>
 	foreignObject {
-		height: 3rem;
-		width: 3.3rem;
+		height: 100%;
+		width: 100%;
 		color: black;
 	}
 

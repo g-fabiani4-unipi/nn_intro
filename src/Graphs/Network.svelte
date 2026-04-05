@@ -69,6 +69,14 @@
 			.force('charge', forceManyBody().strength(-3800))
 			.force('center', forceCenter(width / 2, height / 2).strength(0.5));
 	}
+
+	function clampX(x) {
+		return Math.max(Math.min(x, innerWidth - nodeRadius), nodeRadius);
+	}
+
+	function clampY(y) {
+		return Math.max(Math.min(y, innerHeight - nodeRadius), nodeRadius);
+	}
 </script>
 
 <GraphContainer
@@ -80,7 +88,10 @@
 		{#each links as link, i}
 			{#if !link.source.startsWith('b') || showBias}
 				<NetworkLink
-					link={link}
+					x1={clampX(link.x1)}
+					x2={clampX(link.x2)}
+					y1={clampY(link.y1)}
+					y2={clampY(link.y2)}
 					colorScale={colorScale}
 					linkScale={linkScale}
 					disableInput={disableInput}
@@ -91,7 +102,9 @@
 		{#each nodes as node (node.id)}
 			{#if !node.id.startsWith('b') || showBias}
 				<NetworkNode
-					node={node}
+					x={clampX(node.x)}
+					y={clampY(node.y)}
+					id={node.id}
 					nodeRadius={nodeRadius}
 				/>
 			{/if}

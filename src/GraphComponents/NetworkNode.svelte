@@ -1,5 +1,7 @@
 <script>
-	export let node;
+	export let x;
+	export let y;
+	export let id;
 	export let nodeRadius;
 
 	import { selectedNode } from '../stores';
@@ -18,24 +20,24 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <g
 	role="graphics-object"
-	on:click|stopPropagation={() => handleClick(node.id)}
+	on:click|stopPropagation={() => handleClick(id)}
 >
 	<circle
 		class="network-node"
-		class:bias={node.id[0] === 'b'}
-		cx={node.x}
-		cy={node.y}
+		class:bias={id[0] === 'b'}
+		cx={x}
+		cy={y}
 		fill="white"
 		r={nodeRadius}
-		class:selected={node.id === $selectedNode}
+		class:selected={id === $selectedNode}
 	/>
 	<text
 		class="network-node-label"
-		class:bias={node.id[0] === 'b'}
-		x={node.x}
-		y={node.y}
+		class:bias={id[0] === 'b'}
+		x={x}
+		y={y}
 		text-anchor="middle"
-		dominant-baseline="middle">{node.id[0] === 'b' ? 1 : node.id}</text
+		dominant-baseline="middle">{id[0] === 'b' ? 1 : id}</text
 	>
 </g>
 
