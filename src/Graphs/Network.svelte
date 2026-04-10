@@ -26,7 +26,7 @@
 	const height = 400;
 	const nodeRadius = 25;
 
-	const xScale = scaleLinear().domain([1, 5]).range([0, innerWidth]);
+	const xScale = scaleLinear().domain([1, 5]).range([0, width]);
 	const colorScale = scaleSequentialSymlog([-7, 7], interpolatePiYG);
 	const linkScale = scaleSqrt().domain([0, 10]).range([3, 15]);
 
@@ -71,11 +71,11 @@
 	}
 
 	function clampX(x) {
-		return Math.max(Math.min(x, innerWidth - nodeRadius), nodeRadius);
+		return Math.max(Math.min(x, width - nodeRadius), nodeRadius);
 	}
 
 	function clampY(y) {
-		return Math.max(Math.min(y, innerHeight - nodeRadius), nodeRadius);
+		return Math.max(Math.min(y, height - nodeRadius), nodeRadius);
 	}
 </script>
 
