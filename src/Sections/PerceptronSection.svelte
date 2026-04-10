@@ -9,11 +9,12 @@
 	import { selectedNode } from '../stores';
 
 	export let network;
+	export let scrollDir;
 
 	const steps = allSteps['perceptron'];
 
-	let data;
 	let currentStep;
+	let data;
 	let targetFunc = 'or';
 	let transformData;
 	let showData;
@@ -23,6 +24,8 @@
 	let showHiddenLayer;
 	let showBias;
 	let currentNetwork = 'perceptron';
+
+	$: console.log('scroll direction', scrollDir);
 
 	function setParams(paramList) {
 		const newParams = $params;

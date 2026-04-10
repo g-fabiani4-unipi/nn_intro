@@ -11,6 +11,7 @@
 		interpolateLab,
 	} from 'd3';
 	import Scrolly from '../UI/Scrolly.svelte';
+	import checkScrollDir from '../utils/checkScrollDir';
 	import { allSteps, blackOlive, gray, positiveColor } from '../constants';
 	import Pixel from '../GraphComponents/Pixel.svelte';
 	import Circle from '../GraphComponents/Circle.svelte';
@@ -21,6 +22,7 @@
 	import BarplotBar from '../GraphComponents/BarplotBar.svelte';
 
 	export let network;
+	export let scrollDir;
 
 	const steps = allSteps['mnist'];
 
@@ -40,7 +42,7 @@
 	const colorScale = scaleSequentialSqrt([-1, 1], interpolatePiYG);
 	const barScale = scaleLinear().domain([0, 1]).range([0, 180]);
 
-	let currentStep = 0;
+	let currentStep;
 	let digits;
 	let testExample;
 	let decomposeInput;
@@ -58,6 +60,8 @@
 	let split = false;
 	let magnify = false;
 	let colorLinks = false;
+
+	$: console.log('scroll direction', scrollDir);
 
 	// Handle scrollytelling steps
 	$: {
@@ -148,10 +152,6 @@
 				target: nodes.find((node) => node.id === link.target),
 			}));
 		});
-	}
-
-	function handleClickDigit(digit) {
-		testExample = digit;
 	}
 </script>
 
