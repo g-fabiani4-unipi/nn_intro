@@ -237,13 +237,6 @@
 		grid-column: 1/3;
 		height: 100%;
 		min-height: 0;
-		display: flex;
-	}
-
-	.main-part {
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
 	}
 
 	.column-data > div {
@@ -252,10 +245,8 @@
 
 	.wrapper {
 		display: grid;
-		flex: 1 1 auto;
-		margin-right: 10px;
-		gap: 5px;
-		grid-template-columns: 1fr minmax(320px, 1fr);
+		column-gap: 5px;
+		grid-template-columns: 1fr 1fr;
 		grid-template-rows: minmax(0, 1fr) 390px;
 		min-height: 0px;
 		max-height: 800px;

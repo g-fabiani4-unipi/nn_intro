@@ -77,7 +77,7 @@
 				imageData.data[++p] = opacity * 255;
 			}
 		}
-		ctx.putImageData(imageData, margin.top, margin.left);
+		ctx.putImageData(imageData, margin.left, margin.top);
 	}
 
 	onMount(() => {

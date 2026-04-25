@@ -17,7 +17,7 @@
 	export let showCanvas;
 	export let showHiddenLayer;
 
-	const margin = { top: 20, right: 10, bottom: 10, left: 20 };
+	const margin = { top: 25, right: 10, bottom: 10, left: 20 };
 
 	const innerWidth = 300;
 	const innerHeight = 300;
@@ -43,67 +43,71 @@
 	}
 </script>
 
-{#if showCanvas}
-	<Canvas
-		width={width}
-		height={height}
-		--position="absolute"
-	>
-		<Heatmap
-			currentNetwork={currentNetwork}
+<div id="output-graph-container">
+	{#if showCanvas}
+		<div>
+			<Canvas
+				width={width}
+				height={height}
+			>
+				<Heatmap
+					currentNetwork={currentNetwork}
+					width={width}
+					height={height}
+					margin={margin}
+					xScale={xScale}
+					yScale={yScale}
+					colorScale={colorScale}
+					showProjection={showProjection}
+				/>
+			</Canvas>
+		</div>
+	{/if}
+	<div>
+		<GraphContainer
 			width={width}
 			height={height}
 			margin={margin}
-			xScale={xScale}
-			yScale={yScale}
-			colorScale={colorScale}
-			showProjection={showProjection}
-		/>
-	</Canvas>
-{/if}
-<GraphContainer
-	width={width}
-	height={height}
-	margin={margin}
-	--position="absolute"
->
-	{#each data[targetFunc] as d, i}
-		{#if showData}
-			<circle
-				transition:fly={{ duration: 1000, y: -300, delay: i * 500 }}
-				cx={showProjection
-					? xScale(hiddenFeatures(d, $params).h1)
-					: xScale(d.x1)}
-				cy={showProjection
-					? yScale(hiddenFeatures(d, $params).h2)
-					: yScale(d.x2)}
-				r={d.highlighted ? 12 : 8}
-				fill={colorScale(d.y)}
-				on:mouseenter={() => highlightExample(d.example)}
-				on:mouseleave={() => removeHighlight()}
-				role="graphics-object"
+		>
+			{#each data[targetFunc] as d, i}
+				{#if showData}
+					<circle
+						transition:fly={{ duration: 1000, y: -300, delay: i * 500 }}
+						cx={showProjection
+							? xScale(hiddenFeatures(d, $params).h1)
+							: xScale(d.x1)}
+						cy={showProjection
+							? yScale(hiddenFeatures(d, $params).h2)
+							: yScale(d.x2)}
+						r={d.highlighted ? 12 : 8}
+						fill={colorScale(d.y)}
+						on:mouseenter={() => highlightExample(d.example)}
+						on:mouseleave={() => removeHighlight()}
+						role="graphics-object"
+					/>
+				{/if}
+			{/each}
+			<Axis
+				type="bottom"
+				innerHeight={innerHeight}
+				innerWidth={innerWidth}
+				scale={xScale}
+				offset={yScale(0)}
+				tickValues={[-2, -1, 1, 2]}
+				label={showProjection ? 'h1' : 'x1'}
 			/>
-		{/if}
-	{/each}
-	<Axis
-		type="bottom"
-		innerHeight={innerHeight}
-		innerWidth={innerWidth}
-		scale={xScale}
-		offset={yScale(0)}
-		tickValues={[-2, -1, 1, 2]}
-		label={showProjection ? 'h1' : 'x1'}
-	/>
-	<Axis
-		type="left"
-		innerHeight={innerHeight}
-		innerWidth={innerWidth}
-		scale={yScale}
-		offset={xScale(0)}
-		tickValues={[-2, -1, 1, 2]}
-		label={showProjection ? 'h2' : 'x2'}
-	/>
-</GraphContainer>
+			<Axis
+				type="left"
+				innerHeight={innerHeight}
+				innerWidth={innerWidth}
+				scale={yScale}
+				offset={xScale(0)}
+				tickValues={[-2, -1, 1, 2]}
+				label={showProjection ? 'h2' : 'x2'}
+			/>
+		</GraphContainer>
+	</div>
+</div>
 
 <style>
 	circle {
@@ -111,5 +115,16 @@
 			all 1.5s ease,
 			r 0.4s ease;
 		stroke: var(--black-olive);
+	}
+
+	#output-graph-container {
+		display: grid;
+		grid-template: 1fr / 1fr;
+		place-items: center;
+	}
+
+	#output-graph-container > * {
+		grid-column: 1 / 1;
+		grid-row: 1 / 1;
 	}
 </style>
