@@ -49,7 +49,7 @@
 	table {
 		table-layout: fixed;
 		width: 100%;
-		max-width: 450px;
+		max-width: 400px;
 		margin-inline: auto;
 		border-collapse: collapse;
 		border-top: 1px solid var(--black-olive);
@@ -81,20 +81,12 @@
 		background-color: var(--gray);
 	}
 
-	tbody tr.highlighted {
+	tbody tr.highlighted td,
+	tbody tr.highlighted th {
 		background-color: color-mix(
 			in srgb,
 			var(--hunyadi-yellow),
 			transparent 30%
-		);
-		transition: all 300ms;
-	}
-
-	tbody tr.highlighted td:last-child {
-		background-color: color-mix(
-			in srgb,
-			var(--hunyadi-yellow),
-			transparent 80%
 		);
 		transition: all 300ms;
 	}
