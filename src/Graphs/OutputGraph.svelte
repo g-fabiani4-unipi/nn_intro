@@ -19,8 +19,8 @@
 
 	const margin = { top: 25, right: 10, bottom: 10, left: 20 };
 
-	const innerWidth = 300;
-	const innerHeight = 300;
+	const innerWidth = 320;
+	const innerHeight = 320;
 	const width = innerWidth + margin.left + margin.right;
 	const height = innerHeight + margin.top + margin.bottom;
 
@@ -45,68 +45,66 @@
 
 <div id="output-graph-container">
 	{#if showCanvas}
-		<div>
-			<Canvas
-				width={width}
-				height={height}
-			>
-				<Heatmap
-					currentNetwork={currentNetwork}
-					width={width}
-					height={height}
-					margin={margin}
-					xScale={xScale}
-					yScale={yScale}
-					colorScale={colorScale}
-					showProjection={showProjection}
-				/>
-			</Canvas>
-		</div>
-	{/if}
-	<div>
-		<GraphContainer
+		<Canvas
 			width={width}
 			height={height}
-			margin={margin}
+			responsive={true}
 		>
-			{#each data[targetFunc] as d, i}
-				{#if showData}
-					<circle
-						transition:fly={{ duration: 1000, y: -300, delay: i * 500 }}
-						cx={showProjection
-							? xScale(hiddenFeatures(d, $params).h1)
-							: xScale(d.x1)}
-						cy={showProjection
-							? yScale(hiddenFeatures(d, $params).h2)
-							: yScale(d.x2)}
-						r={d.highlighted ? 12 : 8}
-						fill={colorScale(d.y)}
-						on:mouseenter={() => highlightExample(d.example)}
-						on:mouseleave={() => removeHighlight()}
-						role="graphics-object"
-					/>
-				{/if}
-			{/each}
-			<Axis
-				type="bottom"
-				innerHeight={innerHeight}
-				innerWidth={innerWidth}
-				scale={xScale}
-				offset={yScale(0)}
-				tickValues={[-2, -1, 1, 2]}
-				label={showProjection ? 'h1' : 'x1'}
+			<Heatmap
+				currentNetwork={currentNetwork}
+				width={width}
+				height={height}
+				margin={margin}
+				xScale={xScale}
+				yScale={yScale}
+				colorScale={colorScale}
+				showProjection={showProjection}
 			/>
-			<Axis
-				type="left"
-				innerHeight={innerHeight}
-				innerWidth={innerWidth}
-				scale={yScale}
-				offset={xScale(0)}
-				tickValues={[-2, -1, 1, 2]}
-				label={showProjection ? 'h2' : 'x2'}
-			/>
-		</GraphContainer>
-	</div>
+		</Canvas>
+	{/if}
+	<GraphContainer
+		width={width}
+		height={height}
+		margin={margin}
+		responsive={true}
+	>
+		{#each data[targetFunc] as d, i}
+			{#if showData}
+				<circle
+					transition:fly={{ duration: 1000, y: -300, delay: i * 500 }}
+					cx={showProjection
+						? xScale(hiddenFeatures(d, $params).h1)
+						: xScale(d.x1)}
+					cy={showProjection
+						? yScale(hiddenFeatures(d, $params).h2)
+						: yScale(d.x2)}
+					r={d.highlighted ? 12 : 8}
+					fill={colorScale(d.y)}
+					on:mouseenter={() => highlightExample(d.example)}
+					on:mouseleave={() => removeHighlight()}
+					role="graphics-object"
+				/>
+			{/if}
+		{/each}
+		<Axis
+			type="bottom"
+			innerHeight={innerHeight}
+			innerWidth={innerWidth}
+			scale={xScale}
+			offset={yScale(0)}
+			tickValues={[-2, -1, 1, 2]}
+			label={showProjection ? 'h1' : 'x1'}
+		/>
+		<Axis
+			type="left"
+			innerHeight={innerHeight}
+			innerWidth={innerWidth}
+			scale={yScale}
+			offset={xScale(0)}
+			tickValues={[-2, -1, 1, 2]}
+			label={showProjection ? 'h2' : 'x2'}
+		/>
+	</GraphContainer>
 </div>
 
 <style>
@@ -121,10 +119,18 @@
 		display: grid;
 		grid-template: 1fr / 1fr;
 		place-items: center;
+		min-height: 0;
+		margin-top: auto;
+		margin-bottom: auto;
 	}
 
-	#output-graph-container > * {
+	#output-graph-container > :global(*) {
 		grid-column: 1 / 1;
 		grid-row: 1 / 1;
+		min-height: 0;
+		max-height: 100%;
+		max-width: 100%;
+		height: auto;
+		width: auto;
 	}
 </style>

@@ -187,7 +187,10 @@
 	{:else}
 		<div class="sticky main-part">
 			<div class="wrapper">
-				<div class="column-network">
+				<div
+					id="network"
+					class="column"
+				>
 					<Network
 						bind:network={network}
 						showNetwork={showNetwork}
@@ -196,19 +199,23 @@
 						disableInput={disableInput}
 					/>
 				</div>
-				<div class="column-data">
+				<div
+					id="data"
+					class="column"
+				>
 					<h3>Data</h3>
-					<div>
-						<DataTable
-							data={data}
-							targetFunc={targetFunc}
-							highlightExample={highlightExample}
-							removeHighlight={removeHighlight}
-							transformData={transformData}
-						/>
-					</div>
+					<DataTable
+						data={data}
+						targetFunc={targetFunc}
+						highlightExample={highlightExample}
+						removeHighlight={removeHighlight}
+						transformData={transformData}
+					/>
 				</div>
-				<div class="column-output">
+				<div
+					id="output"
+					class="column"
+				>
 					<h3>
 						Output
 						{#if $selectedNode}
@@ -233,22 +240,28 @@
 </section>
 
 <style>
-	.column-network {
+	.wrapper {
+		display: grid;
+		column-gap: 5px;
+		grid-template-columns: minmax(260px, 1fr) 1fr;
+		grid-template-rows: 1fr 1fr;
+		min-height: 0px;
+		max-height: 800px;
+		height: 100vh;
+		max-width: 1000px;
+	}
+
+	#network {
 		grid-column: 1/3;
 		height: 100%;
 		min-height: 0;
 	}
 
-	.column-data > div {
-		padding-top: 20px;
-	}
-
-	.wrapper {
-		display: grid;
-		column-gap: 5px;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: minmax(0, 1fr) 390px;
-		min-height: 0px;
-		max-height: 800px;
+	.column {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 0;
+		min-width: 0;
 	}
 </style>

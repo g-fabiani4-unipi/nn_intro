@@ -48,12 +48,15 @@
 <style>
 	table {
 		table-layout: fixed;
-		width: 75%;
-		margin: 10px auto;
+		width: 100%;
+		max-width: 450px;
+		margin-inline: auto;
 		border-collapse: collapse;
 		border-top: 1px solid var(--black-olive);
 		border-bottom: 1px solid var(--black-olive);
 		font-size: 1.2rem;
+		margin-top: auto;
+		margin-bottom: auto;
 	}
 
 	thead {

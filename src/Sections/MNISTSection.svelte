@@ -172,127 +172,125 @@
 		<div class="sticky loading">loading...</div>
 	{:else}
 		<div class="sticky main-part">
-			<div style="height: 100vh;">
-				<Canvas
-					height={height}
-					width={width}
-					scale={true}
-					margin={margin}
-					responsive={true}
-				>
-					{#each digits as digit, i}
-						<Example
-							x={!enterExamples ? -200 : (i % 10) * 11 * pixelWidth + 20}
-							y={split && digit.group === 'test'
-								? Math.floor(i / 10) * 11 * pixelWidth + 200
-								: Math.floor(i / 10) * 11 * pixelWidth}
-							pixelWidth={pixelWidth}
-							stroke={nodeStrokeStyle}
-							scale={grayScale}
-							digit={digit}
-							opacity={magnify ? 0 : 1}
-						/>
-					{/each}
-
-					{#each links as link}
-						<Line
-							x1={link.source.cx}
-							y1={link.source.cy}
-							x2={link.target.cx}
-							y2={link.target.cy}
-							stroke={colorLinks
-								? colorScale(link.weight)
-								: interpolateLab(nodeStrokeStyle, 'white')(0.6)}
-							opacity={enterLinks ? 1 : 0}
-						/>
-					{/each}
-					{#each imgPixels as pixel (pixel.id)}
-						<Pixel
-							x={enterInputNodes
-								? xScale(1) - nodeRadius
-								: decomposeInput
-									? 4
-									: (pixel.index % 8) * maxPixelWidth + 20}
-							y={enterInputNodes && pixel.node
-								? pixel.node.cy - nodeRadius
-								: enterInputNodes && !pixel.node
-									? innerHeight / 2 - nodeRadius
-									: decomposeInput
-										? pixel.index * maxPixelWidth
-										: Math.floor(pixel.index / 8) * maxPixelWidth}
-							width={enterInputNodes ? nodeRadius * 2 : maxPixelWidth}
-							fill={enterOutpuNodes ? nodeFill : grayScale(pixel.value)}
-							opacity={!magnify ? 0 : enterInputNodes && !pixel.node ? 0 : 1}
-							index={pixel.index}
-							round={enterInputNodes}
-							strokeWidth={enterInputNodes ? nodeStrokeWidth : 0.5}
-							stroke={nodeStrokeStyle}
-							delay={!enterInputNodes}
-						/>
-					{/each}
-					<!-- Dots -->
-					{#each [-1, 0, 1] as dot}
-						<Circle
-							cx={xScale(1)}
-							cy={innerHeight / 2 + dot * 20}
-							fill={nodeStrokeStyle}
-							stroke={nodeStrokeStyle}
-							opacity={enterInputNodes ? 1 : 0}
-							r={4}
-							delay={1000}
-						/>
-					{/each}
-					<!-- Output nodes -->
-					{#each nodes.filter((n) => n.id.startsWith('o')) as node, i (node.id)}
-						<Circle
-							cx={enterOutpuNodes ? node.cx : node.cx + 300}
-							cy={node.cy}
-							fill={nodeFill}
-							opacity={enterOutpuNodes ? 1 : 0}
-							strokeWidth={nodeStrokeWidth}
-							stroke={nodeStrokeStyle}
-							r={nodeRadius}
-						/>
-						<Text
-							x={enterOutpuNodes ? node.cx + 15 : node.cx + 15 + 300}
-							y={node.cy}
-							baseline="middle"
-							color={nodeStrokeStyle}
-							content={i}
-							opacity={enterOutpuNodes ? 1 : 0}
-						/>
-						<BarplotBar
-							x={innerWidth - 200}
-							y={node.cy - nodeRadius}
-							height={nodeRadius * 2}
-							width={testExample ? barScale(testExample.proba[i]) : 0}
-							value={testExample ? testExample.proba[i] : 0}
-							stroke={nodeStrokeStyle}
-							fill={barFill}
-						/>
-					{/each}
-					<!-- Hidden nodes -->
-					{#each nodes.filter((n) => n.id.startsWith('h') || n.id.startsWith('k')) as node}
-						<Circle
-							cx={node.cx}
-							cy={enterHiddenNodes ? node.cy : node.cy + 300}
-							fill={nodeFill}
-							opacity={enterHiddenNodes ? 1 : 0}
-							strokeWidth={nodeStrokeWidth}
-							stroke={nodeStrokeStyle}
-							r={nodeRadius}
-						/>
-					{/each}
+			<Canvas
+				height={height}
+				width={width}
+				scale={true}
+				margin={margin}
+				responsive={true}
+			>
+				{#each digits as digit, i}
 					<Example
-						x={testExample ? innerWidth - maxPixelWidth * 8 : innerWidth + 100}
-						y={0}
-						pixelWidth={maxPixelWidth}
+						x={!enterExamples ? -200 : (i % 10) * 11 * pixelWidth + 20}
+						y={split && digit.group === 'test'
+							? Math.floor(i / 10) * 11 * pixelWidth + 200
+							: Math.floor(i / 10) * 11 * pixelWidth}
+						pixelWidth={pixelWidth}
 						stroke={nodeStrokeStyle}
 						scale={grayScale}
-						digit={testExample}
+						digit={digit}
+						opacity={magnify ? 0 : 1}
 					/>
-				</Canvas>
-			</div>
+				{/each}
+
+				{#each links as link}
+					<Line
+						x1={link.source.cx}
+						y1={link.source.cy}
+						x2={link.target.cx}
+						y2={link.target.cy}
+						stroke={colorLinks
+							? colorScale(link.weight)
+							: interpolateLab(nodeStrokeStyle, 'white')(0.6)}
+						opacity={enterLinks ? 1 : 0}
+					/>
+				{/each}
+				{#each imgPixels as pixel (pixel.id)}
+					<Pixel
+						x={enterInputNodes
+							? xScale(1) - nodeRadius
+							: decomposeInput
+								? 4
+								: (pixel.index % 8) * maxPixelWidth + 20}
+						y={enterInputNodes && pixel.node
+							? pixel.node.cy - nodeRadius
+							: enterInputNodes && !pixel.node
+								? innerHeight / 2 - nodeRadius
+								: decomposeInput
+									? pixel.index * maxPixelWidth
+									: Math.floor(pixel.index / 8) * maxPixelWidth}
+						width={enterInputNodes ? nodeRadius * 2 : maxPixelWidth}
+						fill={enterOutpuNodes ? nodeFill : grayScale(pixel.value)}
+						opacity={!magnify ? 0 : enterInputNodes && !pixel.node ? 0 : 1}
+						index={pixel.index}
+						round={enterInputNodes}
+						strokeWidth={enterInputNodes ? nodeStrokeWidth : 0.5}
+						stroke={nodeStrokeStyle}
+						delay={!enterInputNodes}
+					/>
+				{/each}
+				<!-- Dots -->
+				{#each [-1, 0, 1] as dot}
+					<Circle
+						cx={xScale(1)}
+						cy={innerHeight / 2 + dot * 20}
+						fill={nodeStrokeStyle}
+						stroke={nodeStrokeStyle}
+						opacity={enterInputNodes ? 1 : 0}
+						r={4}
+						delay={1000}
+					/>
+				{/each}
+				<!-- Output nodes -->
+				{#each nodes.filter((n) => n.id.startsWith('o')) as node, i (node.id)}
+					<Circle
+						cx={enterOutpuNodes ? node.cx : node.cx + 300}
+						cy={node.cy}
+						fill={nodeFill}
+						opacity={enterOutpuNodes ? 1 : 0}
+						strokeWidth={nodeStrokeWidth}
+						stroke={nodeStrokeStyle}
+						r={nodeRadius}
+					/>
+					<Text
+						x={enterOutpuNodes ? node.cx + 15 : node.cx + 15 + 300}
+						y={node.cy}
+						baseline="middle"
+						color={nodeStrokeStyle}
+						content={i}
+						opacity={enterOutpuNodes ? 1 : 0}
+					/>
+					<BarplotBar
+						x={innerWidth - 200}
+						y={node.cy - nodeRadius}
+						height={nodeRadius * 2}
+						width={testExample ? barScale(testExample.proba[i]) : 0}
+						value={testExample ? testExample.proba[i] : 0}
+						stroke={nodeStrokeStyle}
+						fill={barFill}
+					/>
+				{/each}
+				<!-- Hidden nodes -->
+				{#each nodes.filter((n) => n.id.startsWith('h') || n.id.startsWith('k')) as node}
+					<Circle
+						cx={node.cx}
+						cy={enterHiddenNodes ? node.cy : node.cy + 300}
+						fill={nodeFill}
+						opacity={enterHiddenNodes ? 1 : 0}
+						strokeWidth={nodeStrokeWidth}
+						stroke={nodeStrokeStyle}
+						r={nodeRadius}
+					/>
+				{/each}
+				<Example
+					x={testExample ? innerWidth - maxPixelWidth * 8 : innerWidth + 100}
+					y={0}
+					pixelWidth={maxPixelWidth}
+					stroke={nodeStrokeStyle}
+					scale={grayScale}
+					digit={testExample}
+				/>
+			</Canvas>
 		</div>
 	{/if}
 </section>
