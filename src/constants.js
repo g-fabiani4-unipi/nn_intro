@@ -141,7 +141,7 @@ export const allSteps = {
 		<mi>E</mi>\
     <mo>=</mo>\
     <mi>t</mi><mo>−</mo><mi>y</mi>\
-    <mo>=</mo><mo>−</mo><mn>2<mn>\
+    <mo>=</mo><mo>−</mo><mn>2</mn>\
 	</math >\
       </p>"
     },
@@ -207,7 +207,7 @@ export const allSteps = {
 		<mi>E</mi>\
     <mo>=</mo>\
     <mi>t</mi><mo>−</mo><mi>y</mi>\
-    <mo>=</mo><mo>−</mo><mn>2<mn>\
+    <mo>=</mo><mo>−</mo><mn>2</mn>\
 	</math >\
       </p>"
     },
