@@ -20,7 +20,7 @@
 			<th></th>
 			<th>x<sub>1</sub></th>
 			<th>x<sub>2</sub></th>
-			<th>y</th>
+			<th>t</th>
 		</tr>
 	</thead>
 	<tbody>

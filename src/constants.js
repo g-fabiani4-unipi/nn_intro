@@ -98,7 +98,7 @@ export const allSteps = {
         >\
 		<mi>E</mi>\
     <mo>=</mo>\
-    <mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>pred</mi></msub>\
+    <mi>t</mi><mo>−</mo><mi>y</mi>\
 	</math >\
       </p>"
     },
@@ -140,7 +140,7 @@ export const allSteps = {
         >\
 		<mi>E</mi>\
     <mo>=</mo>\
-    <mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>pred</mi></msub>\
+    <mi>t</mi><mo>−</mo><mi>y</mi>\
     <mo>=</mo><mo>−</mo><mn>2<mn>\
 	</math >\
       </p>"
@@ -206,7 +206,7 @@ export const allSteps = {
         >\
 		<mi>E</mi>\
     <mo>=</mo>\
-    <mi>y</mi><mo>−</mo><msub><mi>y</mi><mi>pred</mi></msub>\
+    <mi>t</mi><mo>−</mo><mi>y</mi>\
     <mo>=</mo><mo>−</mo><mn>2<mn>\
 	</math >\
       </p>"
