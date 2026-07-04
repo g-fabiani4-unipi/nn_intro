@@ -54,8 +54,8 @@
 
 <style>
 	foreignObject {
-		height: 100%;
-		width: 100%;
+		height: 3rem;
+		width: 4rem;
 		color: black;
 	}
 
