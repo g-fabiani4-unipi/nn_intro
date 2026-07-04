@@ -1,6 +1,7 @@
 <script>
 	import neuronFigure from '../assets/512px-Neuron-figure.svg.png';
 	import perceptronFigure from '../assets/perceptron.svg';
+	import titlePageFigure from '../assets/title_page.png';
 </script>
 
 <div class="hero">
@@ -47,6 +48,13 @@
 		neuron proposed by Cornell Aeronautical Laboratory researcher
 		<strong>Frank Rosenblatt</strong> in 1957.
 	</p>
+	<figure id="fig-title-page">
+		<img
+			src={titlePageFigure}
+			alt="Title page of Rosenblatt's 1957 report."
+		/>
+	</figure>
+	<p>Some text here</p>
 	<figure id="fig-perceptron">
 		<img
 			src={perceptronFigure}
@@ -194,6 +202,9 @@
 	#fig-perceptron {
 		max-width: 500px;
 	}
+	#fig-title-page {
+		max-width: 500px;
+	}
 
 	figure img {
 		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
@@ -216,7 +227,6 @@
 	}
 
 	p.lead {
-		/* font-weight: 600; */
 		font-size: 2rem;
 		text-transform: uppercase;
 	}
