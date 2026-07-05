@@ -185,7 +185,7 @@ export const allSteps = {
     <p class='note'>Note that for convenience we are using <strong>learning rate</strong> of\
     <math\
           xmlns = 'http://www.w3.org/1998/Math/MathML'\
-      display='inline' class='math-block'>\
+      display='inline'>\
 		<mi>η</mi>\
     <mo>=</mo>\
     <mn>1</mn>\

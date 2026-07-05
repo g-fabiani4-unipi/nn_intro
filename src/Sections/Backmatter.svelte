@@ -18,13 +18,54 @@
 			<h2>Resources</h2>
 			<ul class="bibliography">
 				<li>
-					Alpaydin, E. & Kaynak, C. (1998). <em
-						>Optical Recognition of Handwritten Digits</em
-					>
+					<span class="author">Alpaydin, E. & Kaynak, C.</span> (1998).
+					<span class="title">Optical Recognition of Handwritten Digits</span>
 					[Dataset]. UCI Machine Learning Repository.
 					<a href="https://doi.org/10.24432/C50P49"
 						>https://doi.org/10.24432/C50P49</a
 					>.
+				</li>
+				<li>
+					<span class="author">Hedges, V.</span> (2022).
+					<span class="title">Introduction to Neuroscience</span>. Michigan
+					State University Libraries.
+					<a href="https://openbooks.lib.msu.edu/introneuroscience1/"
+						>https://openbooks.lib.msu.edu/introneuroscience1/</a
+					>
+				</li>
+				<li>
+					<span class="author">Lefkowitz, M.</span> (2019, September 25).
+					<span class="title"
+						>Professor’s perceptron paved the way for AI – 60 years too soon</span
+					>. Cornell Chronicle.
+					<a
+						href="https://news.cornell.edu/stories/2019/09/professors-perceptron-paved-way-ai-60-years-too-soon"
+						>https://news.cornell.edu/stories/2019/09/professors-perceptron-paved-way-ai-60-years-too-soon</a
+					>
+				</li>
+				<li>
+					<span class="author">Mitchell, T. M.</span> (1997).
+					<span class="title">Machine Learning</span>. McGraw-Hill.
+				</li>
+				<li>
+					<span class="author">Rosenblatt, F.</span> (1957).
+					<span class="title"
+						>The Perceptron: A Perceiving and Recognizing Automaton (project
+						PARA)</span
+					>
+					(Nos. 85-460-1). Cornell Aeronautical Laboratory.
+					<a
+						href="https://bpb-us-e2.wpmucdn.com/websites.umass.edu/dist/a/27637/files/2016/03/rosenblatt-1957.pdf"
+						>https://bpb-us-e2.wpmucdn.com/websites.umass.edu/dist/a/27637/files/2016/03/rosenblatt-1957.pdf</a
+					>
+				</li>
+				<li>
+					<span class="author">Rosenblatt, F.</span> (1960).
+					<span class="title">Perceptron Simulation Experiments</span>.
+					Proceedings of the IRE, 48(3), 301–309.
+					<a href="https://doi.org/10.1109/JRPROC.1960.287598"
+						>https://doi.org/10.1109/JRPROC.1960.287598</a
+					>
 				</li>
 			</ul>
 		</section>
@@ -67,5 +108,18 @@
 
 	ul.bibliography {
 		list-style: none;
+	}
+
+	ul.bibliography > li {
+		margin-top: 1rem;
+	}
+
+	.title {
+		font-style: italic;
+	}
+
+	.author {
+		font-weight: bolder;
+		font-variant: small-caps;
 	}
 </style>

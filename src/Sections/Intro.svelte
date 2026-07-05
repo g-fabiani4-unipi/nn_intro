@@ -33,6 +33,7 @@
 			alt="Schematic representation of a biological neuron."
 		/>
 		<figcaption>
+			Schematic representation of a biological neuron.
 			<a href="https://commons.wikimedia.org/wiki/File:Neuron-figure.svg"
 				>Nicolas.Rougier</a
 			>,
@@ -44,23 +45,79 @@
 <section class="prose">
 	<h2>This is your brain at Cornell</h2>
 	<p>
-		The <strong>perceptron</strong> is a computational model of the biological
-		neuron proposed by Cornell Aeronautical Laboratory researcher
-		<strong>Frank Rosenblatt</strong> in 1957.
+		In January 1957 <strong>Frank Rosenblatt</strong>, a researcher from the
+		<strong>Cornell Aeronautical Laboratory</strong>, submitted a proposal for
+		funding, ambitiously titled
+		<em>The Perceptron: a Perceiving and Recognizing Automaton</em>. In it
+		Rosenblatt requested funds for the design and construction of a
+		<strong>machine</strong> which he characterized as a &ldquo;electronic brain
+		model&rdquo;, claiming
+	</p>
+	<blockquote>
+		Devices of this sort are expected ultimately to be capable of concept
+		formation, language translation, collation of military intelligence, and the
+		solution of problems through inductive logic.
+	</blockquote>
+
+	<p>
+		According to Rosenblatt, the construction of the pilot device would require
+		the work of three people and a digital computer for eighteen months.
 	</p>
 	<figure id="fig-title-page">
 		<img
 			src={titlePageFigure}
-			alt="Title page of Rosenblatt's 1957 report."
+			alt="Title page of Rosenblatt's 1957 proposal for funding."
 		/>
+		<figcaption>
+			Title page of Rosenblatt's 1957 proposal for funding.
+		</figcaption>
 	</figure>
-	<p>Some text here</p>
+	<p>
+		Surely enough, in July 1958 the <strong
+			>U.S. office of Naval Research</strong
+		>
+		unveiled the <strong>Mark I Perceptron</strong>. In the demonstration that
+		followed, Rosenblatt's device &mdash; a <strong>5-ton</strong> IBM computer the
+		size of a room &mdash; was fed a series of punch cards until it ultimately was
+		able to discriminate cards which presented a marking on the left from cards marked
+		on the right.
+	</p>
+	<p>
+		In the following months experiments were conducted on the perceptron to see
+		it could be made to handle other <strong>binary classification</strong>
+		problems, of which the most challenging was telling apart the letters E and F.
+		The device did that with 80% accuracy.
+	</p>
+	<p>
+		By the onset of the <strong>1970s</strong>, interest in the perceptron, and
+		for biologically inspired computational systems in general, had waned. The
+		field had something of a resurgence in the <strong>1980s</strong>, when some
+		fundamental flaws of the perceptron were corrected by
+		<strong>stacking multiple layers of units</strong>
+		on top of each other. It was at this point in time that the technique was rebranded
+		as
+		<strong>Deep Learning</strong>, which stands for &ldquo;using <em>deep</em>
+		artificial neural networks for machine <em>learning</em>.&rdquo; But it
+		wasn't until the <strong>late aughts</strong>, once computational power had
+		dramatically increased and so had the availability of data, that
+		<strong>deep artificial neural networks</strong> became a commercially feasible
+		enterprise.
+	</p>
+	<p>
+		At its core, the <strong>perceptron</strong> is a very coarse computational
+		model of a biological neuron &mdash; or, more precisely, of a
+		<strong>1940s</strong> understanding of how neurons work in the human brain.
+	</p>
 	<figure id="fig-perceptron">
 		<img
 			src={perceptronFigure}
 			alt="Schematic representation of a perceptron with 3 inputs"
 		/>
+		<figcaption>
+			Schematic representation of a perceptron with 3 inputs.
+		</figcaption>
 	</figure>
+
 	<p>The perceptron only performs two operations:</p>
 	<p>First it computes a weighted sum of the inputs (plus the bias term)</p>
 	<math
