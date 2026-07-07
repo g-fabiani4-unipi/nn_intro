@@ -48,7 +48,7 @@ var nl=Object.defineProperty;var rl=(e,t,n)=>t in e?nl(e,t,{enumerable:!0,config
 		in a variety of adaptations unique to them,
 		<strong>neurons are still cells</strong>: they have all the basic features
 		of a typical mammalian cell, they contain all organelles present in other
-		type of cells and perform normal cellular functions like protein synthesis,
+		types of cells and perform normal cellular functions like protein synthesis,
 		packaging of molecules, cellular respiration <i>et cetera</i>.</p> <figure id="fig-neuron" class="svelte-bchbob"><img src="${Wf}" alt="Schematic representation of a typical biological neuron." class="svelte-bchbob"/> <figcaption class="svelte-bchbob"><p>A typical biological neuron. <strong>Dendrites</strong>
 				branch from the <strong>cell body</strong>, where the nucleus and other
 				organelles are located. The <strong>axon</strong> extends out from the body
