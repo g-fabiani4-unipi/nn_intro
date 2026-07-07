@@ -81,6 +81,10 @@
 		background-color: var(--gray);
 	}
 
+	tbody tr {
+		cursor: pointer;
+	}
+
 	tbody tr.highlighted td,
 	tbody tr.highlighted th {
 		background-color: color-mix(

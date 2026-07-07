@@ -113,6 +113,7 @@
 			all 1.5s ease,
 			r 0.4s ease;
 		stroke: var(--black-olive);
+		cursor: pointer;
 	}
 
 	#output-graph-container {

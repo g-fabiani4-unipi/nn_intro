@@ -21,6 +21,7 @@
 <g
 	role="graphics-object"
 	on:click|stopPropagation={() => handleClick(id)}
+	class={id.startsWith('h') && 'clickable'}
 >
 	<circle
 		class="network-node"
@@ -61,5 +62,9 @@
 	}
 	.network-node-label.bias {
 		opacity: 0.6;
+	}
+
+	.clickable {
+		cursor: pointer;
 	}
 </style>
