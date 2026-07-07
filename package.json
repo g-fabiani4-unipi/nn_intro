@@ -1,9 +1,24 @@
 {
-  "name": "svelte-d3-starter",
-  "private": true,
-  "version": "0.0.0",
+  "name": "nn_intro",
+  "description": "The Perceptron: a Visual Introduction to Deep Learning. Powered by Svelte + D3.js",
+  "private": false,
+  "version": "0.1.0",
   "type": "module",
   "homepage": "https://g-fabiani4-unipi.github.io/nn_intro/",
+  "author": {
+    "name": "Giulia Fabiani",
+    "email": "g.fabiani4@studenti.unipi.it",
+    "url": "https://github.com/g-fabiani4-unipi"
+  },
+  "bugs": {
+    "url": "https://github.com/g-fabiani4-unipi/nn_intro/issues",
+    "email": "g.fabiani4@studenti.unipi.it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-fabiani4-unipi/nn_intro.git"
+  },
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
