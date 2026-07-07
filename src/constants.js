@@ -346,7 +346,7 @@ export const allSteps = {
 		},
 		{
 			name: 'perceptron_rule_exercise',
-			text: `<p>We esort you to try out the perceptron learning rule in order to find a solution for the <strong>AND function</strong>.
+			text: `<p>We encourage you to try out the perceptron learning rule in order to find a solution for the <strong>AND function</strong>.
       From the present configuration of parameters  and with
       <math\
       xmlns = 'http://www.w3.org/1998/Math/MathML'\

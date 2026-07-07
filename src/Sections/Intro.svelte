@@ -29,12 +29,12 @@
 
 	<p>
 		Neurons are the <strong>basic unit of the brain</strong>. The main adaptive
-		function of neurons in <strong>sending electrical signals</strong>
+		function of neurons is <strong>sending electrical signals</strong>
 		over short and long distances in the body. While this function is translated
 		in a variety of adaptations unique to them,
 		<strong>neurons are still cells</strong>: they have all the basic features
 		of a typical mammalian cell, they contain all organelles present in other
-		type of cells and perform normal cellular functions like protein synthesis,
+		types of cells and perform normal cellular functions like protein synthesis,
 		packaging of molecules, cellular respiration <i>et cetera</i>.
 	</p>
 
@@ -114,7 +114,7 @@
 		<em>The Perceptron: a Perceiving and Recognizing Automaton</em>. In it,
 		Rosenblatt requested funds for the design and construction of an electronic
 		or electromechanical
-		<strong>machine</strong> which he characterized as a &ldquo;electronic brain
+		<strong>machine</strong> which he characterized as an &ldquo;electronic brain
 		model&rdquo;, claiming
 	</p>
 	<blockquote>
@@ -162,13 +162,13 @@
 		as
 		<strong>Deep Learning</strong>, which stands for &ldquo;using <em>deep</em>
 		artificial neural networks for machine <em>learning</em>.&rdquo; But it
-		wasn't until the <strong>late aughts</strong>, once computational power had
+		wasn't until <strong>around 2010</strong>, once computational power had
 		dramatically increased and so had the availability of data, that
 		<strong>deep artificial neural networks</strong> became a commercially feasible
 		enterprise.
 	</p>
 	<p>
-		At its core, the <strong>perceptron</strong> is a very coarse computational
+		At its core, the <strong>perceptron</strong> is a very crude computational
 		model of a biological neuron &mdash; or, more precisely, of a
 		<strong>1940s</strong> understanding of how neurons work in the human brain.
 	</p>

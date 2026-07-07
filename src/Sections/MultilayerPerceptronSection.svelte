@@ -2,7 +2,7 @@
 	<p>
 		As we have seen, <strong>multi-layer perceptrons</strong> have much more
 		<strong>expressive power</strong> than single-layer perceptrons, but this
-		power comes with a cost. As a matter of fact, it is
+		power comes with a price. As a matter of fact, it is
 		<strong>not possible</strong>
 		to update the weights for the hidden layers using the
 		<strong>perceptron learning rule</strong>.
