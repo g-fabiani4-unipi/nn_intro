@@ -28,14 +28,14 @@
 	<h2>This is your brain</h2>
 
 	<p>
-		Neurons are the <strong>basic unit of the brain</strong>.The main adaptive
+		Neurons are the <strong>basic unit of the brain</strong>. The main adaptive
 		function of neurons in <strong>sending electrical signals</strong>
 		over short and long distances in the body. While this function is translated
 		in a variety of adaptations unique to them,
 		<strong>neurons are still cells</strong>: they have all the basic features
 		of a typical mammalian cell, they contain all organelles present in other
-		type of cells and perform normal cellular mechanisms like protein syntesis,
-		packaging of molecules and cellular respiration.
+		type of cells and perform normal cellular functions like protein synthesis,
+		packaging of molecules, cellular respiration <i>et cetera</i>.
 	</p>
 
 	<figure id="fig-neuron">
@@ -74,7 +74,7 @@
 		the neuron fires an electrical signal. Incoming signal can either be
 		<strong>excitatory</strong>, in which case they make the firing more likely,
 		or <strong>inhibitory</strong>, in which case they make the firing less
-		likely. The relative strenghts of the incoming connections is not fixed.
+		likely. The relative strengths of the incoming connections is not fixed.
 		This <strong>plasticity</strong> is one of the main mechanisms through which
 		the brain is
 		<strong>capable of updating itself on the basis of experience</strong>. The
@@ -85,17 +85,18 @@
 	<p>
 		The neuron firing is an all or nothing event: once the critical threshold is
 		crossed, the cell is flooded with positive ions, which makes the cell
-		membrane potential suddenly shift to positive. This is the <strong
+		membrane potential suddenly shift to positive. This event is called the <strong
 			>action potential</strong
-		>. Immediately after, positive ions are pumped out of the cell, restoring
-		its resting negative potential.
+		>
+		or <strong>spike</strong>. Immediately after, positive ions are pumped out
+		of the cell, restoring its resting negative potential.
 	</p>
 	<p>
 		The <strong>axon</strong> is responsible for transmitting the action
 		potential to other cells. When the action potential reaches an axon
-		terminal, the electric signal is converted in a chemical signal through the
-		release of specialized chemicals (<strong>neurotrasmitters</strong>) into
-		the empty space between the firing neuron and its target cell.
+		terminal, the electric signal is converted into a chemical signal through
+		the release of specialized chemicals (<strong>neurotrasmitters</strong>)
+		into the empty space between the firing neuron and its target cell.
 	</p>
 	<p>
 		The <strong>neurotransmitters</strong> bind to particular
@@ -110,7 +111,7 @@
 		In January 1957 <strong>Frank Rosenblatt</strong>, a researcher from the
 		<strong>Cornell Aeronautical Laboratory</strong>, submitted a proposal for
 		funding, ambitiously titled
-		<em>The Perceptron: a Perceiving and Recognizing Automaton</em>. In it
+		<em>The Perceptron: a Perceiving and Recognizing Automaton</em>. In it,
 		Rosenblatt requested funds for the design and construction of an electronic
 		or electromechanical
 		<strong>machine</strong> which he characterized as a &ldquo;electronic brain
@@ -141,13 +142,13 @@
 		>
 		unveiled the <strong>Mark I Perceptron</strong>. In the demonstration that
 		followed, Rosenblatt's device &mdash; a <strong>5-ton</strong> IBM computer the
-		size of a room &mdash; was fed a series of punch cards until it ultimately was
-		able to discriminate cards which presented a marking on the left from cards marked
-		on the right.
+		size of a room &mdash; was fed a series of punch cards until it eventually performed
+		satisfactorily in distinguishing cards which presented a marking on the left
+		from cards marked on the right.
 	</p>
 	<p>
 		In the following months experiments were conducted on the perceptron to see
-		it could be made to handle other <strong>binary classification</strong>
+		if it could be made to handle other <strong>binary classification</strong>
 		problems, of which the most challenging was telling apart the letters E and F.
 		The device did that with 80% accuracy.
 	</p>
@@ -204,7 +205,7 @@
 			<strong>bias</strong>. The perceptron performs a
 			<strong>weighted sum</strong>
 			of its inputs and then passes the result to an
-			<strong>activation fuction</strong>.
+			<strong>activation function</strong>.
 		</figcaption>
 	</figure>
 	<p>
@@ -246,7 +247,7 @@
 		<mo>.</mo>
 	</math>
 	<p>
-		And then it passes the ouput of the previous operation into an <strong
+		And then it passes the otuput of the previous operation into an <strong
 			>activation function
 		</strong>
 	</p>
