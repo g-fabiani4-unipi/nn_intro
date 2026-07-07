@@ -51,9 +51,11 @@
 		targetFunc =
 			currentStep >= steps.findIndex((s) => s.name === 'xor_start')
 				? 'xor'
-				: currentStep >= steps.findIndex((s) => s.name === 'and_start')
-					? 'and'
-					: 'or';
+				: steps[currentStep].name === 'perceptron_rule_exercise'
+					? 'or'
+					: currentStep >= steps.findIndex((s) => s.name === 'and_start')
+						? 'and'
+						: 'or';
 		showBias = currentStep >= steps.findIndex((s) => s.name === 'enter_bias');
 		currentNetwork =
 			currentStep >= steps.findIndex((s) => s.name === 'ml_perceptron_start')
@@ -85,7 +87,7 @@
 			steps[currentStep].name === 'or_end' ||
 			steps[currentStep].name === 'and_2'
 		) {
-			setParams([7, 7, 0]);
+			setParams([1, 1, 0]);
 		}
 		if (steps[currentStep].name === 'perceptron_rule_start') {
 			highlightExample(1);
@@ -129,10 +131,18 @@
 			highlightExample(2);
 			setParams([3, 5, -3]);
 		}
-		if (steps[currentStep].name === 'perceptron_rule_end') {
+		if (
+			steps[currentStep].name === 'perceptron_rule_end' ||
+			steps[currentStep].name === 'perceptron_rule_exercise'
+		) {
 			highlightExample(null);
 			setParams([3, 5, -3]);
 		}
+		// Hidden nodes inspection
+		if (steps[currentStep].name === 'ml_perceptron_4') selectedNode.set('h1');
+		else if (steps[currentStep].name === 'ml_perceptron_5')
+			selectedNode.set('h2');
+		else selectedNode.set(null);
 	} else {
 		//  Set initial values
 		transformData = false;
@@ -219,7 +229,7 @@
 					<h3>
 						Output
 						{#if $selectedNode}
-							for node
+							for unit
 							{$selectedNode[0]}<sub>{$selectedNode[1]}</sub>
 						{/if}
 					</h3>

@@ -27,7 +27,7 @@
       {
         "source": "x2",
         "target": "y",
-        "weight": 7
+        "weight": -3
       },
       {
         "source": "b",
