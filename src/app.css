@@ -157,6 +157,10 @@ text {
     padding: 0.5rem 1rem;
 }
 
+.prose ul > li {
+    margin-top: 1rem;
+}
+
 blockquote {
     background: color-mix(in srgb, var(--moonstone), transparent 90%);
     border-left: 10px solid color-mix(in srgb, var(--moonstone), transparent 30%);

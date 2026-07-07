@@ -27,20 +27,82 @@
 <section class="prose">
 	<h2>This is your brain</h2>
 
+	<p>
+		Neurons are the <strong>basic unit of the brain</strong>.The main adaptive
+		function of neurons in <strong>sending electrical signals</strong>
+		over short and long distances in the body. While this function is translated
+		in a variety of adaptations unique to them,
+		<strong>neurons are still cells</strong>: they have all the basic features
+		of a typical mammalian cell, they contain all organelles present in other
+		type of cells and perform normal cellular mechanisms like protein syntesis,
+		packaging of molecules and cellular respiration.
+	</p>
+
 	<figure id="fig-neuron">
 		<img
 			src={neuronFigure}
-			alt="Schematic representation of a biological neuron."
+			alt="Schematic representation of a typical biological neuron."
 		/>
 		<figcaption>
-			Schematic representation of a biological neuron.
-			<a href="https://commons.wikimedia.org/wiki/File:Neuron-figure.svg"
-				>Nicolas.Rougier</a
-			>,
-			<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>,
-			via Wikimedia Commons
+			<p>
+				A typical biological neuron. <strong>Dendrites</strong>
+				branch from the <strong>cell body</strong>, where the nucleus and other
+				organelles are located. The <strong>axon</strong> extends out from the body
+				and ends with branching terminals which relay the electrical signal to other
+				cells.
+			</p>
+			<p>
+				<a href="https://commons.wikimedia.org/wiki/File:Neuron-figure.svg"
+					>Nicolas.Rougier</a
+				>,
+				<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a
+				>, via Wikimedia Commons
+			</p>
 		</figcaption>
 	</figure>
+	<p>
+		The typical neuron consist of <strong>dendrites</strong>,
+		<strong>cell body</strong>, and <strong>axon</strong>.
+	</p>
+	<p>
+		<strong>Dendrites</strong> branch from the body in a tree-like fashion (hence
+		the name) and are the main target of signals incoming from other neurons.
+	</p>
+	<p>
+		In the <strong>cell body</strong>, all incoming signals are weighted and
+		added together, and, if the resulting potential exceeds a certain threshold,
+		the neuron fires an electrical signal. Incoming signal can either be
+		<strong>excitatory</strong>, in which case they make the firing more likely,
+		or <strong>inhibitory</strong>, in which case they make the firing less
+		likely. The relative strenghts of the incoming connections is not fixed.
+		This <strong>plasticity</strong> is one of the main mechanisms through which
+		the brain is
+		<strong>capable of updating itself on the basis of experience</strong>. The
+		summation of incoming signals is no simple arithmetic operation either: in
+		particular, the <strong>timing and frequency</strong> with which signals are
+		received is critical in determining if the neuron will fire or not.
+	</p>
+	<p>
+		The neuron firing is an all or nothing event: once the critical threshold is
+		crossed, the cell is flooded with positive ions, which makes the cell
+		membrane potential suddenly shift to positive. This is the <strong
+			>action potential</strong
+		>. Immediately after, positive ions are pumped out of the cell, restoring
+		its resting negative potential.
+	</p>
+	<p>
+		The <strong>axon</strong> is responsible for transmitting the action
+		potential to other cells. When the action potential reaches an axon
+		terminal, the electric signal is converted in a chemical signal through the
+		release of specialized chemicals (<strong>neurotrasmitters</strong>) into
+		the empty space between the firing neuron and its target cell.
+	</p>
+	<p>
+		The <strong>neurotransmitters</strong> bind to particular
+		<strong>receptors</strong> in the receiving neuron. Depending on whether the
+		sending neuron is excitatory or inibitory, the released chemicals make the receiving
+		neuron more or less likely to fire and the cycle continues.
+	</p>
 </section>
 <section class="prose">
 	<h2>This is your brain at Cornell</h2>
@@ -49,7 +111,8 @@
 		<strong>Cornell Aeronautical Laboratory</strong>, submitted a proposal for
 		funding, ambitiously titled
 		<em>The Perceptron: a Perceiving and Recognizing Automaton</em>. In it
-		Rosenblatt requested funds for the design and construction of a
+		Rosenblatt requested funds for the design and construction of an electronic
+		or electromechanical
 		<strong>machine</strong> which he characterized as a &ldquo;electronic brain
 		model&rdquo;, claiming
 	</p>
@@ -114,12 +177,56 @@
 			alt="Schematic representation of a perceptron with 3 inputs"
 		/>
 		<figcaption>
-			Schematic representation of a perceptron with 3 inputs.
+			Perceptron with three inputs. The <strong>output unit</strong> receives
+			connections from its <strong>input units</strong> (
+			<math
+				xmlns="http://www.w3.org/1998/Math/MathML"
+				display="inline"
+			>
+				<msub><mi>x</mi><mn>1</mn></msub>,
+				<msub><mi>x</mi><mn>2</mn></msub>,
+				<msub><mi>x</mi><mn>3</mn></msub>
+			</math>) by
+			<strong>weighted links</strong> (
+			<math
+				xmlns="http://www.w3.org/1998/Math/MathML"
+				display="inline"
+			>
+				<msub><mi>w</mi><mn>1</mn></msub>,
+				<msub><mi>w</mi><mn>2</mn></msub>,
+				<msub><mi>w</mi><mn>3</mn></msub>
+			</math>). The output unit also receives a weighted connection (<math
+				xmlns="http://www.w3.org/1998/Math/MathML"
+				display="inline"
+			>
+				<msub><mi>w</mi><mn>0</mn></msub>
+			</math>) from an additional unit whose value is fixed, called the
+			<strong>bias</strong>. The perceptron performs a
+			<strong>weighted sum</strong>
+			of its inputs and then passes the result to an
+			<strong>activation fuction</strong>.
 		</figcaption>
 	</figure>
+	<p>
+		Removed from the weak biological analogy, the perceptron is a very simple <strong
+			>binary classifier</strong
+		>: it receives in <strong>input</strong> some
+		<strong>numeric representation</strong>
+		of that which we want to classify and outputs either <strong>1</strong>,
+		meaning that the feature is present, or <strong>-1</strong>, meaning that
+		the feature is not present. If, for example, we wanted to use the perceptron
+		to determine whether a specific image is the picture of a cat, we would pass
+		it numbers representing pixels of the image and it would return us 1
+		(&ldquo;it' a cat!&rdquo;) or -1 (&ldquo;not a cat&rdquo;). If the
+		<strong>weights</strong> which connect the inputs to the output unit are set
+		up correctly, the answer could very well be right!
+	</p>
 
-	<p>The perceptron only performs two operations:</p>
-	<p>First it computes a weighted sum of the inputs (plus the bias term)</p>
+	<p>
+		It may surprise you that the perceptron only performs two operations. First
+		it computes a <strong>weighted sum of the inputs</strong> (plus the bias term,
+		whose function we will explain shortly).
+	</p>
 	<math
 		xmlns="http://www.w3.org/1998/Math/MathML"
 		display="block"
@@ -139,8 +246,9 @@
 		<mo>.</mo>
 	</math>
 	<p>
-		And then it passes the ouput of the previous operation into an activation
-		function
+		And then it passes the ouput of the previous operation into an <strong
+			>activation function
+		</strong>
 	</p>
 	<math
 		xmlns="http://www.w3.org/1998/Math/MathML"
@@ -220,26 +328,7 @@
 		<mn>0</mn>
 		<mo>.</mo>
 	</math>
-	<p>
-		Where the equation <math
-			xmlns="http://www.w3.org/1998/Math/MathML"
-			display="inline"
-		>
-			<msub><mi>w</mi><mn>1</mn></msub>
-			<msub><mi>x</mi><mn>1</mn></msub>
-			<mo>+</mo>
-			<msub><mi>w</mi><mn>2</mn></msub>
-			<msub><mi>x</mi><mn>2</mn></msub>
-			<mo>+</mo>
-			<msub><mi>w</mi><mn>3</mn></msub>
-			<msub><mi>x</mi><mn>3</mn></msub>
-			<mo>+</mo>
-			<msub><mi>w</mi><mn>0</mn></msub>
-			<mo>=</mo>
-			<mn>0</mn>
-		</math>
-		defines a hyperplane that acts as a decision boundary.
-	</p>
+	<p>So, how does it work?</p>
 </section>
 
 <style>

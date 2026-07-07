@@ -362,28 +362,28 @@ export const allSteps = {
     },
     {
       name: 'ml_perceptron_start',
-      text: '<p>Enter the <strong>multilayer perceptron</strong>.</p>\
-      <p>In addition to <strong>input and output units</strong>, the multilayer perceptron has one or more layers of <strong>hidden units</strong> (here h<sub>1</sub> and h<sub>2</sub>).</p>'
+      text: '<p>Enter the <strong>multi-layer perceptron</strong>.</p>\
+      <p>In addition to <strong>input and output units</strong>, the multi-layer perceptron has one or more layers of <strong>hidden units</strong> (here h<sub>1</sub> and h<sub>2</sub>).</p>'
     },
     {
       name: 'ml_perceptron_2',
-      text: "<p>Because of the presence of hidden layers, the multilayer perceptron can solve problems that are not linearly separable.</p>\
+      text: "<p>Because of the presence of hidden layers, the multi-layer perceptron can solve problems that are not linearly separable.</p>\
       <p>Can you find a configuration of parameters that solves the XOR problem?</p>"
     },
     {
       name: 'ml_perceptron_3',
-      text: "<p>Here we show a configuration of parameters that solves the XOR problem. You can inspect the decision boundary of each hidden node by clicking on them.</p>"
+      text: "<p>Here we show a configuration of parameters that solves the XOR problem. You can inspect the decision boundary of each hidden unit by clicking on them.</p>"
     },
     {
       name: 'ml_perceptron_end',
-      text: "<p>Here you can see that the hidden nodes create a representation of the input data where the problem is linearly separable.</p>"
+      text: "<p>Here you can see that the hidden units project the input data in a space where the problem is linearly separable.</p>"
     }
   ],
 
   mnist: [
     {
       name: 'start',
-      text: '<p>Multilayer perceptrons can be trained to solve also more interesting problems, as for example to <strong>classify handwritten digits</strong></p>'
+      text: '<p>Multi-layer perceptrons can be trained to solve also more interesting problems, as for example to <strong>classify handwritten digits</strong></p>'
     },
     {
       name: 'enter_examples',
@@ -408,11 +408,11 @@ export const allSteps = {
     },
     {
       name: 'enter_output_nodes',
-      text: '<p>And one output node for each digit: so 10 output nodes</p>'
+      text: '<p>And one output unit for each digit: so 10 output units</p>'
     },
     {
       name: 'enter_hidden_nodes',
-      text: '<p>And two hidden layers with 16 nodes each</p>'
+      text: '<p>And two hidden layers with 16 units each</p>'
     },
     {
       name: 'enter_links',

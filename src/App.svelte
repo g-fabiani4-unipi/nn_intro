@@ -7,6 +7,7 @@
 	import Backmatter from './Sections/Backmatter.svelte';
 	import Outro from './Sections/Outro.svelte';
 	import { onMount } from 'svelte';
+	import MultilayerPerceptronSection from './Sections/MultilayerPerceptronSection.svelte';
 
 	let network;
 	let scrollY = 0;
@@ -28,6 +29,7 @@
 	network={network}
 	scrollDir={scrollDir}
 />
+<MultilayerPerceptronSection />
 <MNISTSection
 	network={network}
 	scrollDir={scrollDir}
