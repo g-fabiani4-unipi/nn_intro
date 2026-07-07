@@ -1,3 +1,5 @@
+import { text } from "d3";
+
 export const positiveColor = '#7FBC41';
 export const negativeColor = '#C51B7D';
 export const blackOlive = '#36382eff';
@@ -59,7 +61,7 @@ export const allSteps = {
 		<mo>&GreaterEqual;</mo>\
 		<mn>0</mn>\
 		<mo>.</mo>\
-	</math ></p>",
+	</math></p>",
 		},
 		{
 			name: 'or_end',
@@ -78,7 +80,7 @@ export const allSteps = {
 		{
 			name: 'enter_bias',
 			text: '<p>In order to solve this issue, we introduce a new type of unit: the <strong>bias unit</strong>.</p>\
-      <p>The value held by the bias unit is always 1 (because it is not associated with any part of the input).\
+      <p>The value held by the bias unit is <strong>always 1</strong> (because it is not associated with any part of the input).\
       Notice how changing the bias parameter controls the <strong>intercept</strong> of the decision boundary.</p>',
 		},
 		{
@@ -401,7 +403,7 @@ export const allSteps = {
 	mnist: [
 		{
 			name: 'start',
-			text: '<p>Multi-layer perceptrons can be trained to solve also more interesting problems, as for example to <strong>classify handwritten digits</strong></p>',
+			text: '<p>Multi-layer perceptrons can be trained to solve also more interesting problems, as for example to <strong>classify handwritten digits</strong>.</p>',
 		},
 		{
 			name: 'enter_examples',
@@ -410,7 +412,8 @@ export const allSteps = {
 		},
 		{
 			name: 'train_test_split',
-			text: "<p>We reserve some examples for the evaluation of the model. This means that we won't submit these examples to the perceptron during training.</p>",
+			text: `<p>We reserve some examples for the evaluation of the model. This means that we won't submit these examples to the perceptron during training.</p>
+      <p>This is done to verify that the model is really <strong>generalizing</strong> from the data instead of simply <strong>memorizing</strong> them.</p>`,
 		},
 		{
 			name: 'magnify',
@@ -418,39 +421,114 @@ export const allSteps = {
 		},
 		{
 			name: 'decompose_input',
-			text: '<p>We represent the grid as a vector of 64 numbers. Each number represent how dark the corresponding pixel is.</p>',
+			text: '<p>We represent the grid as a list of <strong>64 numbers</strong>. Each number represent how dark the corresponding pixel is.</p>',
 		},
 		{
 			name: 'enter_input_nodes',
-			text: '<p>And now we can build our perceptron: we have 64 input units.</p>',
+			text: '<p>And now we can build our perceptron: we have <strong>64 input units</strong>…</p>',
 		},
 		{
 			name: 'enter_output_nodes',
-			text: '<p>And one output unit for each digit: so 10 output units</p>',
+			text: '<p>and one output unit for each digit: so <strong>10 output units</strong></p>',
 		},
 		{
 			name: 'enter_hidden_nodes',
-			text: '<p>And two hidden layers with 16 units each</p>',
+			text: `<p>And <strong>two hidden layers</strong> with <strong>16 units</strong> each.</p>
+      <p class="note">While the number of input and output units is strictly dependent from the <strong>shape of the input data</strong> and the <strong>number of classes</strong>,
+      the number of hidden layers and their size is a matter of choice that requires balancing model complexity, training efficiency and generalization.</p>`,
 		},
 		{
 			name: 'enter_links',
 			text: '<p>Can you compute how many <strong>parameters</strong> should the perceptron have?</p>',
 		},
 		{
+			name: 'enter_links_2',
+			text: `<p>Since each layer is <strong>fully connected</strong> to the next, we have
+        <math\
+      xmlns='http://www.w3.org/1998/Math/MathML'\
+      display='inline'\
+          >\
+      <mn>64</mn>
+      <mo>×</mo>\
+      <mn>16</mn>\
+      <mo>=</mo>
+      <mn>1024</mn>
+    </math>
+    parameters connecting the input layer to the first hidden layer, plus
+    <math\
+      xmlns='http://www.w3.org/1998/Math/MathML'\
+      display='inline'\
+          >\
+      <mn>16</mn>
+      <mo>×</mo>\
+      <mn>16</mn>\
+      <mo>=</mo>
+      <mn>256</mn>
+    </math>
+    parameters connecting the two hidden layers, plus
+        <math\
+      xmlns='http://www.w3.org/1998/Math/MathML'\
+      display='inline'\
+          >\
+      <mn>16</mn>
+      <mo>×</mo>\
+      <mn>10</mn>\
+      <mo>=</mo>
+      <mn>160</mn>
+    </math>
+    parameters from the last hidden layer to the output layer.</p>`,
+		},
+    {
+      name: 'enter_links_3',
+      text: `<p> We should also add
+      <math\
+      xmlns='http://www.w3.org/1998/Math/MathML'\
+      display='inline'\
+          >\
+      <mn>16</mn>
+      <mo>+</mo>\
+      <mn>16</mn>\
+      <mo>+</mo>\
+      <mn>10</mn>
+      <mo>=</mo>
+      <mn>42</mn>
+    </math> parameters <strong>connecting the bias units to each non input unit</strong> (not shown),
+    for a total of 1482 parameters.
+      </p>`
+    },
+		{
 			name: 'train',
-			text: '<p>Training this bullshit</p>',
+			text: `<p>During &ldquo;training&rdquo; the parameters of the perceptron are updated in order to <strong>reduce the error</strong> on the training examples.</p>
+      <p>In order to <strong>evaluate</strong> the performance of the perceptron, we use the data we <strong>set apart</strong> previously.</p>`,
 		},
 		{
 			name: 'test',
-			text: '<p>The perceptron has already been trained. Click on the test <span class="example">examples</span> to see the model output</p>',
+			text: `<p>This <span class="example">example</span> has been correctly classified as a&nbsp;<strong>5</strong>.</p>
+      <p>Notice that for a <strong>multiclass</strong> classification task as this, the raw output
+      of the perceptron is converted to a <strong>probability distribution</strong> over the possible outcomes.</p>`,
 		},
 		{
 			name: 'test_2',
-			text: '<p>Second test example</p>',
+			text: '<p>This second test <span class="example">example</span> is also classified correctly.</p>',
 		},
 		{
 			name: 'test_3',
-			text: '<p>Third test example</p>',
+			text: '<p>But the third test <span class="example">example</span> is <strong>misclassified</strong>. As a matter of fact, this perceptron gives a wrong output for little more than <strong>one in ten</strong> examples of the test set.</p>',
 		},
+    {
+      name: 'test_4',
+      text: `<p>This may seem acceptable, but imagine you are using this perceptron in order to <strong>sort mail by ZIP codes</strong>.
+      Since the overall accuracy of the classifier is 88%, assuming 5-digits ZIP codes, the probability of reading a ZIP code without errors is around 53%.
+      </p>
+      <p>Doesn't look so good when half your mail goes to the wrong place? Does it?</p>`
+    },
+    {
+      name: 'test_5',
+      text: `<p><strong>Errors</strong> are an inescapable fact in <strong>machine learning</strong>.
+      They can be sometimes mitigated by using a <strong>more complex</strong> or a
+      <strong>less complex</strong> model, <strong>more data</strong> or data <strong>better</strong>
+      suited to the task.</p>
+      <p>Some other times, <strong>the task should not be automated at all</strong>.</p>`
+    }
 	],
 };

@@ -90,15 +90,15 @@
 			colorLinks = currentStep >= steps.findIndex((s) => s.name === 'train');
 
 			if (currentStep >= steps.findIndex((s) => s.name === 'test')) {
-				testExample = digits[75];
+				testExample = digits[94];
 			} else {
 				testExample = null;
 			}
 			if (steps[currentStep].name === 'test_2') {
 				testExample = digits[80];
 			}
-			if (steps[currentStep].name === 'test_3') {
-				testExample = digits[94];
+			if (steps[currentStep].name === 'test') {
+				testExample = digits[75];
 			}
 		} else {
 			// Set initial values

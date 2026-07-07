@@ -131,11 +131,8 @@
 			highlightExample(2);
 			setParams([3, 5, -3]);
 		}
-		if (
-			steps[currentStep].name === 'perceptron_rule_end' ||
-			steps[currentStep].name === 'perceptron_rule_exercise'
-		) {
-			highlightExample(null);
+		if (steps[currentStep].name === 'perceptron_rule_end') {
+			removeHighlight();
 			setParams([3, 5, -3]);
 		}
 		// Hidden nodes inspection
