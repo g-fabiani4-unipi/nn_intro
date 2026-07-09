@@ -44,8 +44,12 @@
 					>
 				</li>
 				<li>
-					<span class="author">Mitchell, T. M.</span> (1997).
-					<span class="title">Machine Learning</span>. McGraw-Hill.
+					<span class="author">Nielsen, M. A.</span> (2015).
+					<span class="title">Neural Networks and Deep Learning</span>.
+					Determination Press.
+					<a href="http://neuralnetworksanddeeplearning.com"
+						>http://neuralnetworksanddeeplearning.com</a
+					>
 				</li>
 				<li>
 					<span class="author">Rosenblatt, F.</span> (1957).
