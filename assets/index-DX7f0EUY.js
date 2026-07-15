@@ -74,7 +74,7 @@ var nl=Object.defineProperty;var rl=(e,t,n)=>t in e?nl(e,t,{enumerable:!0,config
 		of the cell, restoring its resting negative potential.</p> <p>The <strong>axon</strong> is responsible for transmitting the action
 		potential to other cells. When the action potential reaches an axon
 		terminal, the electric signal is converted into a chemical signal through
-		the release of specialized chemicals (<strong>neurotrasmitters</strong>)
+		the release of specialized chemicals (<strong>neurotransmitters</strong>)
 		into the empty space between the firing neuron and its target cell.</p> <p>The <strong>neurotransmitters</strong> bind to particular
 		<strong>receptors</strong> in the receiving neuron. Depending on whether the
 		sending neuron is excitatory or inibitory, the released chemicals make the receiving
