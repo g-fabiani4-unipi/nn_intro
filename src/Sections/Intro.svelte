@@ -95,7 +95,7 @@
 		The <strong>axon</strong> is responsible for transmitting the action
 		potential to other cells. When the action potential reaches an axon
 		terminal, the electric signal is converted into a chemical signal through
-		the release of specialized chemicals (<strong>neurotrasmitters</strong>)
+		the release of specialized chemicals (<strong>neurotransmitters</strong>)
 		into the empty space between the firing neuron and its target cell.
 	</p>
 	<p>
