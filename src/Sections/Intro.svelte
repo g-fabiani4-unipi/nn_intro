@@ -71,7 +71,7 @@
 	<p>
 		In the <strong>cell body</strong>, all incoming signals are weighted and
 		added together, and, if the resulting potential exceeds a certain threshold,
-		the neuron fires an electrical signal. Incoming signal can either be
+		the neuron fires an electrical signal. Incoming signals can either be
 		<strong>excitatory</strong>, in which case they make the firing more likely,
 		or <strong>inhibitory</strong>, in which case they make the firing less
 		likely. The relative strengths of the incoming connections is not fixed.
