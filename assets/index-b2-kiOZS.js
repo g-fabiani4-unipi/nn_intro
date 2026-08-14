@@ -58,7 +58,7 @@ var nl=Object.defineProperty;var rl=(e,t,n)=>t in e?nl(e,t,{enumerable:!0,config
 		<strong>cell body</strong>, and <strong>axon</strong>.</p> <p><strong>Dendrites</strong> branch from the body in a tree-like fashion (hence
 		the name) and are the main target of signals incoming from other neurons.</p> <p>In the <strong>cell body</strong>, all incoming signals are weighted and
 		added together, and, if the resulting potential exceeds a certain threshold,
-		the neuron fires an electrical signal. Incoming signal can either be
+		the neuron fires an electrical signal. Incoming signals can either be
 		<strong>excitatory</strong>, in which case they make the firing more likely,
 		or <strong>inhibitory</strong>, in which case they make the firing less
 		likely. The relative strengths of the incoming connections is not fixed.
