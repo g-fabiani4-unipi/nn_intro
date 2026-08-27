@@ -2,7 +2,7 @@
   "name": "nn_intro",
   "description": "The Perceptron: a Visual Introduction to Deep Learning. Powered by Svelte + D3.js",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "homepage": "https://gfabiani.codeberg.page/nn_intro/",
   "author": {
