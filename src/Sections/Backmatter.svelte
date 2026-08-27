@@ -78,7 +78,7 @@
 		<p>
 			<a href="https://g-fabiani4-unipi.github.io/nn_intro/">The Perceptron</a>
 			© 2025 by
-			<a href="https://github.com/g-fabiani4-unipi">Giulia Fabiani</a>
+			<a href="https://codeberg.org/gfabiani">Giulia Fabiani</a>
 			is licensed under
 			<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a
 			><img
@@ -96,8 +96,8 @@
 			/>
 		</p>
 		<p>
-			Code is available on <a
-				href="https://github.com/g-fabiani4-unipi/nn_intro/">GitHub</a
+			Code is available on <a href="https://codeberg.org/gfabiani/nn_intro/"
+				>Codeberg</a
 			>
 		</p>
 	</div>

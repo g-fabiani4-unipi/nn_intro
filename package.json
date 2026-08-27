@@ -8,15 +8,15 @@
   "author": {
     "name": "Giulia Fabiani",
     "email": "g.fabiani4@studenti.unipi.it",
-    "url": "https://github.com/g-fabiani4-unipi"
+    "url": "https://codeberg.org/gfabiani"
   },
   "bugs": {
-    "url": "https://github.com/g-fabiani4-unipi/nn_intro/issues",
+    "url": "https://codeberg.org/gfabiani/nn_intro/issues",
     "email": "g.fabiani4@studenti.unipi.it"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/g-fabiani4-unipi/nn_intro.git"
+    "url": "git+https://codeberg.org/gfabiani/nn_intro.git"
   },
   "license": "GPL-3.0-or-later",
   "scripts": {
