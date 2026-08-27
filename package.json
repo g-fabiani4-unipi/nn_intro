@@ -4,7 +4,7 @@
   "private": false,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://g-fabiani4-unipi.github.io/nn_intro/",
+  "homepage": "https://gfabiani.codeberg.page/nn_intro/",
   "author": {
     "name": "Giulia Fabiani",
     "email": "g.fabiani4@studenti.unipi.it",
@@ -25,7 +25,7 @@
     "preview": "vite preview",
     "host": "vite preview --host",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -b pages -r ssh://git@codeberg.org/gfabiani/nn_intro.git"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.1",

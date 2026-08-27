@@ -76,7 +76,7 @@
 	</div>
 	<div class="footer">
 		<p>
-			<a href="https://g-fabiani4-unipi.github.io/nn_intro/">The Perceptron</a>
+			<a href="https://gfabiani.codeberg.page/nn_intro/">The Perceptron</a>
 			© 2025 by
 			<a href="https://codeberg.org/gfabiani">Giulia Fabiani</a>
 			is licensed under

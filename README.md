@@ -3,20 +3,25 @@
 ![](docs/img/app_hero.png)
 
 [🔗
-g-fabiani4-unipi.github.io/nn_intro/ ](https://g-fabiani4-unipi.github.io/nn_intro/)
+gfabiani.codeberg.page/nn_intro/ ](https://gfabiani.codeberg.page/nn_intro/)
 
 ## Who is this for
 
 _The Perceptron_ is an interactive Svelte + D3.js application that offers an introduction to the fundamental concepts of _Deep Learning_. It assumes no prior knowledge of the subject and is suitable for self-directed learning.
 
-## Quick start
+## Developers
+
+> [!IMPORTANT]
+> This project has been permanently moved to Codeberg. Read up about the [Give Up GitHub!](https://giveupgithub.org/) campaign.
+
+### Quick start
 
 Requirement: Node.js and npm should be installed on your system.
 
 If you want to develop or adapt _The Perceptron_, or simply check out how it works under the hood, you can clone or fork this repository:
 
 ```{bash}
-git clone https://github.com/g-fabiani4-unipi/nn_intro.git
+git clone https://codeberg.org/gfabiani/nn_intro.git
 ```
 
 and then start the development server:
@@ -28,6 +33,14 @@ npm install
 // start development server
 npm run dev
 ```
+
+### Contributing
+
+If you want to contribute, please open an issue on [Codeberg](https://codeberg.org/gfabiani/nn_intro/issues).
+
+### Localization
+
+Contact me (opening an issue on [Codeberg](https://codeberg.org/gfabiani/nn_intro/issues) or via email) if you want to translate _The Perceptron_ in your language.
 
 ## License
 
