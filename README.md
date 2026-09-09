@@ -12,7 +12,7 @@ _The Perceptron_ is an interactive Svelte + D3.js application that offers an int
 ## Developers
 
 > [!IMPORTANT]
-> This project has been permanently moved to Codeberg. Read up about the [Give Up GitHub!](https://giveupgithub.org/) campaign.
+> This project has been permanently moved to [Codeberg](https://codeberg.org/gfabiani/nn_intro). Read up about the [Give Up GitHub!](https://giveupgithub.org/) campaign.
 
 ### Quick start
 
